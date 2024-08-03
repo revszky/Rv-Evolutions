@@ -6,9 +6,8 @@ interface CustomMetadata extends Metadata {
 }
 
 export const metadata: CustomMetadata = {
-  title: "KYRIZKYP - Creativity Everything",
-  description:
-    "Introducing me Rizky Putra, a Front-End Web Developer, specialist and precision in creating websites or what is usually called landing pages.",
+  title: "RV • Evolutions",
+  description: "",
   image: "/logo/rv-evolutions.png",
 };
 
