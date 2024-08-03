@@ -1,4 +1,3 @@
-// components/SearchMenu.tsx
 import { IconSearch } from "@tabler/icons-react";
 import React, { useState } from "react";
 import DataResi from "@/app/data/DataResi";
