@@ -1,14 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Navbar from "./components/set/Navbar";
 
-interface CustomMetadata extends Metadata {
-  image?: string;
-}
-
-export const metadata: CustomMetadata = {
+export const metadata: Metadata = {
   title: "RV • Evolutions",
   description: "",
-  image: "/logo/rv-evolutions.png",
 };
 
 export default function RootLayout({
@@ -19,8 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/logo/rv-evolutions.png" sizes="any" />
-        <meta property="og:image" content={metadata.image} />
+        <link rel="icon" href="/rv-fav.jpg" sizes="any" />
       </head>
       <body>
         <main>{children}</main>
