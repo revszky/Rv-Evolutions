@@ -18,6 +18,7 @@ export default function RootLayout({
         <link rel="icon" href="/rv-fav.jpg" sizes="any" />
       </head>
       <body>
+        <Navbar />
         <main>{children}</main>
       </body>
     </html>

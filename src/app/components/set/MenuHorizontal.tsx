@@ -5,6 +5,7 @@ const menuItems = [
   { href: "/brand", label: "BRAND" },
   { href: "/collection", label: "COLLECTION" },
   { href: "/check", label: "CHECK ID" },
+  { href: "/new", label: "NEW" },
 ];
 
 const MenuHorizontal = () => {
@@ -25,7 +26,7 @@ const MenuHorizontal = () => {
         <img src="/logo/rvblack.png" alt="Rv" className="w-[70px]" />
       </Link>
 
-      <div className="flex items-center justify-center gap-4">
+      <div className="flex items-center justify-center gap-10">
         {menuItems.slice(2).map((item, index) => (
           <Link key={index} href={item.href}>
             <h1 className="font-mono">{item.label}</h1>

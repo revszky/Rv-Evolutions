@@ -55,7 +55,7 @@ const ModalSearch: React.FC<ModalSearchProps> = ({
       >
         <div className="p-4 max-w-[260px] md:max-w-md">
           <h1 className="font-mono text-center text-xs md:text-lg">
-            Enter the ID serial number to check its authenticity.
+            ID numbers have 4 digit numbers, check your ID.
           </h1>
         </div>
 

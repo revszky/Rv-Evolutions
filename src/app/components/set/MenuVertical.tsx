@@ -39,15 +39,15 @@ const MenuVertical = ({ pilihMenu }: MenuNavProps) => {
   const urutanMenu = [
     {
       judul: "BRAND",
-      halaman: "#",
+      halaman: "/brand",
     },
     {
       judul: "COLLECTION",
-      halaman: "#",
+      halaman: "/collection",
     },
     {
       judul: "NEW",
-      halaman: "#",
+      halaman: "/new",
     },
   ];
 
@@ -85,8 +85,8 @@ const MenuVertical = ({ pilihMenu }: MenuNavProps) => {
         >
           <div className="p-2">
             <p className="text-center font-mono text-xs">
-              ID tags ensure product authenticity by checking unique codes,
-              check your ID
+              ID tag to ensure product authenticity, by checking the code on the
+              tag label.
             </p>
           </div>
         </div>
