@@ -7,8 +7,8 @@ interface DataTag {
 const DataResi: DataTag[] = [
   {
     id: "0813",
-    title: "Rizky dan Devi",
-    description: "love you sayang"
+    title: "Example",
+    description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium eligendi animi dicta numquam, saepe laborum a consequatur cumque commodi ex."
 
   }
 ]

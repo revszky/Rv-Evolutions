@@ -1,4 +1,4 @@
-import DetailResi from "@/app/components/search/DetailResi";
+import DetailIdProduct from "@/app/components/check/DetailIdProduct";
 import React from "react";
 
 interface PageParams {
@@ -10,7 +10,7 @@ const Page: React.FC<{ params: PageParams }> = ({ params }) => {
     <main>
       <section className="my-4">
         <div className="flex items-center justify-center">
-          <DetailResi detailId={params.detail} />
+          <DetailIdProduct detailId={params.detail} />
         </div>
       </section>
     </main>

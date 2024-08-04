@@ -7,7 +7,7 @@ interface DataDetailProps {
   detailId: string;
 }
 
-const DetailResi: React.FC<DataDetailProps> = ({ detailId }) => {
+const DetailIdProduct: React.FC<DataDetailProps> = ({ detailId }) => {
   const data = DataResi.find((detail) => detail.id === detailId);
 
   useEffect(() => {
@@ -36,4 +36,4 @@ const DetailResi: React.FC<DataDetailProps> = ({ detailId }) => {
   );
 };
 
-export default DetailResi;
+export default DetailIdProduct;
