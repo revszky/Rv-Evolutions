@@ -48,7 +48,15 @@ const SearchMenu = () => {
   return (
     <>
       <button onClick={handleButtonClick}>
-        <IconSearch />
+        <div className="flex items-center justify-center relative">
+          <div>
+            <h1 className="font-mono text-xl">ID</h1>
+          </div>
+
+          <div className="absolute bottom-0 -right-2">
+            <IconSearch className="w-4 h-4" />
+          </div>
+        </div>
       </button>
 
       <ModalSearch

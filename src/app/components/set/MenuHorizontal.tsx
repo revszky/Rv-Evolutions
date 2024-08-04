@@ -4,13 +4,13 @@ import React from "react";
 const menuItems = [
   { href: "/brand", label: "BRAND" },
   { href: "/collection", label: "COLLECTION" },
-  { href: "/check", label: "CHECK" },
+  { href: "/check", label: "CHECK ID" },
 ];
 
 const MenuHorizontal = () => {
   return (
-    <div className="relative flex items-center justify-between px-10 py-4">
-      <div className="flex items-center justify-center gap-4">
+    <div className="relative flex items-center justify-between px-28 py-4">
+      <div className="flex items-center justify-center gap-10">
         {menuItems.slice(0, 2).map((item, index) => (
           <Link key={index} href={item.href}>
             <h1 className="font-mono">{item.label}</h1>

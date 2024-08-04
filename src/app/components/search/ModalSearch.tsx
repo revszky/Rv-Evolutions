@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import Link from "next/link";
+import { IconEyeSearch } from "@tabler/icons-react";
 
 interface DataTag {
   id: string;
@@ -25,25 +26,62 @@ const ModalSearch: React.FC<ModalSearchProps> = ({
   notFound,
   onClose,
 }) => {
-  if (!isOpen) return null;
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+      onClose();
+    }
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white p-4 rounded shadow-lg">
-        <h2 className="text-xl mb-4">Search</h2>
-        <input
-          type="text"
-          value={searchId}
-          onChange={onSearchIdChange}
-          placeholder="Enter ID"
-          className="w-full p-2 border border-gray-300 rounded"
-        />
-        <button
-          onClick={onSearch}
-          className="mt-2 bg-blue-500 text-white py-2 px-4 rounded"
-        >
-          Search
-        </button>
+    <div
+      className={`fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 transition-opacity ${
+        isOpen ? "opacity-100 duration-500" : "opacity-0 pointer-events-none"
+      }`}
+    >
+      <div
+        ref={modalRef}
+        className="flex flex-col items-center justify-center bg-white max-w-sm p-4 md:p-6"
+      >
+        <div className="p-4 max-w-[260px] md:max-w-md">
+          <h1 className="font-mono text-center text-xs md:text-lg">
+            Enter the ID serial number to check its authenticity.
+          </h1>
+        </div>
+
+        <div className="relative">
+          <div className="flex items-center">
+            <div className="p-2 bg-black">
+              <h2 className="font-mono text-xl text-white">RV</h2>
+            </div>
+
+            <input
+              type="text"
+              name="resi"
+              value={searchId}
+              onChange={onSearchIdChange}
+              placeholder=""
+              autoFocus
+              className="w-60 md:w-80 xl:w-96 p-2 focus:outline-none bg-white border border-black font-mono"
+            />
+          </div>
+
+          <div className="absolute top-0 right-0">
+            <button onClick={onSearch} className="p-2">
+              <IconEyeSearch />
+            </button>
+          </div>
+        </div>
 
         {result && (
           <div className="mt-4">
@@ -52,17 +90,12 @@ const ModalSearch: React.FC<ModalSearchProps> = ({
             </Link>
           </div>
         )}
+
         {notFound && (
           <div className="mt-4 text-red-500">
             <p>ID not found</p>
           </div>
         )}
-        <button
-          onClick={onClose}
-          className="mt-4 bg-red-500 text-white py-2 px-4 rounded"
-        >
-          Close
-        </button>
       </div>
     </div>
   );
