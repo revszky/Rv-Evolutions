@@ -7,12 +7,12 @@ const menuItems = [
 ];
 
 const additionalMenuItems = [
+  { href: "/new", label: "NEW" },
   {
     href: "/check",
     label: "CHECK ID",
     className: "px-4 py-2 bg-black text-white",
   },
-  { href: "/new", label: "NEW" },
 ];
 
 const MenuHorizontal = () => {

@@ -45,7 +45,7 @@ const ModalSearch: React.FC<ModalSearchProps> = ({
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 transition-opacity ${
+      className={`fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 transition-opacity ${
         isOpen ? "opacity-100 duration-500" : "opacity-0 pointer-events-none"
       }`}
     >
