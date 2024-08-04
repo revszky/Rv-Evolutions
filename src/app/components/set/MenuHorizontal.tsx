@@ -4,7 +4,14 @@ import React from "react";
 const menuItems = [
   { href: "/brand", label: "BRAND" },
   { href: "/collection", label: "COLLECTION" },
-  { href: "/check", label: "CHECK ID" },
+];
+
+const additionalMenuItems = [
+  {
+    href: "/check",
+    label: "CHECK ID",
+    className: "px-4 py-2 bg-black text-white",
+  },
   { href: "/new", label: "NEW" },
 ];
 
@@ -27,9 +34,9 @@ const MenuHorizontal = () => {
       </Link>
 
       <div className="flex items-center justify-center gap-10">
-        {menuItems.slice(2).map((item, index) => (
-          <Link key={index} href={item.href}>
-            <h1 className="font-mono">{item.label}</h1>
+        {additionalMenuItems.map((item, index) => (
+          <Link key={index} href={item.href} className={item.className}>
+            <h2 className="font-mono">{item.label}</h2>
           </Link>
         ))}
       </div>
