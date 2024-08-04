@@ -17,7 +17,7 @@ const additionalMenuItems = [
 
 const MenuHorizontal = () => {
   return (
-    <div className="relative flex items-center justify-between px-28 py-4">
+    <div className="relative flex items-center justify-between px-28 py-4 bg-white">
       <div className="flex items-center justify-center gap-10">
         {menuItems.slice(0, 2).map((item, index) => (
           <Link key={index} href={item.href}>
@@ -28,7 +28,7 @@ const MenuHorizontal = () => {
 
       <Link
         href="/"
-        className="absolute top-2 left-1/2 transform -translate-x-1/2"
+        className="absolute top-[12px] left-1/2 transform -translate-x-1/2"
       >
         <img src="/logo/rvblack.png" alt="Rv" className="w-[70px]" />
       </Link>
