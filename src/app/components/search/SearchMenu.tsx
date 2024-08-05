@@ -3,13 +3,17 @@ import React, { useState } from "react";
 import DataResi from "@/app/data/DataResi";
 import ModalSearch from "./ModalSearch";
 
+interface MenuNavProps {
+  pilihMenu: () => void;
+}
+
 interface DataTag {
   id: string;
   title: string;
   description: string;
 }
 
-const SearchMenu = () => {
+const SearchMenu = ({ pilihMenu }: MenuNavProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchId, setSearchId] = useState("");
   const [result, setResult] = useState<DataTag | null>(null);
@@ -17,6 +21,7 @@ const SearchMenu = () => {
 
   const handleButtonClick = () => {
     setIsModalOpen(true);
+    pilihMenu();
   };
 
   const handleCloseModal = () => {

@@ -3,9 +3,9 @@
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { IconMenu2, IconX } from "@tabler/icons-react";
-import Menu from "./MenuVertical";
 import MenuHorizontal from "./MenuHorizontal";
 import SearchMenu from "../search/SearchMenu";
+import MenuVertical from "./MenuVertical";
 
 const Navbar = () => {
   const [bukaMenu, mengaturBukaMenu] = useState(false);
@@ -56,9 +56,9 @@ const Navbar = () => {
 
       <div className="block xl:hidden">
         <div className="flex items-center justify-between px-4 py-2 bg-white">
-          <SearchMenu />
+          <SearchMenu pilihMenu={closeMenu} />
 
-          <Link href="/">
+          <Link href="/" onClick={closeMenu}>
             <img src="/logo/rvblack.png" alt="Rv" className="w-12" />
           </Link>
 
@@ -82,7 +82,7 @@ const Navbar = () => {
 
       <div className={sidebarClass}>
         <div className="w-full md:px-4 mt-8">
-          <Menu pilihMenu={closeMenu} />
+          <MenuVertical pilihMenu={closeMenu} />
         </div>
       </div>
     </header>
