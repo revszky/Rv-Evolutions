@@ -62,7 +62,7 @@ const SearchHorizontal = () => {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="relative">
+      <div className="relative -z-20">
         <div className="flex items-center">
           <div className="p-2 bg-black">
             <h2 className="font-mono text-xl text-white">RV</h2>
