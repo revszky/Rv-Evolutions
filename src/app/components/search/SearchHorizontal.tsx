@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { IconEyeSearch } from "@tabler/icons-react";
 import DataTagID from "@/app/data/DataTagID";
 import Link from "next/link";
@@ -17,6 +17,7 @@ const SearchHorizontal = () => {
   const [invalidId, setInvalidId] = useState<boolean>(false);
   const [shortId, setShortId] = useState<boolean>(false);
   const [emptyInput, setEmptyInput] = useState<boolean>(false);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleSearch = () => {
     setInvalidId(false);
@@ -60,29 +61,46 @@ const SearchHorizontal = () => {
     setResult(null);
   };
 
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
+    }, 0);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="relative -z-20">
-        <div className="flex items-center">
-          <div className="p-2 bg-black">
-            <h2 className="font-mono text-xl text-white">RV</h2>
-          </div>
-
-          <input
-            type="text"
-            name="ID"
-            value={searchId}
-            onChange={handleChange}
-            placeholder="EXAMPLE 1234"
-            className="w-60 md:w-80 xl:w-96 p-2 focus:outline-none bg-white border border-black font-mono"
-          />
+      <div className="flex items-center">
+        <div className="p-[7px] bg-black text-white">
+          <h2 className="font-mono text-lg">RV</h2>
         </div>
 
-        <div className="absolute top-0 right-0">
-          <button onClick={handleSearch} className="p-2">
-            <IconEyeSearch />
-          </button>
-        </div>
+        <input
+          ref={inputRef}
+          type="text"
+          name="ID"
+          value={searchId}
+          onChange={handleChange}
+          onKeyPress={handleKeyPress}
+          placeholder="1234"
+          className="w-60 md:w-80 p-2 focus:outline-none bg-white border-b border-t border-l border-black font-mono"
+        />
+
+        <button
+          onClick={handleSearch}
+          className="p-2 border-b border-t border-r border-black"
+        >
+          <IconEyeSearch className="w-6 h-6" />
+        </button>
       </div>
 
       {emptyInput && (

@@ -59,7 +59,7 @@ const MenuVertical = ({ pilihMenu }: MenuNavProps) => {
             key={urutan}
             href={menu.halaman}
             onClick={mengaturMenuKlik}
-            className="font-mono py-2"
+            className="font-mono text-xs md:text-sm py-2"
           >
             {menu.judul}
           </Link>
@@ -70,21 +70,21 @@ const MenuVertical = ({ pilihMenu }: MenuNavProps) => {
         <button
           ref={buttonRef}
           onClick={toggleDropdown}
-          className="px-2 py-1.5 text-xs font-mono bg-black text-white"
+          className="px-2 py-1.5 text-xs md:text-sm font-mono bg-black text-white"
         >
           CHECK ID
         </button>
 
         <div
           ref={dropdownRef}
-          className={`absolute mt-2 -right-2 w-[230px] bg-white border border-black transform transition-all duration-500 ease-in-out ${
+          className={`absolute mt-2 -right-2 w-[230px] md:w-[360px] bg-white border border-black transform transition-all duration-500 ease-in-out ${
             dropdownVisible
               ? "opacity-100 translate-y-0"
               : "opacity-0 -translate-y-4"
           }`}
         >
           <div className="p-2">
-            <p className="text-center font-mono text-xs">
+            <p className="text-center font-mono text-xs md:text-sm">
               ID tag to ensure product authenticity, by checking the code on the
               tag label.
             </p>

@@ -31,6 +31,7 @@ const ModalSearch: React.FC<ModalSearchProps> = ({
   onClose,
 }) => {
   const modalRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const klikLuar = (klik: React.MouseEvent<HTMLDivElement>) => {
     if (modalRef.current === klik.target) {
@@ -44,13 +45,27 @@ const ModalSearch: React.FC<ModalSearchProps> = ({
     }
   };
 
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      onSearch();
+    }
+  };
+
   useEffect(() => {
     if (isOpen) {
       document.addEventListener("keydown", klikEscape);
+
+      const focusInput = () => {
+        if (inputRef.current) {
+          inputRef.current.focus();
+        }
+      };
+      focusInput();
+
+      return () => {
+        document.removeEventListener("keydown", klikEscape);
+      };
     }
-    return () => {
-      document.removeEventListener("keydown", klikEscape);
-    };
   }, [isOpen]);
 
   return (
@@ -70,16 +85,18 @@ const ModalSearch: React.FC<ModalSearchProps> = ({
 
         <div className="relative">
           <div className="flex items-center">
-            <div className="p-2 bg-black">
-              <h2 className="font-mono text-xl text-white">RV</h2>
+            <div className="p-[7px] bg-black">
+              <h2 className="font-mono text-lg text-white">RV</h2>
             </div>
 
             <input
+              ref={inputRef}
               type="text"
               name="ID"
               value={searchId}
               onChange={onSearchIdChange}
-              placeholder="EXAMPLE 1234"
+              onKeyPress={handleKeyPress}
+              placeholder="1234"
               className="w-60 md:w-80 xl:w-96 p-2 focus:outline-none bg-white border border-black font-mono"
             />
           </div>
