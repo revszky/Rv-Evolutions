@@ -28,18 +28,24 @@ const ModalSearch: React.FC<ModalSearchProps> = ({
 }) => {
   const modalRef = useRef<HTMLDivElement>(null);
 
-  const handleClickOutside = (event: MouseEvent) => {
-    if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+  const klikLuar = (klik: React.MouseEvent<HTMLDivElement>) => {
+    if (modalRef.current === klik.target) {
+      onClose();
+    }
+  };
+
+  const klikEscape = (event: KeyboardEvent) => {
+    if (event.key === "Escape") {
       onClose();
     }
   };
 
   useEffect(() => {
     if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener("keydown", klikEscape);
     }
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", klikEscape);
     };
   }, [isOpen]);
 
@@ -48,11 +54,10 @@ const ModalSearch: React.FC<ModalSearchProps> = ({
       className={`fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 transition-opacity ${
         isOpen ? "opacity-100 duration-500" : "opacity-0 pointer-events-none"
       }`}
+      ref={modalRef}
+      onClick={klikLuar}
     >
-      <div
-        ref={modalRef}
-        className="flex flex-col items-center justify-center bg-white max-w-sm p-4 md:p-6"
-      >
+      <div className="flex flex-col items-center justify-center bg-white max-w-sm p-4 md:p-6">
         <div className="p-4 max-w-[260px] md:max-w-md">
           <h1 className="font-mono text-center text-xs md:text-lg">
             ID numbers have 4 digit numbers, check your ID.
