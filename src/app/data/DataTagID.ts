@@ -1,11 +1,11 @@
-interface DataTag {
+interface DataID {
   id: string;
   title: string;
   description: string;
   image: string;
 }
 
-const DataResi: DataTag[] = [
+const DataTagID: DataID[] = [
   {
     id: "0813",
     title: "Example",
@@ -14,4 +14,4 @@ const DataResi: DataTag[] = [
   }
 ]
 
-export default DataResi;
+export default DataTagID;

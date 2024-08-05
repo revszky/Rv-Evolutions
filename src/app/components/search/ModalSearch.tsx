@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import Link from "next/link";
 import { IconEyeSearch } from "@tabler/icons-react";
 
-interface DataTag {
+interface DataID {
   id: string;
   title: string;
 }
@@ -12,9 +12,10 @@ interface ModalSearchProps {
   searchId: string;
   onSearchIdChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onSearch: () => void;
-  result: DataTag | null;
+  result: DataID | null;
   notFound: boolean;
   invalidId: boolean;
+  emptyInput: boolean;
   onClose: () => void;
 }
 
@@ -26,6 +27,7 @@ const ModalSearch: React.FC<ModalSearchProps> = ({
   result,
   notFound,
   invalidId,
+  emptyInput,
   onClose,
 }) => {
   const modalRef = useRef<HTMLDivElement>(null);
@@ -74,10 +76,10 @@ const ModalSearch: React.FC<ModalSearchProps> = ({
 
             <input
               type="text"
-              name="resi"
+              name="ID"
               value={searchId}
               onChange={onSearchIdChange}
-              placeholder="1234"
+              placeholder="EXAMPLE 1234"
               className="w-60 md:w-80 xl:w-96 p-2 focus:outline-none bg-white border border-black font-mono"
             />
           </div>
@@ -89,7 +91,15 @@ const ModalSearch: React.FC<ModalSearchProps> = ({
           </div>
         </div>
 
-        {invalidId && (
+        {emptyInput && (
+          <div className="mt-4 text-red-500 max-w-[200px]">
+            <p className="font-mono text-xs text-center">
+              Silakan periksa kode yang Anda masukkan.
+            </p>
+          </div>
+        )}
+
+        {invalidId && !emptyInput && (
           <div className="mt-4 text-red-500 max-w-[200px]">
             <p className="font-mono text-xs text-center">
               ID tidak valid. Harap masukkan 4 digit angka.
@@ -99,13 +109,14 @@ const ModalSearch: React.FC<ModalSearchProps> = ({
 
         {result && (
           <div className="mt-4">
-            <Link href={`/check/${result.id}`}>
-              <h3 className="text-lg font-semibold">{result.title}</h3>
+            <Link href={`/check/${result.id}`} onClick={onClose}>
+              <h3 className="text-lg font-semibold">{result.id}</h3>
+              <h4 className="text-lg font-semibold">{result.title}</h4>
             </Link>
           </div>
         )}
 
-        {notFound && (
+        {notFound && !result && (
           <div className="mt-4 text-red-500">
             <p className="font-mono text-xs">ID not found</p>
           </div>

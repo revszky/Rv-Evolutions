@@ -1,6 +1,6 @@
 import { IconSearch } from "@tabler/icons-react";
 import React, { useState } from "react";
-import DataResi from "@/app/data/DataResi";
+import DataTagID from "@/app/data/DataTagID";
 import ModalSearch from "./ModalSearch";
 
 interface MenuNavProps {
@@ -19,6 +19,7 @@ const SearchMenu = ({ pilihMenu }: MenuNavProps) => {
   const [result, setResult] = useState<DataTag | null>(null);
   const [notFound, setNotFound] = useState(false);
   const [invalidId, setInvalidId] = useState(false);
+  const [emptyInput, setEmptyInput] = useState(false);
 
   const handleButtonClick = () => {
     setIsModalOpen(true);
@@ -33,26 +34,30 @@ const SearchMenu = ({ pilihMenu }: MenuNavProps) => {
       setResult(null);
       setNotFound(false);
       setInvalidId(false);
+      setEmptyInput(false);
     }, 300);
   };
 
   const handleSearch = () => {
-    if (searchId.length !== 4) {
-      setInvalidId(true);
-      setResult(null);
-      setNotFound(false);
+    setInvalidId(false);
+    setNotFound(false);
+    setEmptyInput(false);
+
+    if (searchId === "") {
+      setEmptyInput(true);
       return;
     }
 
-    const foundItem = DataResi.find((item) => item.id === searchId);
+    if (searchId.length !== 4) {
+      setInvalidId(true);
+      return;
+    }
+
+    const foundItem = DataTagID.find((item) => item.id === searchId);
     if (foundItem) {
       setResult(foundItem);
-      setNotFound(false);
-      setInvalidId(false);
     } else {
-      setResult(null);
       setNotFound(true);
-      setInvalidId(false);
     }
   };
 
@@ -62,6 +67,11 @@ const SearchMenu = ({ pilihMenu }: MenuNavProps) => {
     if (/^\d*$/.test(value) && value.length <= 4) {
       setSearchId(value);
     }
+
+    setInvalidId(false);
+    setNotFound(false);
+    setEmptyInput(false);
+    setResult(null);
   };
 
   return (
@@ -86,6 +96,7 @@ const SearchMenu = ({ pilihMenu }: MenuNavProps) => {
         result={result}
         notFound={notFound}
         invalidId={invalidId}
+        emptyInput={emptyInput}
         onClose={handleCloseModal}
       />
     </>
