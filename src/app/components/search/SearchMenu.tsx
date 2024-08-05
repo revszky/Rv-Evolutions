@@ -18,6 +18,7 @@ const SearchMenu = ({ pilihMenu }: MenuNavProps) => {
   const [searchId, setSearchId] = useState("");
   const [result, setResult] = useState<DataTag | null>(null);
   const [notFound, setNotFound] = useState(false);
+  const [invalidId, setInvalidId] = useState(false);
 
   const handleButtonClick = () => {
     setIsModalOpen(true);
@@ -26,26 +27,39 @@ const SearchMenu = ({ pilihMenu }: MenuNavProps) => {
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
-    setSearchId("");
-    setResult(null);
-    setNotFound(false);
+
+    setTimeout(() => {
+      setSearchId("");
+      setResult(null);
+      setNotFound(false);
+      setInvalidId(false);
+    }, 300);
   };
 
   const handleSearch = () => {
+    if (searchId.length !== 4) {
+      setInvalidId(true);
+      setResult(null);
+      setNotFound(false);
+      return;
+    }
+
     const foundItem = DataResi.find((item) => item.id === searchId);
     if (foundItem) {
       setResult(foundItem);
       setNotFound(false);
+      setInvalidId(false);
     } else {
       setResult(null);
       setNotFound(true);
+      setInvalidId(false);
     }
   };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
 
-    if (/^\d*$/.test(value)) {
+    if (/^\d*$/.test(value) && value.length <= 4) {
       setSearchId(value);
     }
   };
@@ -71,6 +85,7 @@ const SearchMenu = ({ pilihMenu }: MenuNavProps) => {
         onSearch={handleSearch}
         result={result}
         notFound={notFound}
+        invalidId={invalidId}
         onClose={handleCloseModal}
       />
     </>

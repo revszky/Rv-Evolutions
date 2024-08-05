@@ -14,6 +14,7 @@ interface ModalSearchProps {
   onSearch: () => void;
   result: DataTag | null;
   notFound: boolean;
+  invalidId: boolean;
   onClose: () => void;
 }
 
@@ -24,6 +25,7 @@ const ModalSearch: React.FC<ModalSearchProps> = ({
   onSearch,
   result,
   notFound,
+  invalidId,
   onClose,
 }) => {
   const modalRef = useRef<HTMLDivElement>(null);
@@ -60,7 +62,7 @@ const ModalSearch: React.FC<ModalSearchProps> = ({
       <div className="flex flex-col items-center justify-center bg-white max-w-sm p-4 md:p-6">
         <div className="p-4 max-w-[260px] md:max-w-md">
           <h1 className="font-mono text-center text-xs md:text-lg">
-            ID numbers have 4 digit numbers, check your ID.
+            ID numbers must be 4 digits. Please check your ID.
           </h1>
         </div>
 
@@ -75,8 +77,7 @@ const ModalSearch: React.FC<ModalSearchProps> = ({
               name="resi"
               value={searchId}
               onChange={onSearchIdChange}
-              placeholder=""
-              autoFocus
+              placeholder="1234"
               className="w-60 md:w-80 xl:w-96 p-2 focus:outline-none bg-white border border-black font-mono"
             />
           </div>
@@ -88,6 +89,14 @@ const ModalSearch: React.FC<ModalSearchProps> = ({
           </div>
         </div>
 
+        {invalidId && (
+          <div className="mt-4 text-red-500 max-w-[200px]">
+            <p className="font-mono text-xs text-center">
+              ID tidak valid. Harap masukkan 4 digit angka.
+            </p>
+          </div>
+        )}
+
         {result && (
           <div className="mt-4">
             <Link href={`/check/${result.id}`}>
@@ -98,7 +107,7 @@ const ModalSearch: React.FC<ModalSearchProps> = ({
 
         {notFound && (
           <div className="mt-4 text-red-500">
-            <p>ID not found</p>
+            <p className="font-mono text-xs">ID not found</p>
           </div>
         )}
       </div>
