@@ -3,6 +3,7 @@ import Link from "next/link";
 import { IconEyeSearch } from "@tabler/icons-react";
 
 interface DataID {
+  url: string;
   id: string;
   title: string;
 }
@@ -126,7 +127,7 @@ const ModalSearch: React.FC<ModalSearchProps> = ({
 
         {result && (
           <div className="mt-4">
-            <Link href={`/check/${result.id}`} onClick={onClose}>
+            <Link href={`/check/${result.url}`} onClick={onClose}>
               <h4 className="text-lg font-semibold">{result.title}</h4>
             </Link>
           </div>

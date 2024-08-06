@@ -8,7 +8,7 @@ interface DataDetailProps {
 }
 
 const DetailIdProduct: React.FC<DataDetailProps> = ({ detailTitle }) => {
-  const data = DataDetailID.find((detail) => detail.id === detailTitle);
+  const data = DataDetailID.find((detail) => detail.url === detailTitle);
 
   useEffect(() => {
     if (data) {

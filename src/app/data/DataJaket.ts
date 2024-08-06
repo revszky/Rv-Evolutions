@@ -9,10 +9,10 @@ interface DetailJaket {
   image: string;
 }
 
-const urlJaket = "jaket"
+
 const DataJaket: DetailJaket[] = [
   {
-    url: urlJaket,
+    url: "rv-j01",
     id: "2001",
     title: "j1",
     type: "",
@@ -21,17 +21,6 @@ const DataJaket: DetailJaket[] = [
     description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium eligendi animi dicta numquam, saepe laborum a consequatur cumque commodi ex.",
     image: "",
   },
-
-  {
-    url: urlJaket,
-    id: "2002",
-    title: "j2",
-    type: "",
-    size: "",
-    price: "",
-    description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium eligendi animi dicta numquam, saepe laborum a consequatur cumque commodi ex.",
-    image: "",
-  }
 ]
 
 export default DataJaket;
