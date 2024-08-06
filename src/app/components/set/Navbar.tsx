@@ -49,7 +49,7 @@ const Navbar = () => {
   }`;
 
   return (
-    <header className="sticky top-0 left-0 right-0">
+    <header className="sticky top-0 left-0 right-0 z-10">
       <div className="hidden xl:block">
         <MenuHorizontal />
       </div>
