@@ -129,8 +129,7 @@ const SearchHorizontal = () => {
 
       {result && (
         <div>
-          <Link href={`/check/${result.id}`}>
-            <h3 className="text-lg font-semibold">{result.id}</h3>
+          <Link href={`/check/${result.title}`}>
             <h4 className="text-lg font-semibold">{result.title}</h4>
           </Link>
         </div>

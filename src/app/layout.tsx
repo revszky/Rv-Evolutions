@@ -17,9 +17,10 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/rv-fav.jpg" sizes="any" />
       </head>
-      <body>
+
+      <body className="flex flex-col min-h-screen">
         <Navbar />
-        <main>{children}</main>
+        <main className="flex-grow">{children}</main>
       </body>
     </html>
   );

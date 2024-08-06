@@ -10,7 +10,7 @@ const Page: React.FC<{ params: PageParams }> = ({ params }) => {
     <main>
       <section className="my-4">
         <div className="flex items-center justify-center">
-          <DetailIdProduct detailId={params.detail} />
+          <DetailIdProduct detailTitle={params.detail} />
         </div>
       </section>
     </main>

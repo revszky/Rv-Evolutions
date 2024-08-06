@@ -4,11 +4,11 @@ import React, { useEffect } from "react";
 import DataTagID from "@/app/data/DataTagID";
 
 interface DataDetailProps {
-  detailId: string;
+  detailTitle: string;
 }
 
-const DetailIdProduct: React.FC<DataDetailProps> = ({ detailId }) => {
-  const data = DataTagID.find((detail) => detail.id === detailId);
+const DetailIdProduct: React.FC<DataDetailProps> = ({ detailTitle }) => {
+  const data = DataTagID.find((detail) => detail.title === detailTitle);
 
   useEffect(() => {
     if (data) {

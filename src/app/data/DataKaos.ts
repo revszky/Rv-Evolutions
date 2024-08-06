@@ -1,15 +1,19 @@
-interface DetailProduct {
+interface DetailKaos {
   id: string;
   title: string;
+  type: string;
+  size: string;
   price: string;
   description: string;
   image: string;
 }
 
-const DataProduct: DetailProduct[] = [
+const DataKaos: DetailKaos[] = [
   {
     id: "0813",
-    title: "Example",
+    title: "T-shirt",
+    type: "",
+    size: "",
     price: "",
     description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium eligendi animi dicta numquam, saepe laborum a consequatur cumque commodi ex.",
     image: "",
@@ -17,4 +21,4 @@ const DataProduct: DetailProduct[] = [
   }
 ]
 
-export default DataProduct;
+export default DataKaos;
