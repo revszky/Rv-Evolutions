@@ -126,7 +126,7 @@ const ModalSearch: React.FC<ModalSearchProps> = ({
 
         {result && (
           <div className="mt-4">
-            <Link href={`/check/${result.title}`} onClick={onClose}>
+            <Link href={`/check/${result.id}`} onClick={onClose}>
               <h4 className="text-lg font-semibold">{result.title}</h4>
             </Link>
           </div>

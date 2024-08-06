@@ -1,14 +1,14 @@
 "use client";
 
 import React, { useEffect } from "react";
-import DataTagID from "@/app/data/DataTagID";
+import DataDetailID from "@/app/data/DataDetailID";
 
 interface DataDetailProps {
   detailTitle: string;
 }
 
 const DetailIdProduct: React.FC<DataDetailProps> = ({ detailTitle }) => {
-  const data = DataTagID.find((detail) => detail.title === detailTitle);
+  const data = DataDetailID.find((detail) => detail.id === detailTitle);
 
   useEffect(() => {
     if (data) {

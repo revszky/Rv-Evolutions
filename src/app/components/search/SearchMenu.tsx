@@ -1,6 +1,6 @@
 import { IconSearch } from "@tabler/icons-react";
 import React, { useState } from "react";
-import DataTagID from "@/app/data/DataTagID";
+import DataTagID from "@/app/data/DataDetailID";
 import ModalSearch from "./ModalSearch";
 
 interface MenuNavProps {

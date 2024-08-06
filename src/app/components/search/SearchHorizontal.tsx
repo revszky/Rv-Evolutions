@@ -2,10 +2,11 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { IconEyeSearch } from "@tabler/icons-react";
-import DataTagID from "@/app/data/DataTagID";
+import DataDetailID from "@/app/data/DataDetailID";
 import Link from "next/link";
 
 interface DataID {
+  url: string;
   id: string;
   title: string;
 }
@@ -40,7 +41,7 @@ const SearchHorizontal = () => {
       return;
     }
 
-    const foundResult = DataTagID.find((item) => item.id === searchId);
+    const foundResult = DataDetailID.find((item) => item.id === searchId);
     if (foundResult) {
       setResult(foundResult);
     } else {
@@ -129,7 +130,7 @@ const SearchHorizontal = () => {
 
       {result && (
         <div>
-          <Link href={`/check/${result.title}`}>
+          <Link href={`/check/${result.id}`}>
             <h4 className="text-lg font-semibold">{result.title}</h4>
           </Link>
         </div>

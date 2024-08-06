@@ -1,4 +1,5 @@
 interface DetailHoodie {
+  url: string;
   id: string;
   title: string;
   type: string;
@@ -8,16 +9,29 @@ interface DetailHoodie {
   image: string;
 }
 
+const urlHoodie = "hoodie"
+
 const DataHoodie: DetailHoodie[] = [
   {
-    id: "0001",
-    title: "Hoodie",
+    url: urlHoodie,
+    id: "1001",
+    title: "h1",
     type: "",
     size: "",
     price: "",
     description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium eligendi animi dicta numquam, saepe laborum a consequatur cumque commodi ex.",
     image: "",
-    
+  },
+
+  {
+    url: urlHoodie,
+    id: "1002",
+    title: "h2",
+    type: "",
+    size: "",
+    price: "",
+    description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium eligendi animi dicta numquam, saepe laborum a consequatur cumque commodi ex.",
+    image: "",
   }
 ]
 

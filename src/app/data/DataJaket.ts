@@ -1,4 +1,4 @@
-interface DetailKaos {
+interface DetailJaket {
   url: string;
   id: string;
   title: string;
@@ -9,12 +9,12 @@ interface DetailKaos {
   image: string;
 }
 
-const urlKaos = "t-shirt"
-const DataKaos: DetailKaos[] = [
+const urlJaket = "jaket"
+const DataJaket: DetailJaket[] = [
   {
-    url: urlKaos,
-    id: "3001",
-    title: "t1",
+    url: urlJaket,
+    id: "2001",
+    title: "j1",
     type: "",
     size: "",
     price: "",
@@ -23,9 +23,9 @@ const DataKaos: DetailKaos[] = [
   },
 
   {
-    url: urlKaos,
-    id: "3002",
-    title: "t2",
+    url: urlJaket,
+    id: "2002",
+    title: "j2",
     type: "",
     size: "",
     price: "",
@@ -34,4 +34,4 @@ const DataKaos: DetailKaos[] = [
   }
 ]
 
-export default DataKaos;
+export default DataJaket;
