@@ -47,6 +47,7 @@ const SearchMenu = ({ pilihMenu }: MenuNavProps) => {
     setInvalidId(false);
     setNotFound(false);
     setEmptyInput(false);
+    setSearchId("");
 
     if (searchId === "") {
       setEmptyInput(true);
@@ -61,6 +62,7 @@ const SearchMenu = ({ pilihMenu }: MenuNavProps) => {
     const foundItem = DataTagID.find((item) => item.id === searchId);
     if (foundItem) {
       setResult(foundItem);
+      setSearchId("");
     } else {
       setNotFound(true);
     }

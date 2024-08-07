@@ -31,6 +31,7 @@ const SearchHorizontal = () => {
     setNotFound(false);
     setShortId(false);
     setEmptyInput(false);
+    setSearchId("");
 
     if (searchId === "") {
       setEmptyInput(true);
@@ -50,6 +51,7 @@ const SearchHorizontal = () => {
     const foundResult = DataDetailID.find((item) => item.id === searchId);
     if (foundResult) {
       setResult(foundResult);
+      setSearchId("");
     } else {
       setNotFound(true);
     }
@@ -76,9 +78,9 @@ const SearchHorizontal = () => {
 
   const openModal = () => {
     setModalOpen(true);
-    // Update URL without reloading the page
     if (result) {
       window.history.pushState(null, "", `/check/${result.url}`);
+      setSearchId("");
     }
   };
 
