@@ -11,7 +11,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        mono: "Space Mono, monospace"
+        mono: "Space Mono, monospace",
+        glitch: "Rubik Glitch, system-ui",
       }
     },
   },
