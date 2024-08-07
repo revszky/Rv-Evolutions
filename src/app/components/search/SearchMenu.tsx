@@ -7,7 +7,8 @@ interface MenuNavProps {
   pilihMenu: () => void;
 }
 
-interface DataTag {
+interface DataID {
+  url: string;
   id: string;
   title: string;
   description: string;
@@ -16,7 +17,7 @@ interface DataTag {
 const SearchMenu = ({ pilihMenu }: MenuNavProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchId, setSearchId] = useState("");
-  const [result, setResult] = useState<DataTag | null>(null);
+  const [result, setResult] = useState<DataID | null>(null);
   const [notFound, setNotFound] = useState(false);
   const [invalidId, setInvalidId] = useState(false);
   const [emptyInput, setEmptyInput] = useState(false);

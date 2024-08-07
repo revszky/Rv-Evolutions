@@ -3,12 +3,17 @@
 import React, { useEffect, useRef, useState } from "react";
 import { IconEyeSearch } from "@tabler/icons-react";
 import DataDetailID from "@/app/data/DataDetailID";
-import Link from "next/link";
+import ModalCheck from "@/app/components/check/ModalCheck";
 
 interface DataID {
   url: string;
   id: string;
   title: string;
+  type: string;
+  size: string;
+  price: string;
+  description: string;
+  image: string;
 }
 
 const SearchHorizontal = () => {
@@ -18,6 +23,7 @@ const SearchHorizontal = () => {
   const [invalidId, setInvalidId] = useState<boolean>(false);
   const [shortId, setShortId] = useState<boolean>(false);
   const [emptyInput, setEmptyInput] = useState<boolean>(false);
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleSearch = () => {
@@ -66,6 +72,19 @@ const SearchHorizontal = () => {
     if (e.key === "Enter") {
       handleSearch();
     }
+  };
+
+  const openModal = () => {
+    setModalOpen(true);
+    // Update URL without reloading the page
+    if (result) {
+      window.history.pushState(null, "", `/check/${result.url}`);
+    }
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    window.history.pushState(null, "", "/check");
   };
 
   useEffect(() => {
@@ -129,11 +148,9 @@ const SearchHorizontal = () => {
       )}
 
       {result && (
-        <div>
-          <Link href={`/check/${result.url}`}>
-            <h4 className="text-lg font-semibold">{result.title}</h4>
-          </Link>
-        </div>
+        <button onClick={openModal}>
+          <h4 className="text-lg font-semibold">{result.title}</h4>
+        </button>
       )}
 
       {notFound && (
@@ -141,6 +158,13 @@ const SearchHorizontal = () => {
           <p className="font-mono text-xs">ID not found</p>
         </div>
       )}
+
+      <ModalCheck
+        isOpenCheck={modalOpen}
+        onCloseCheck={closeModal}
+        result={result}
+        url={result?.url || ""}
+      />
     </div>
   );
 };

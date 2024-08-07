@@ -14,12 +14,12 @@ const DataKaos: DetailKaos[] = [
   {
     url: "rv-t01",
     id: "3001",
-    title: "t1",
-    type: "",
-    size: "",
+    title: "ASDF",
+    type: "T-shirt",
+    size: "L",
     price: "",
     description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium eligendi animi dicta numquam, saepe laborum a consequatur cumque commodi ex.",
-    image: "",
+    image: "https://fastly.picsum.photos/id/1044/500/500.jpg?hmac=Uz_GCA4ZqpXNg9t-4DnKMcS2iTz66EH9EUqjqflAtgU",
   },
 ]
 
