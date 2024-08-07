@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { IconPointFilled } from "@tabler/icons-react";
+import { IconCircleDashedCheck, IconPointFilled } from "@tabler/icons-react";
 
 interface DataID {
   url: string;
@@ -46,8 +46,16 @@ const ModalCheck: React.FC<ModalCheckProps> = ({
     >
       <div className="bg-white p-4">
         <div className="flex flex-col md:flex-row items-center justify-center">
-          <div className="w-60">
-            <img src={result.image} alt="detail" />
+          <div className="relative">
+            <div className="w-60">
+              <img src={result.image} alt="detail" />
+            </div>
+
+            <div className="absolute top-0 right-0">
+              <div className="flex items-center justify-center gap-2 p-2 hover:bg-black text-black hover:text-white hover:duration-700">
+                <IconCircleDashedCheck className="w-6 h-6" />
+              </div>
+            </div>
           </div>
 
           <div className="flex flex-col items-center md:items-start justify-center">
@@ -55,7 +63,7 @@ const ModalCheck: React.FC<ModalCheckProps> = ({
               <h1 className="font-mono">{result.title}</h1>
             </div>
 
-            <div className="flex items-center justify-center px-2">
+            <div className="flex items-center justify-center px-2 pb-2">
               <h2 className="font-mono text-sm">{result.type}</h2>
 
               <div className="p-2">
@@ -65,7 +73,7 @@ const ModalCheck: React.FC<ModalCheckProps> = ({
               <h3 className="font-mono text-sm">{result.size}</h3>
             </div>
 
-            <div className="max-w-[280px] md:max-w-xs py-2">
+            <div className="max-w-[280px] md:max-w-xs md:px-2 pb-2">
               <p className="text-xs text-center md:text-left font-mono">
                 {result.description}
               </p>
