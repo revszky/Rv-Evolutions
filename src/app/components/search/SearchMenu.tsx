@@ -11,7 +11,11 @@ interface DataID {
   url: string;
   id: string;
   title: string;
+  type: string;
+  size: string;
+  price: string;
   description: string;
+  image: string;
 }
 
 const SearchMenu = ({ pilihMenu }: MenuNavProps) => {
