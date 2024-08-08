@@ -19,42 +19,11 @@ interface DataID {
 const SearchHorizontal = () => {
   const [searchId, setSearchId] = useState<string>("");
   const [result, setResult] = useState<DataID | null>(null);
-  const [notFound, setNotFound] = useState<boolean>(false);
-  const [invalidId, setInvalidId] = useState<boolean>(false);
-  const [shortId, setShortId] = useState<boolean>(false);
-  const [emptyInput, setEmptyInput] = useState<boolean>(false);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleSearch = () => {
-    setInvalidId(false);
-    setNotFound(false);
-    setShortId(false);
-    setEmptyInput(false);
     setSearchId("");
-
-    if (searchId === "") {
-      setEmptyInput(true);
-      return;
-    }
-
-    if (searchId.length < 4) {
-      setShortId(true);
-      return;
-    }
-
-    if (searchId.length !== 4 || isNaN(Number(searchId))) {
-      setInvalidId(true);
-      return;
-    }
-
-    const foundResult = DataDetailID.find((item) => item.id === searchId);
-    if (foundResult) {
-      setResult(foundResult);
-      setSearchId("");
-    } else {
-      setNotFound(true);
-    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -62,11 +31,6 @@ const SearchHorizontal = () => {
     if (/^\d*$/.test(value) && value.length <= 4) {
       setSearchId(value);
     }
-
-    setInvalidId(false);
-    setNotFound(false);
-    setShortId(false);
-    setEmptyInput(false);
     setResult(null);
   };
 
@@ -125,40 +89,10 @@ const SearchHorizontal = () => {
         </button>
       </div>
 
-      {emptyInput && (
-        <div className="mt-4 text-red-500 max-w-[200px]">
-          <p className="font-mono text-xs text-center">
-            Silakan periksa kode yang Anda masukkan.
-          </p>
-        </div>
-      )}
-
-      {shortId && !emptyInput && (
-        <div className="mt-4 text-red-500 max-w-[200px]">
-          <p className="font-mono text-xs text-center">
-            ID tidak valid. Harap masukkan 4 digit angka.
-          </p>
-        </div>
-      )}
-
-      {invalidId && !shortId && !emptyInput && (
-        <div className="mt-4 text-red-500 max-w-[200px]">
-          <p className="font-mono text-xs text-center">
-            ID tidak valid. Harap masukkan 4 digit angka.
-          </p>
-        </div>
-      )}
-
       {result && (
         <button onClick={openModal}>
           <h4 className="text-lg font-semibold">{result.title}</h4>
         </button>
-      )}
-
-      {notFound && (
-        <div className="mt-4 text-red-500">
-          <p className="font-mono text-xs">ID not found</p>
-        </div>
       )}
 
       <ModalCheck

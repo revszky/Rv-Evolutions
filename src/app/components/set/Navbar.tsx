@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { IconMenu2, IconSearch, IconX } from "@tabler/icons-react";
 import MenuHorizontal from "./MenuHorizontal";
 import MenuVertical from "./MenuVertical";
+import SearchVertical from "@/app/components/search/SearchVertical";
 
 const Navbar = () => {
   const [bukaMenu, mengaturBukaMenu] = useState(false);
@@ -56,12 +57,12 @@ const Navbar = () => {
     };
   }, [bukaMenu, openSearchMenu]);
 
-  const sidebarClass = `fixed flex flex-col items-center justify-center top-0 left-0 w-full h-52 bg-white p-4 transform transition-transform duration-700 ease-in-out -z-10${
-    bukaMenu ? " translate-y-0" : " -translate-y-full"
+  const sidebarClass = `fixed flex flex-col items-center justify-center top-0 left-0 w-full h-52 bg-white p-4 transform transition-transform duration-700 ease-in-out -z-10 ${
+    bukaMenu ? "translate-y-0" : "-translate-y-full"
   }`;
 
-  const sidebarID = `fixed flex justify-center top-0 left-0 w-full h-48 bg-white p-4 transform transition-transform duration-700 ease-in-out -z-10${
-    openSearchMenu ? " translate-y-0" : " -translate-y-full"
+  const sidebarID = `fixed flex justify-center top-0 left-0 w-full h-48 bg-white p-4 transform transition-transform duration-700 ease-in-out -z-10 ${
+    openSearchMenu ? "translate-y-0" : "-translate-y-full"
   }`;
 
   return (
@@ -116,7 +117,9 @@ const Navbar = () => {
       </div>
 
       <div className={sidebarID}>
-        <div className="my-14"></div>
+        <div className="my-10">
+          <SearchVertical isOpen={openSearchMenu} onClose={closeMenuID} />
+        </div>
       </div>
     </header>
   );
