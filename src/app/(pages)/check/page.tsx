@@ -1,5 +1,5 @@
-import SearchHorizontal from "@/app/components/search/SearchHorizontal";
 import React from "react";
+import SearchHorizontal from "@/app/components/search/SearchHorizontal";
 
 const page = () => {
   return (

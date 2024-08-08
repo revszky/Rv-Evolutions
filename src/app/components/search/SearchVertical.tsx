@@ -6,12 +6,11 @@ import ModalCheckVertical from "@/app/components/check/ModalCheckVertical";
 interface DataID {
   url: string;
   id: string;
+  image: string;
   title: string;
   type: string;
   size: string;
-  price: string;
   description: string;
-  image: string;
 }
 
 const SearchVertical = ({
@@ -101,7 +100,6 @@ const SearchVertical = ({
       <div className="flex items-center">
         <input
           type="text"
-          id="authenticity"
           name="authenticity"
           value={searchValue}
           onChange={handleInputChange}

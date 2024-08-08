@@ -1,15 +1,14 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ReactDOM from "react-dom";
 
 interface DataID {
   url: string;
   id: string;
+  image: string;
   title: string;
   type: string;
   size: string;
-  price: string;
   description: string;
-  image: string;
 }
 
 const ModalCheckVertical = ({
@@ -22,6 +21,7 @@ const ModalCheckVertical = ({
   result: DataID | null;
 }) => {
   const modalRef = useRef<HTMLDivElement>(null);
+  const [previousUrl, setPreviousUrl] = useState<string | null>(null);
 
   const klikLuar = (klik: React.MouseEvent<HTMLDivElement>) => {
     if (modalRef.current === klik.target) {
@@ -31,9 +31,10 @@ const ModalCheckVertical = ({
 
   useEffect(() => {
     if (isOpen && result) {
-      window.history.pushState(null, "", `/${result.url}`);
-    } else if (!isOpen) {
-      window.history.pushState(null, "", "/");
+      setPreviousUrl(window.location.pathname);
+      window.history.pushState(null, "", `/check/${result.url}`);
+    } else if (previousUrl) {
+      window.history.pushState(null, "", previousUrl);
     }
 
     const mengubahUkuran = () => {
@@ -46,10 +47,6 @@ const ModalCheckVertical = ({
 
     return () => {
       window.removeEventListener("resize", mengubahUkuran);
-
-      if (!isOpen) {
-        window.history.pushState(null, "", "/");
-      }
     };
   }, [isOpen, result]);
 
@@ -76,9 +73,6 @@ const ModalCheckVertical = ({
         </p>
         <p>
           <strong>Size:</strong> {result.size}
-        </p>
-        <p>
-          <strong>Price:</strong> {result.price}
         </p>
         <p>
           <strong>Description:</strong> {result.description}
