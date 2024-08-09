@@ -76,7 +76,11 @@ const SearchHorizontal = () => {
 
   return (
     <div className="flex flex-col items-center space-y-2">
-      <div className="flex items-center">
+      <div className="flex items-center justify-center relative">
+        <div className="p-[7px] bg-black absolute -left-[34px]">
+          <h1 className="font-mono text-lg text-white text-center">RV</h1>
+        </div>
+
         <input
           type="text"
           name="authenticity"
@@ -85,20 +89,20 @@ const SearchHorizontal = () => {
           onBlur={handleInputBlur}
           onFocus={handleInputFocus}
           maxLength={4}
-          placeholder="Search..."
-          className="p-2 border border-gray-300 rounded-lg"
+          placeholder="1234"
+          onKeyDown={(e) => e.key === "Enter" && handleSearchClick()}
+          className="p-2 w-96 border font-mono border-black focus:outline-black"
         />
 
-        <button
-          className="p-2 bg-blue-500 text-white rounded-lg flex items-center"
-          onClick={handleSearchClick}
-        >
+        <button className="p-2 absolute right-0" onClick={handleSearchClick}>
           <IconSearch className="w-5 h-5" />
         </button>
       </div>
 
       {warningMessage && (
-        <p className="text-red-500 text-sm mt-2">{warningMessage}</p>
+        <p className="text-red-500 text-sm mt-2 text-center font-mono">
+          {warningMessage}
+        </p>
       )}
 
       {result && (

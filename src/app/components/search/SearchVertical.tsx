@@ -15,7 +15,6 @@ interface DataID {
 
 const SearchVertical = ({
   isOpen,
-  onClose,
 }: {
   isOpen: boolean;
   onClose: () => void;
@@ -96,8 +95,12 @@ const SearchVertical = ({
   };
 
   return (
-    <div className="flex flex-col items-center space-y-2">
-      <div className="flex items-center">
+    <div className="flex flex-col items-center justify-center">
+      <div className="flex items-center justify-center relative ml-8">
+        <div className="p-[7px] bg-black absolute -left-[34px]">
+          <h1 className="font-mono text-lg text-white text-center">RV</h1>
+        </div>
+
         <input
           type="text"
           name="authenticity"
@@ -105,22 +108,22 @@ const SearchVertical = ({
           onChange={handleInputChange}
           onBlur={handleInputBlur}
           onFocus={handleInputFocus}
-          placeholder="Search..."
-          className="p-2 border border-gray-300 rounded-lg"
+          placeholder="1234"
+          className="p-2 w-52 border font-mono border-black focus:outline-black"
           maxLength={4}
+          onKeyDown={(e) => e.key === "Enter" && handleSearchClick()}
           ref={inputRef}
         />
 
-        <button
-          className="p-2 bg-blue-500 text-white rounded-lg flex items-center"
-          onClick={handleSearchClick}
-        >
+        <button className="p-2 absolute right-0" onClick={handleSearchClick}>
           <IconSearch className="w-5 h-5" />
         </button>
       </div>
 
       {warningMessage && (
-        <p className="text-red-500 text-sm mt-2">{warningMessage}</p>
+        <p className="text-red-500 text-sm mt-2 text-center font-mono">
+          {warningMessage}
+        </p>
       )}
 
       {result && (
