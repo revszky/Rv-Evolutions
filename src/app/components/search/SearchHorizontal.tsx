@@ -81,21 +81,21 @@ const SearchHorizontal = () => {
         setWarningMessage("");
       } else {
         setResult(null);
-        setWarningMessage("ID yang Anda cari tidak ditemukan");
+        setWarningMessage("The ID you are looking for was not found.");
       }
       setOriginalValue(searchValue);
       setSearchValue("XXX-XXX-XXX");
       setIsHidden(true);
       inputRef.current?.blur();
     } else {
-      setWarningMessage("Harap masukkan angka 9 digit");
+      setWarningMessage("Please enter a 9 digit number.");
       setResult(null);
     }
   };
 
   const handleInputBlur = () => {
     if (!inputFocused) {
-      setWarningMessage("Harap periksa ID Anda");
+      setWarningMessage("Please check your ID.");
     }
     setInputFocused(false);
   };
@@ -120,8 +120,11 @@ const SearchHorizontal = () => {
   };
 
   return (
-    <div className="flex flex-col items-center space-y-2" ref={containerRef}>
-      <div className="flex items-center justify-center relative">
+    <div
+      className="flex flex-col items-center justify-center"
+      ref={containerRef}
+    >
+      <div className="flex items-center justify-center relative ml-8">
         <div className="p-[7px] bg-black absolute -left-[34px]">
           <h1 className="font-mono text-lg text-white text-center">RV</h1>
         </div>
@@ -137,7 +140,7 @@ const SearchHorizontal = () => {
           placeholder="XXX-XXX-XXX"
           onKeyDown={(e) => e.key === "Enter" && handleSearchClick()}
           ref={inputRef}
-          className="p-2 w-96 border font-mono border-black focus:outline-black"
+          className="p-2 w-56 md:w-96 border font-mono border-black focus:outline-black"
         />
 
         <button className="p-2 absolute right-0" onClick={handleSearchClick}>

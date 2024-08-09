@@ -34,7 +34,7 @@ const SearchVertical = ({
 
   useEffect(() => {
     if (isOpen && inputRef.current) {
-      inputRef.current.focus();
+      // inputRef.current.focus();
       if (resetTimeoutRef.current) {
         clearTimeout(resetTimeoutRef.current);
       }
@@ -98,21 +98,21 @@ const SearchVertical = ({
         setWarningMessage("");
       } else {
         setResult(null);
-        setWarningMessage("ID yang Anda cari tidak ditemukan");
+        setWarningMessage("The ID you are looking for was not found.");
       }
       setOriginalValue(searchValue);
       setSearchValue("XXX-XXX-XXX");
       setIsHidden(true);
       inputRef.current?.blur();
     } else {
-      setWarningMessage("Harap masukkan angka 9 digit");
+      setWarningMessage("Please enter a 9 digit number.");
       setResult(null);
     }
   };
 
   const handleInputBlur = () => {
     if (!inputFocused) {
-      setWarningMessage("Harap periksa ID Anda");
+      setWarningMessage("Please check your ID.");
     }
     setInputFocused(false);
   };

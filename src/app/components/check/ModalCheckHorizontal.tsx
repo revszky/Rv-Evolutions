@@ -33,7 +33,7 @@ const ModalCheckHorizontal: React.FC<ModalCheckHorizontalProps> = ({
   useEffect(() => {
     if (isOpen && result) {
       setPreviousUrl(window.location.pathname);
-      window.history.pushState(null, "", `/check/${result.url}`);
+      window.history.pushState(null, "", `/authenticity?=${result.url}`);
     } else if (previousUrl) {
       window.history.pushState(null, "", previousUrl);
     }
