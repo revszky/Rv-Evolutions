@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import DataDetailID from "@/app/data/DataDetailID";
 import { IconSearch } from "@tabler/icons-react";
 import ModalCheckHorizontal from "@/app/components/check/ModalCheckHorizontal";
@@ -21,24 +21,61 @@ const SearchHorizontal = () => {
   const [result, setResult] = useState<DataID | null>(null);
   const [inputFocused, setInputFocused] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isHidden, setIsHidden] = useState<boolean>(false);
+  const [originalValue, setOriginalValue] = useState<string>("");
+  const inputRef = useRef<HTMLInputElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (searchValue.length < 4) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
+        if (
+          inputRef.current &&
+          !inputRef.current.contains(event.target as Node)
+        ) {
+          setInputFocused(false);
+          if (isHidden) {
+            setSearchValue("xxx-xxx-xxx");
+            setIsHidden(true);
+          }
+        }
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isHidden]);
+
+  useEffect(() => {
+    if (searchValue.length < 9) {
       setResult(null);
     }
   }, [searchValue]);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
-    if (/^\d{0,4}$/.test(value)) {
+    let value = event.target.value.replace(/-/g, "");
+    if (/^\d{0,9}$/.test(value)) {
       setSearchValue(value);
       setWarningMessage("");
     }
   };
 
+  const formatID = (id: string): string => {
+    if (id.length === 9) {
+      return `${id.slice(0, 3)}-${id.slice(3, 6)}-${id.slice(6, 9)}`;
+    }
+    return id;
+  };
+
   const handleSearchClick = () => {
-    if (searchValue.length === 4) {
-      const foundItem = DataDetailID.find((item) => item.id === searchValue);
+    if (searchValue.length === 9) {
+      const formattedID = formatID(searchValue);
+      const foundItem = DataDetailID.find((item) => item.id === formattedID);
       if (foundItem) {
         setResult(foundItem);
         setWarningMessage("");
@@ -46,8 +83,12 @@ const SearchHorizontal = () => {
         setResult(null);
         setWarningMessage("ID yang Anda cari tidak ditemukan");
       }
+      setOriginalValue(searchValue);
+      setSearchValue("XXX-XXX-XXX");
+      setIsHidden(true);
+      inputRef.current?.blur();
     } else {
-      setWarningMessage("Harap masukkan angka 4 digit");
+      setWarningMessage("Harap masukkan angka 9 digit");
       setResult(null);
     }
   };
@@ -62,6 +103,10 @@ const SearchHorizontal = () => {
   const handleInputFocus = () => {
     setInputFocused(true);
     setWarningMessage("");
+    if (isHidden) {
+      setSearchValue(originalValue);
+      setIsHidden(false);
+    }
   };
 
   const handleButtonClick = () => {
@@ -75,7 +120,7 @@ const SearchHorizontal = () => {
   };
 
   return (
-    <div className="flex flex-col items-center space-y-2">
+    <div className="flex flex-col items-center space-y-2" ref={containerRef}>
       <div className="flex items-center justify-center relative">
         <div className="p-[7px] bg-black absolute -left-[34px]">
           <h1 className="font-mono text-lg text-white text-center">RV</h1>
@@ -88,9 +133,10 @@ const SearchHorizontal = () => {
           onChange={handleInputChange}
           onBlur={handleInputBlur}
           onFocus={handleInputFocus}
-          maxLength={4}
-          placeholder="1234"
+          maxLength={9}
+          placeholder="XXX-XXX-XXX"
           onKeyDown={(e) => e.key === "Enter" && handleSearchClick()}
+          ref={inputRef}
           className="p-2 w-96 border font-mono border-black focus:outline-black"
         />
 
@@ -108,7 +154,6 @@ const SearchHorizontal = () => {
       {result && (
         <div className="mt-4 p-2 border border-gray-300 rounded-lg">
           <button onClick={handleButtonClick}>
-            <p>{result.id}</p>
             <p>{result.title}</p>
           </button>
         </div>
