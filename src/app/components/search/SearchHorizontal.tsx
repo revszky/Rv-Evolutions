@@ -154,12 +154,18 @@ const SearchHorizontal = () => {
         </p>
       )}
 
-      {result && (
+      {result && searchValue && (
         <div className="mt-4 p-2 border border-gray-300 rounded-lg">
           <button onClick={handleButtonClick}>
             <p>{result.title}</p>
           </button>
         </div>
+      )}
+
+      {!searchValue && !warningMessage && (
+        <p className="p-2 text-gray-400 text-center rounded-xl">
+          For now it is still empty
+        </p>
       )}
 
       {result && (
