@@ -3,7 +3,7 @@ import React from "react";
 const Authenticity = () => {
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="flex items-start justify-center gap-20">
+      <div className="flex items-start justify-center gap-4  md:gap-18 xl:gap-24 px-4">
         <div>
           <h1 className="font-mono">AUTHENTICITY</h1>
         </div>

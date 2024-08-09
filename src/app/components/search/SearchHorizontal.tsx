@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useRef, useCallback } from "react";
 import DataDetailID from "@/app/data/DataDetailID";
-import { IconSearch } from "@tabler/icons-react";
+import { IconChevronsRight, IconPhoto, IconSearch } from "@tabler/icons-react";
 import ModalCheckHorizontal from "@/app/components/check/ModalCheckHorizontal";
 
 interface DataID {
@@ -88,7 +88,7 @@ const SearchHorizontal = () => {
       setIsHidden(true);
       inputRef.current?.blur();
     } else {
-      setWarningMessage("Please enter a 9 digit number.");
+      setWarningMessage("Please enter a 9-digit number.");
       setResult(null);
     }
   };
@@ -148,25 +148,47 @@ const SearchHorizontal = () => {
         </button>
       </div>
 
-      {warningMessage && (
-        <p className="text-red-500 text-sm mt-2 text-center font-mono">
-          {warningMessage}
-        </p>
-      )}
+      <div className="h-[180px]">
+        {warningMessage && (
+          <p className="text-red-500 text-sm mt-2 text-center font-mono">
+            {warningMessage}
+          </p>
+        )}
 
-      {result && searchValue && (
-        <div className="mt-4 p-2 border border-gray-300 rounded-lg">
+        {result && (
           <button onClick={handleButtonClick}>
-            <p>{result.title}</p>
-          </button>
-        </div>
-      )}
+            <div className="flex flex-col items-center justify-center p-2 border border-black m-4">
+              <div className="m-2">
+                <img
+                  src={result.image}
+                  alt={result.title}
+                  className="w-24 h-24"
+                />
+              </div>
 
-      {!searchValue && !warningMessage && (
-        <p className="p-2 text-gray-400 text-center rounded-xl">
-          For now it is still empty
-        </p>
-      )}
+              <div className="flex items-center justify-center m-2">
+                <p className="font-mono text-center text-sm">Check detail</p>
+
+                <IconChevronsRight className="w-4 h-4" />
+              </div>
+            </div>
+          </button>
+        )}
+
+        {!result && !warningMessage && (
+          <div className="flex flex-col items-center justify-center p-2 border border-black m-4">
+            <div className="m-2 flex items-center justify-center">
+              <IconPhoto className="w-24 h-24 stroke-[0.2]" />
+            </div>
+
+            <div className="flex items-center justify-center m-2">
+              <p className="font-mono text-center text-sm">Check detail</p>
+
+              <IconChevronsRight className="w-4 h-4" />
+            </div>
+          </div>
+        )}
+      </div>
 
       {result && (
         <ModalCheckHorizontal
