@@ -24,17 +24,17 @@ const SearchVertical = ({
   const [searchValue, setSearchValue] = useState<string>("");
   const [warningMessage, setWarningMessage] = useState<string>("");
   const [result, setResult] = useState<DataID | null>(null);
-  const [inputFocused, setInputFocused] = useState<boolean>(false);
+
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [isHidden, setIsHidden] = useState<boolean>(false);
   const [originalValue, setOriginalValue] = useState<string>("");
+  const [isNotFound, setIsNotFound] = useState<boolean>(false);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const resetTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     if (isOpen && inputRef.current) {
-      // inputRef.current.focus();
       if (resetTimeoutRef.current) {
         clearTimeout(resetTimeoutRef.current);
       }
@@ -61,9 +61,8 @@ const SearchVertical = ({
           inputRef.current &&
           !inputRef.current.contains(event.target as Node)
         ) {
-          setInputFocused(false);
           if (isHidden) {
-            setSearchValue("xxx-xxx-xxx");
+            setSearchValue("XXX-XXX-XXX");
             setIsHidden(true);
           }
         }
@@ -79,6 +78,8 @@ const SearchVertical = ({
     if (/^\d{0,9}$/.test(value)) {
       setSearchValue(value);
       setWarningMessage("");
+      setResult(null);
+      setIsNotFound(false);
     }
   };
 
@@ -90,17 +91,39 @@ const SearchVertical = ({
   };
 
   const handleSearchClick = () => {
-    if (searchValue.length === 9) {
+    if (searchValue === "XXX-XXX-XXX") {
+      const formattedID = formatID(originalValue);
+      const foundItem = DataDetailID.find((item) => item.id === formattedID);
+      if (foundItem) {
+        setResult(foundItem);
+        setWarningMessage("");
+        setIsModalOpen(true);
+      } else {
+        setResult(null);
+        setWarningMessage("The ID you are looking for was not found.");
+        setIsNotFound(true);
+      }
+      return;
+    }
+
+    if (searchValue.length === 9 && !isNotFound) {
       const formattedID = formatID(searchValue);
       const foundItem = DataDetailID.find((item) => item.id === formattedID);
       if (foundItem) {
         setResult(foundItem);
         setWarningMessage("");
+        setIsModalOpen(true);
       } else {
         setResult(null);
         setWarningMessage("The ID you are looking for was not found.");
+        setIsNotFound(true);
       }
       setOriginalValue(searchValue);
+      setSearchValue("XXX-XXX-XXX");
+      setIsHidden(true);
+      inputRef.current?.blur();
+    } else if (isNotFound) {
+      setWarningMessage("The ID you are looking for was not found.");
       setSearchValue("XXX-XXX-XXX");
       setIsHidden(true);
       inputRef.current?.blur();
@@ -110,15 +133,7 @@ const SearchVertical = ({
     }
   };
 
-  const handleInputBlur = () => {
-    if (!inputFocused) {
-      setWarningMessage("Please check your ID.");
-    }
-    setInputFocused(false);
-  };
-
   const handleInputFocus = () => {
-    setInputFocused(true);
     setWarningMessage("");
     if (isHidden) {
       setSearchValue(originalValue);
@@ -126,12 +141,10 @@ const SearchVertical = ({
     }
   };
 
-  const handleResultClick = () => {
-    setIsModalOpen(true);
-  };
-
   const handleCloseModal = () => {
     setIsModalOpen(false);
+    setIsHidden(true);
+    setSearchValue("XXX-XXX-XXX");
   };
 
   const resetAll = () => {
@@ -141,6 +154,7 @@ const SearchVertical = ({
     setIsHidden(false);
     setOriginalValue("");
     setIsModalOpen(false);
+    setIsNotFound(false);
   };
 
   return (
@@ -158,7 +172,6 @@ const SearchVertical = ({
           name="authenticity"
           value={searchValue}
           onChange={handleInputChange}
-          onBlur={handleInputBlur}
           onFocus={handleInputFocus}
           placeholder="XXX-XXX-XXX"
           className="p-2 w-52 border font-mono border-black focus:outline-black"
@@ -176,14 +189,6 @@ const SearchVertical = ({
         <p className="text-red-500 text-sm mt-2 text-center font-mono">
           {warningMessage}
         </p>
-      )}
-
-      {result && (
-        <div className="mt-4 p-2 border border-gray-300 rounded-lg">
-          <button onClick={handleResultClick}>
-            <p>{result.title}</p>
-          </button>
-        </div>
       )}
 
       <ModalCheckVertical

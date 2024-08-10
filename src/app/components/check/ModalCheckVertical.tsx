@@ -55,7 +55,9 @@ const ModalCheckVertical = ({
   return ReactDOM.createPortal(
     <div
       className={`fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-35 xl:bg-black xl:bg-opacity-70 transition-opacity ${
-        isOpen ? "opacity-100 duration-500" : "opacity-0 pointer-events-none"
+        isOpen
+          ? "opacity-100 duration-700"
+          : "opacity-0 pointer-events-none duration-700"
       }`}
       ref={modalRef}
       onClick={klikLuar}

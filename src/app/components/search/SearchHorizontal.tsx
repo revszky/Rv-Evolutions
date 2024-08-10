@@ -25,6 +25,7 @@ const SearchHorizontal = () => {
   const [originalValue, setOriginalValue] = useState<string>("");
   const inputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isNotFound, setIsNotFound] = useState<boolean>(false);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -62,6 +63,8 @@ const SearchHorizontal = () => {
     if (/^\d{0,9}$/.test(value)) {
       setSearchValue(value);
       setWarningMessage("");
+      setResult(null);
+      setIsNotFound(false);
     }
   };
 
@@ -73,30 +76,49 @@ const SearchHorizontal = () => {
   };
 
   const handleSearchClick = () => {
-    if (searchValue.length === 9) {
+    if (searchValue === "XXX-XXX-XXX") {
+      const formattedID = formatID(originalValue);
+      const foundItem = DataDetailID.find((item) => item.id === formattedID);
+      if (foundItem) {
+        setResult(foundItem);
+        setWarningMessage("");
+        setIsModalOpen(true);
+      } else {
+        setResult(null);
+        setWarningMessage("The ID you are looking for was not found.");
+        setIsNotFound(true);
+      }
+      return;
+    }
+
+    if (searchValue.length === 9 && !isNotFound) {
       const formattedID = formatID(searchValue);
       const foundItem = DataDetailID.find((item) => item.id === formattedID);
       if (foundItem) {
         setResult(foundItem);
         setWarningMessage("");
+        setIsModalOpen(true);
       } else {
         setResult(null);
         setWarningMessage("The ID you are looking for was not found.");
+        setIsNotFound(true);
       }
       setOriginalValue(searchValue);
       setSearchValue("XXX-XXX-XXX");
       setIsHidden(true);
       inputRef.current?.blur();
+    } else if (isNotFound) {
+      setWarningMessage("The ID you are looking for was not found.");
+      setSearchValue("XXX-XXX-XXX");
+      setIsHidden(true);
+      inputRef.current?.blur();
     } else {
-      setWarningMessage("Please enter a 9-digit number.");
+      setWarningMessage("Please enter a 9 digit number.");
       setResult(null);
     }
   };
 
   const handleInputBlur = () => {
-    if (!inputFocused) {
-      setWarningMessage("Please check your ID.");
-    }
     setInputFocused(false);
   };
 
@@ -106,12 +128,6 @@ const SearchHorizontal = () => {
     if (isHidden) {
       setSearchValue(originalValue);
       setIsHidden(false);
-    }
-  };
-
-  const handleButtonClick = () => {
-    if (result) {
-      setIsModalOpen(true);
     }
   };
 
@@ -148,45 +164,11 @@ const SearchHorizontal = () => {
         </button>
       </div>
 
-      <div className="h-[180px]">
+      <div className="h-6">
         {warningMessage && (
           <p className="text-red-500 text-sm mt-2 text-center font-mono">
             {warningMessage}
           </p>
-        )}
-
-        {result && (
-          <button onClick={handleButtonClick}>
-            <div className="flex flex-col items-center justify-center p-2 border border-black m-4">
-              <div className="m-2">
-                <img
-                  src={result.image}
-                  alt={result.title}
-                  className="w-24 h-24"
-                />
-              </div>
-
-              <div className="flex items-center justify-center m-2">
-                <p className="font-mono text-center text-sm">Check detail</p>
-
-                <IconChevronsRight className="w-4 h-4" />
-              </div>
-            </div>
-          </button>
-        )}
-
-        {!result && !warningMessage && (
-          <div className="flex flex-col items-center justify-center p-2 border border-black m-4">
-            <div className="m-2 flex items-center justify-center">
-              <IconPhoto className="w-24 h-24 stroke-[0.2]" />
-            </div>
-
-            <div className="flex items-center justify-center m-2">
-              <p className="font-mono text-center text-sm">Check detail</p>
-
-              <IconChevronsRight className="w-4 h-4" />
-            </div>
-          </div>
         )}
       </div>
 
