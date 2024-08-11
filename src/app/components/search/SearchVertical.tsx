@@ -24,11 +24,11 @@ const SearchVertical = ({
   const [searchValue, setSearchValue] = useState<string>("");
   const [warningMessage, setWarningMessage] = useState<string>("");
   const [result, setResult] = useState<DataID | null>(null);
-
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [isHidden, setIsHidden] = useState<boolean>(false);
   const [originalValue, setOriginalValue] = useState<string>("");
   const [isNotFound, setIsNotFound] = useState<boolean>(false);
+  const [shouldOpenModal, setShouldOpenModal] = useState<boolean>(false);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const resetTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -73,6 +73,13 @@ const SearchVertical = ({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isHidden]);
 
+  useEffect(() => {
+    if (shouldOpenModal) {
+      setIsModalOpen(true);
+      setShouldOpenModal(false);
+    }
+  }, [shouldOpenModal]);
+
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     let value = event.target.value.replace(/-/g, "");
     if (/^\d{0,9}$/.test(value)) {
@@ -97,7 +104,7 @@ const SearchVertical = ({
       if (foundItem) {
         setResult(foundItem);
         setWarningMessage("");
-        setIsModalOpen(true);
+        setShouldOpenModal(true);
       } else {
         setResult(null);
         setWarningMessage("The ID you are looking for was not found.");
@@ -112,7 +119,7 @@ const SearchVertical = ({
       if (foundItem) {
         setResult(foundItem);
         setWarningMessage("");
-        setIsModalOpen(true);
+        setShouldOpenModal(true);
       } else {
         setResult(null);
         setWarningMessage("The ID you are looking for was not found.");
@@ -128,7 +135,7 @@ const SearchVertical = ({
       setIsHidden(true);
       inputRef.current?.blur();
     } else {
-      setWarningMessage("Please enter a 9 digit number.");
+      setWarningMessage("Please enter a 9-digit number.");
       setResult(null);
     }
   };

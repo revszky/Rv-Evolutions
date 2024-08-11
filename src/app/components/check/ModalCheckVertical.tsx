@@ -43,9 +43,17 @@ const ModalCheckVertical = ({
       }
     };
 
+    const klikEsc = (klik: { keyCode: number }) => {
+      if (klik.keyCode === 27 && isOpen) {
+        onClose();
+      }
+    };
+
+    document.addEventListener("keydown", klikEsc);
     window.addEventListener("resize", mengubahUkuran);
 
     return () => {
+      document.addEventListener("keydown", klikEsc);
       window.removeEventListener("resize", mengubahUkuran);
     };
   }, [isOpen, result]);

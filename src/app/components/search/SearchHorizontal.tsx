@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useEffect, useState, useRef, useCallback } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import DataDetailID from "@/app/data/DataDetailID";
-import { IconChevronsRight, IconPhoto, IconSearch } from "@tabler/icons-react";
+import { IconSearch } from "@tabler/icons-react";
 import ModalCheckHorizontal from "@/app/components/check/ModalCheckHorizontal";
 
 interface DataID {
@@ -23,6 +23,7 @@ const SearchHorizontal = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [isHidden, setIsHidden] = useState<boolean>(false);
   const [originalValue, setOriginalValue] = useState<string>("");
+  const [shouldOpenModal, setShouldOpenModal] = useState<boolean>(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [isNotFound, setIsNotFound] = useState<boolean>(false);
@@ -58,6 +59,13 @@ const SearchHorizontal = () => {
     }
   }, [searchValue]);
 
+  useEffect(() => {
+    if (shouldOpenModal) {
+      setIsModalOpen(true);
+      setShouldOpenModal(false);
+    }
+  }, [shouldOpenModal]);
+
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     let value = event.target.value.replace(/-/g, "");
     if (/^\d{0,9}$/.test(value)) {
@@ -82,7 +90,7 @@ const SearchHorizontal = () => {
       if (foundItem) {
         setResult(foundItem);
         setWarningMessage("");
-        setIsModalOpen(true);
+        setShouldOpenModal(true);
       } else {
         setResult(null);
         setWarningMessage("The ID you are looking for was not found.");
@@ -97,7 +105,7 @@ const SearchHorizontal = () => {
       if (foundItem) {
         setResult(foundItem);
         setWarningMessage("");
-        setIsModalOpen(true);
+        setShouldOpenModal(true);
       } else {
         setResult(null);
         setWarningMessage("The ID you are looking for was not found.");
@@ -113,7 +121,7 @@ const SearchHorizontal = () => {
       setIsHidden(true);
       inputRef.current?.blur();
     } else {
-      setWarningMessage("Please enter a 9 digit number.");
+      setWarningMessage("Please enter a 9-digit number.");
       setResult(null);
     }
   };
