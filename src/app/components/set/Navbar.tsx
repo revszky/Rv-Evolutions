@@ -61,7 +61,7 @@ const Navbar = () => {
     bukaMenu ? "translate-y-0" : "-translate-y-full"
   }`;
 
-  const sidebarID = `fixed flex justify-center top-0 left-0 w-full h-48 bg-white p-4 transform transition-transform duration-700 ease-in-out -z-10 ${
+  const sidebarID = `fixed flex justify-center top-0 left-0 w-full h-52 bg-white p-4 transform transition-transform duration-700 ease-in-out -z-10 ${
     openSearchMenu ? "translate-y-0" : "-translate-y-full"
   }`;
 
@@ -118,7 +118,16 @@ const Navbar = () => {
 
       <div className={sidebarID}>
         <div className="my-10">
-          <SearchVertical isOpen={openSearchMenu} onClose={closeMenuID} />
+          <div className="py-2">
+            <p className="font-mono text-center text-xs">
+              Enter the 9-digit RV code in the label tag column below without
+              using the hyphen &quot;-&quot;.
+            </p>
+          </div>
+
+          <div className="py-2">
+            <SearchVertical isOpen={openSearchMenu} onClose={closeMenuID} />
+          </div>
         </div>
       </div>
     </header>

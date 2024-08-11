@@ -1,3 +1,8 @@
+import {
+  IconBookmarkFilled,
+  IconCircleCheckFilled,
+  IconPointFilled,
+} from "@tabler/icons-react";
 import React, { useEffect, useRef, useState } from "react";
 import ReactDOM from "react-dom";
 
@@ -70,23 +75,42 @@ const ModalCheckVertical = ({
       ref={modalRef}
       onClick={klikLuar}
     >
-      <div className="bg-white p-4 rounded-lg w-1/2 relative z-60">
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-bold">{result.title}</h2>
+      <div className="flex flex-col items-center justify-center bg-white p-4">
+        <div className="p-2 relative">
+          <div className="w-56 md:w-80">
+            <img
+              src={result.image}
+              alt={result.title}
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          <div className="absolute top-0 -right-[2px] md:-top-[2px] md:-right-[4px]">
+            <IconBookmarkFilled className="w-10 h-10 md:w-12 md:h-12" />
+          </div>
+
+          <div className="absolute top-2 right-[10px] md:top-[4px] md:right-[8px]">
+            <IconCircleCheckFilled className="w-4 h-4 md:w-6 md:h-6 text-white" />
+          </div>
         </div>
-        <img src={result.image} alt={result.title} className="w-full mb-4" />
-        <p>
-          <strong>ID:</strong> {result.id}
-        </p>
-        <p>
-          <strong>Type:</strong> {result.type}
-        </p>
-        <p>
-          <strong>Size:</strong> {result.size}
-        </p>
-        <p>
-          <strong>Description:</strong> {result.description}
-        </p>
+
+        <div className="p-2">
+          <h1 className="font-mono text-center text-xl">{result.title}</h1>
+        </div>
+
+        <div className="flex items-center justify-center p-2">
+          <p className="font-mono text-center">{result.type}</p>
+
+          <div className="px-2">
+            <IconPointFilled className="w-2 h-2" />
+          </div>
+
+          <p className="font-mono text-center">{result.size}</p>
+        </div>
+
+        <div className="max-w-xs md:max-w-md p-2">
+          <p className="font-mono text-center text-sm">{result.description}</p>
+        </div>
       </div>
     </div>,
     document.body

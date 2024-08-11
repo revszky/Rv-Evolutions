@@ -17,12 +17,10 @@ const page = () => {
 
       <section className="py-10 px-4">
         <div className="flex flex-col items-center justify-center">
-          <div className="max-w-2xl">
+          <div className="max-w-xl">
             <p className="font-mono text-sm text-center">
-              Enter the 9-digit RV code on the tag label into the column below
-              without using the hyphen &quot;-&quot;. After you click
-              &ldquo;Search&ldquo;, the results of our product authenticity
-              verification will be displayed below the column.
+              Enter the 9-digit RV code in the label tag column below without
+              using the hyphen &quot;-&quot;.
             </p>
           </div>
 
