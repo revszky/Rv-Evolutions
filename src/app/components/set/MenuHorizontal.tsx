@@ -21,7 +21,7 @@ const MenuHorizontal = () => {
       <div className="flex items-center justify-center gap-10">
         {menuItems.slice(0, 2).map((item, index) => (
           <Link key={index} href={item.href}>
-            <h1 className="font-mono">{item.label}</h1>
+            <h1 className="font-mono font-bold">{item.label}</h1>
           </Link>
         ))}
       </div>
@@ -36,7 +36,7 @@ const MenuHorizontal = () => {
       <div className="flex items-center justify-center gap-10">
         {additionalMenuItems.map((item, index) => (
           <Link key={index} href={item.href} className={item.className}>
-            <h2 className="font-mono">{item.label}</h2>
+            <h2 className="font-mono font-bold">{item.label}</h2>
           </Link>
         ))}
       </div>

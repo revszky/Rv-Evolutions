@@ -4,7 +4,7 @@ import Navbar from "./components/set/Navbar";
 
 export const metadata: Metadata = {
   title: "RV • Evolutions",
-  description: "",
+  description: "Liven up every moment with a revolutionary fashion twist.",
 };
 
 export default function RootLayout({

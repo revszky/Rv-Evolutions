@@ -59,7 +59,7 @@ const MenuVertical = ({ pilihMenu }: MenuNavProps) => {
             key={urutan}
             href={menu.halaman}
             onClick={mengaturMenuKlik}
-            className="font-mono text-xs md:text-sm py-2"
+            className="font-mono font-bold text-sm py-2"
           >
             {menu.judul}
           </Link>
@@ -70,7 +70,7 @@ const MenuVertical = ({ pilihMenu }: MenuNavProps) => {
         <button
           ref={buttonRef}
           onClick={toggleDropdown}
-          className="px-2 py-1.5 text-xs md:text-sm font-mono bg-black text-white"
+          className="px-2 py-1.5 text-xs md:text-sm font-mono font-bold bg-black text-white"
         >
           CHECK ID
         </button>
