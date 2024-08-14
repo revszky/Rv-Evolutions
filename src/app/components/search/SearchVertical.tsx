@@ -62,7 +62,7 @@ const SearchVertical = ({
           !inputRef.current.contains(event.target as Node)
         ) {
           if (isHidden) {
-            setSearchValue("XXX-XXX-XXX");
+            setSearchValue("xxx-xxx-xxx");
             setIsHidden(true);
           }
         }
@@ -98,7 +98,7 @@ const SearchVertical = ({
   };
 
   const handleSearchClick = () => {
-    if (searchValue === "XXX-XXX-XXX") {
+    if (searchValue === "xxx-xxx-xxx") {
       const formattedID = formatID(originalValue);
       const foundItem = DataDetailID.find((item) => item.id === formattedID);
       if (foundItem) {
@@ -126,12 +126,12 @@ const SearchVertical = ({
         setIsNotFound(true);
       }
       setOriginalValue(searchValue);
-      setSearchValue("XXX-XXX-XXX");
+      setSearchValue("xxx-xxx-xxx");
       setIsHidden(true);
       inputRef.current?.blur();
     } else if (isNotFound) {
       setWarningMessage("The ID you are looking for was not found.");
-      setSearchValue("XXX-XXX-XXX");
+      setSearchValue("xxx-xxx-xxx");
       setIsHidden(true);
       inputRef.current?.blur();
     } else {
@@ -151,7 +151,7 @@ const SearchVertical = ({
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setIsHidden(true);
-    setSearchValue("XXX-XXX-XXX");
+    setSearchValue("xxx-xxx-xxx");
   };
 
   const resetAll = () => {
@@ -171,7 +171,9 @@ const SearchVertical = ({
     >
       <div className="flex items-center justify-center relative ml-8">
         <div className="p-[7px] bg-black absolute -left-[34px]">
-          <h1 className="font-mono text-lg text-white text-center">RV</h1>
+          <h1 className="font-mono font-bold text-lg text-white text-center">
+            RV
+          </h1>
         </div>
 
         <input
@@ -180,8 +182,8 @@ const SearchVertical = ({
           value={searchValue}
           onChange={handleInputChange}
           onFocus={handleInputFocus}
-          placeholder="XXX-XXX-XXX"
-          className="p-2 w-52 border font-mono border-black focus:outline-black"
+          placeholder="xxx-xxx-xxx"
+          className="p-2 w-52 border font-mono font-bold border-black focus:outline-black"
           maxLength={9}
           onKeyDown={(e) => e.key === "Enter" && handleSearchClick()}
           ref={inputRef}

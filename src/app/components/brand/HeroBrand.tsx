@@ -1,9 +1,10 @@
 import React from "react";
+import CarouselBrand from "./CarouselBrand";
 
 const HeroBrand = () => {
   return (
-    <div className="flex items-center justify-center">
-      <div className="w-full px-4 md:px-16">
+    <div className="flex items-start justify-center">
+      <div className="">
         <div className="pb-2">
           <h1 className="font-mono font-bold">RV EVOLUTIONS</h1>
 
@@ -19,6 +20,8 @@ const HeroBrand = () => {
           </p>
         </div>
       </div>
+
+      <CarouselBrand />
     </div>
   );
 };

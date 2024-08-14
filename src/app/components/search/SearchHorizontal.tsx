@@ -84,7 +84,7 @@ const SearchHorizontal = () => {
   };
 
   const handleSearchClick = () => {
-    if (searchValue === "XXX-XXX-XXX") {
+    if (searchValue === "xxx-xxx-xxx") {
       const formattedID = formatID(originalValue);
       const foundItem = DataDetailID.find((item) => item.id === formattedID);
       if (foundItem) {
@@ -112,12 +112,12 @@ const SearchHorizontal = () => {
         setIsNotFound(true);
       }
       setOriginalValue(searchValue);
-      setSearchValue("XXX-XXX-XXX");
+      setSearchValue("xxx-xxx-xxx");
       setIsHidden(true);
       inputRef.current?.blur();
     } else if (isNotFound) {
       setWarningMessage("The ID you are looking for was not found.");
-      setSearchValue("XXX-XXX-XXX");
+      setSearchValue("xxx-xxx-xxx");
       setIsHidden(true);
       inputRef.current?.blur();
     } else {
@@ -150,7 +150,9 @@ const SearchHorizontal = () => {
     >
       <div className="flex items-center justify-center relative ml-8">
         <div className="p-[7px] bg-black absolute -left-[34px]">
-          <h1 className="font-mono text-lg text-white text-center">RV</h1>
+          <h1 className="font-mono font-bold text-lg text-white text-center">
+            RV
+          </h1>
         </div>
 
         <input
@@ -161,10 +163,10 @@ const SearchHorizontal = () => {
           onBlur={handleInputBlur}
           onFocus={handleInputFocus}
           maxLength={9}
-          placeholder="XXX-XXX-XXX"
+          placeholder="xxx-xxx-xxx"
           onKeyDown={(e) => e.key === "Enter" && handleSearchClick()}
           ref={inputRef}
-          className="p-2 w-56 md:w-96 border font-mono border-black focus:outline-black"
+          className="p-2 w-56 md:w-96 border font-mono font-bold border-black focus:outline-black"
         />
 
         <button className="p-2 absolute right-0" onClick={handleSearchClick}>
