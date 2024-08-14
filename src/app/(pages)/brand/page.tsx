@@ -9,7 +9,7 @@ export const metadata = {
 const page = () => {
   return (
     <main>
-      <section>
+      <section className="pt-10 md:pt-20">
         <div>
           <HeroBrand />
         </div>

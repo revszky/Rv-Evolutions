@@ -21,6 +21,7 @@ const Navbar = () => {
   const openMenuID = () => {
     setOpenSearchMenu(!openSearchMenu);
     mengaturBukaMenu(false);
+    mengaturAnimasiPutar(false);
   };
 
   const closeMenuID = () => {

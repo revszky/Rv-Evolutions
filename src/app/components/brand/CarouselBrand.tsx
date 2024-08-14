@@ -22,7 +22,7 @@ const CarouselBrand: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="w-96 h-96 flex items-center justify-center overflow-hidden">
+      <div className="w-full md:w-96 lg:w-[500px] h-36 md:h-56 flex items-center justify-center overflow-hidden">
         <div
           className={`w-full h-full flex transition-transform duration-1000 ${
             currentIndex > prevIndex ? "translate-x-0" : "translate-x-full"
@@ -30,7 +30,7 @@ const CarouselBrand: React.FC = () => {
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
           {images.map((image, index) => (
-            <div key={index} className="w-full h-full p-2 flex-shrink-0">
+            <div key={index} className="w-full h-full flex-shrink-0 px-2">
               <img
                 src={image}
                 alt={`Slide ${index}`}
@@ -41,13 +41,13 @@ const CarouselBrand: React.FC = () => {
         </div>
       </div>
 
-      <div className="flex overflow-x-scroll space-x-2">
+      <div className="flex items-center justify-center">
         {images.map((image, index) => (
           <img
             key={index}
             src={image}
             alt={`Preview ${index}`}
-            className="w-24 h-12 object-cover cursor-pointer border-2 border-transparent hover:border-white"
+            className="w-[88px] md:w-24 lg:w-28 h-16 object-cover cursor-pointer p-2"
             onClick={() => showPreview(index)}
           />
         ))}
