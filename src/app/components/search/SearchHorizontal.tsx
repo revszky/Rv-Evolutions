@@ -1,25 +1,20 @@
 "use client";
 
 import React, { useEffect, useState, useRef } from "react";
-import DataDetailID from "@/app/data/DataDetailID";
+import Identifier from "@/app/id/Identifier";
 import { IconSearch } from "@tabler/icons-react";
 import ModalCheckHorizontal from "@/app/components/check/ModalCheckHorizontal";
 
 interface DataID {
-  url: string;
+  check: string;
   id: string;
-  image: string;
-  title: string;
-  type: string;
-  size: string;
-  description: string;
+  valid: string;
 }
 
 const SearchHorizontal = () => {
   const [searchValue, setSearchValue] = useState<string>("");
   const [warningMessage, setWarningMessage] = useState<string>("");
   const [result, setResult] = useState<DataID | null>(null);
-  const [inputFocused, setInputFocused] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [isHidden, setIsHidden] = useState<boolean>(false);
   const [originalValue, setOriginalValue] = useState<string>("");
@@ -38,7 +33,6 @@ const SearchHorizontal = () => {
           inputRef.current &&
           !inputRef.current.contains(event.target as Node)
         ) {
-          setInputFocused(false);
           if (isHidden) {
             setSearchValue("xxx-xxx-xxx");
             setIsHidden(true);
@@ -85,40 +79,27 @@ const SearchHorizontal = () => {
 
   const handleSearchClick = () => {
     if (searchValue === "xxx-xxx-xxx") {
-      const formattedID = formatID(originalValue);
-      const foundItem = DataDetailID.find((item) => item.id === formattedID);
-      if (foundItem) {
-        setResult(foundItem);
-        setWarningMessage("");
-        setShouldOpenModal(true);
-      } else {
-        setResult(null);
-        setWarningMessage("The ID you are looking for was not found.");
-        setIsNotFound(true);
-      }
+      setShouldOpenModal(true);
       return;
     }
 
-    if (searchValue.length === 9 && !isNotFound) {
-      const formattedID = formatID(searchValue);
-      const foundItem = DataDetailID.find((item) => item.id === formattedID);
+    const formattedID = formatID(searchValue);
+    const foundItem = Identifier.find((item) => item.id === formattedID);
+
+    if (searchValue.length === 9) {
       if (foundItem) {
         setResult(foundItem);
-        setWarningMessage("");
-        setShouldOpenModal(true);
       } else {
-        setResult(null);
-        setWarningMessage("The ID you are looking for was not found.");
-        setIsNotFound(true);
+        setResult({
+          check: "checking",
+          id: searchValue,
+          valid: "not-found",
+        });
       }
       setOriginalValue(searchValue);
       setSearchValue("xxx-xxx-xxx");
       setIsHidden(true);
-      inputRef.current?.blur();
-    } else if (isNotFound) {
-      setWarningMessage("The ID you are looking for was not found.");
-      setSearchValue("xxx-xxx-xxx");
-      setIsHidden(true);
+      setShouldOpenModal(true);
       inputRef.current?.blur();
     } else {
       setWarningMessage("Please enter a 9-digit number.");
@@ -127,12 +108,12 @@ const SearchHorizontal = () => {
   };
 
   const handleInputBlur = () => {
-    setInputFocused(false);
+    if (isHidden) {
+      setSearchValue("xxx-xxx-xxx");
+    }
   };
 
   const handleInputFocus = () => {
-    setInputFocused(true);
-    setWarningMessage("");
     if (isHidden) {
       setSearchValue(originalValue);
       setIsHidden(false);

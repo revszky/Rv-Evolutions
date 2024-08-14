@@ -1,20 +1,16 @@
 import {
-  IconBookmarkFilled,
-  IconCircleCheckFilled,
   IconLoader,
-  IconPointFilled,
+  IconRosette,
+  IconRosetteDiscountCheck,
+  IconX,
 } from "@tabler/icons-react";
 import React, { useEffect, useRef, useState } from "react";
 import ReactDOM from "react-dom";
 
 interface DataID {
-  url: string;
+  check: string;
   id: string;
-  image: string;
-  title: string;
-  type: string;
-  size: string;
-  description: string;
+  valid: string;
 }
 
 const ModalCheckVertical = ({
@@ -39,12 +35,14 @@ const ModalCheckVertical = ({
   useEffect(() => {
     if (isOpen && result) {
       setPreviousUrl(window.location.pathname);
-      window.history.pushState(null, "", `/authenticity?=${result.url}`);
+      window.history.pushState(null, "", `/authenticity?=${result.check}`);
       setLoading(true);
 
       const loadTimeout = setTimeout(() => {
         setLoading(false);
-      }, 10000);
+
+        window.history.pushState(null, "", `/authenticity?=${result.valid}`);
+      }, 5000);
 
       return () => clearTimeout(loadTimeout);
     } else if (previousUrl) {
@@ -88,48 +86,37 @@ const ModalCheckVertical = ({
         <div className="flex justify-center items-center h-full">
           <IconLoader className="text-white w-14 h-14 md:w-20 md:h-20 animate-spin" />
         </div>
-      ) : (
-        <>
-          <div className="flex flex-col items-center justify-center bg-white p-4">
-            <div className="p-2 relative">
-              <div className="w-56 md:w-80">
-                <img
-                  src={result.image}
-                  alt={result.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              <div className="absolute top-0 -right-[2px] md:-top-[2px] md:-right-[4px]">
-                <IconBookmarkFilled className="w-10 h-10 md:w-12 md:h-12" />
-              </div>
-
-              <div className="absolute top-2 right-[10px] md:top-[4px] md:right-[8px]">
-                <IconCircleCheckFilled className="w-4 h-4 md:w-6 md:h-6 text-white" />
-              </div>
+      ) : result.valid === "not-found" ? (
+        <div className="flex flex-col items-center justify-center bg-white border-2 border-red-500 p-2 rounded-2xl">
+          <div className="p-4">
+            <div className="flex items-center justify-center relative">
+              <IconRosette className="w-28 h-28 stroke-[0.6] text-red-500" />
+              <IconX className="absolute w-10 h-10 stroke-[1.5] text-red-500" />
             </div>
 
-            <div className="p-2">
-              <h1 className="font-mono text-center text-xl">{result.title}</h1>
-            </div>
-
-            <div className="flex items-center justify-center p-2">
-              <p className="font-mono text-center">{result.type}</p>
-
-              <div className="px-2">
-                <IconPointFilled className="w-2 h-2" />
-              </div>
-
-              <p className="font-mono text-center">{result.size}</p>
-            </div>
-
-            <div className="max-w-xs md:max-w-md p-2">
-              <p className="font-mono text-center text-sm">
-                {result.description}
-              </p>
-            </div>
+            <h1 className="text-center font-mono font-bold">NOT VERIFIED</h1>
           </div>
-        </>
+
+          <div className="max-w-xs p-4">
+            <p className="font-mono text-center text-xs md:text-sm">
+              The authenticity of the items you own, cannot be found.
+            </p>
+          </div>
+        </div>
+      ) : (
+        <div className="flex flex-col items-center justify-center bg-white border-2 border-green-500 p-2 rounded-2xl">
+          <div className="p-4">
+            <IconRosetteDiscountCheck className="w-28 h-28 stroke-[0.6] text-green-500" />
+
+            <h1 className="text-center font-mono font-bold">VERIFIED</h1>
+          </div>
+
+          <div className="max-w-xs p-4">
+            <p className="font-mono text-center text-xs md:text-sm">
+              The authenticity of the items you own is verified.
+            </p>
+          </div>
+        </div>
       )}
     </div>,
     document.body

@@ -2,17 +2,13 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { IconSearch } from "@tabler/icons-react";
-import DataDetailID from "@/app/data/DataDetailID";
+import Identifier from "@/app/id/Identifier";
 import ModalCheckVertical from "@/app/components/check/ModalCheckVertical";
 
 interface DataID {
-  url: string;
+  check: string;
   id: string;
-  image: string;
-  title: string;
-  type: string;
-  size: string;
-  description: string;
+  valid: string;
 }
 
 const SearchVertical = ({
@@ -99,40 +95,27 @@ const SearchVertical = ({
 
   const handleSearchClick = () => {
     if (searchValue === "xxx-xxx-xxx") {
-      const formattedID = formatID(originalValue);
-      const foundItem = DataDetailID.find((item) => item.id === formattedID);
-      if (foundItem) {
-        setResult(foundItem);
-        setWarningMessage("");
-        setShouldOpenModal(true);
-      } else {
-        setResult(null);
-        setWarningMessage("The ID you are looking for was not found.");
-        setIsNotFound(true);
-      }
+      setShouldOpenModal(true);
       return;
     }
 
-    if (searchValue.length === 9 && !isNotFound) {
-      const formattedID = formatID(searchValue);
-      const foundItem = DataDetailID.find((item) => item.id === formattedID);
+    const formattedID = formatID(searchValue);
+    const foundItem = Identifier.find((item) => item.id === formattedID);
+
+    if (searchValue.length === 9) {
       if (foundItem) {
         setResult(foundItem);
-        setWarningMessage("");
-        setShouldOpenModal(true);
       } else {
-        setResult(null);
-        setWarningMessage("The ID you are looking for was not found.");
-        setIsNotFound(true);
+        setResult({
+          check: "checking",
+          id: searchValue,
+          valid: "not-found",
+        });
       }
       setOriginalValue(searchValue);
       setSearchValue("xxx-xxx-xxx");
       setIsHidden(true);
-      inputRef.current?.blur();
-    } else if (isNotFound) {
-      setWarningMessage("The ID you are looking for was not found.");
-      setSearchValue("xxx-xxx-xxx");
-      setIsHidden(true);
+      setShouldOpenModal(true);
       inputRef.current?.blur();
     } else {
       setWarningMessage("Please enter a 9-digit number.");
