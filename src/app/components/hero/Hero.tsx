@@ -13,7 +13,7 @@ const Hero = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center">
+      <div className="absolute inset-0 bg-black bg-opacity-60 flex flex-col items-center justify-center">
         <div className="max-w-2xl md:max-w-4xl text-center px-10 md:px-20">
           <p className="font-mono text-white text-xs md:text-base">
             Liven up every moment with a revolutionary fashion twist. The

@@ -12,13 +12,51 @@ const images = [
 const CarouselBrand: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [prevIndex, setPrevIndex] = useState(images.length - 1);
+  const [touchStartX, setTouchStartX] = useState(0);
 
   useEffect(() => {
     setPrevIndex(currentIndex === 0 ? images.length - 1 : currentIndex - 1);
   }, [currentIndex]);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 15000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowRight" && currentIndex < images.length - 1) {
+        setCurrentIndex((prevIndex) => prevIndex + 1);
+      } else if (e.key === "ArrowLeft" && currentIndex > 0) {
+        setCurrentIndex((prevIndex) => prevIndex - 1);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [currentIndex]);
+
   const showPreview = (index: number) => {
     setCurrentIndex(index);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    const touchEndX = e.changedTouches[0].clientX;
+    if (touchStartX - touchEndX > 50 && currentIndex < images.length - 1) {
+      setCurrentIndex((prevIndex) => prevIndex + 1);
+    } else if (touchEndX - touchStartX > 50 && currentIndex > 0) {
+      setCurrentIndex((prevIndex) => prevIndex - 1);
+    }
   };
 
   return (
@@ -30,7 +68,11 @@ const CarouselBrand: React.FC = () => {
 
         <div className="absolute top-0 left-0 right-0">
           <div className="flex flex-col items-center justify-center">
-            <div className="relative flex items-center justify-center w-full h-80 lg:h-[460px] xl:h-[500px] bg-cover bg-center overflow-hidden">
+            <div
+              className="relative flex items-center justify-center w-full h-80 lg:h-[460px] xl:h-[500px] bg-cover bg-center overflow-hidden"
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+            >
               <div
                 className={`w-full h-full flex transition-transform duration-1000 ${
                   currentIndex > prevIndex
@@ -50,19 +92,19 @@ const CarouselBrand: React.FC = () => {
                 ))}
               </div>
 
-              <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-            </div>
+              <div className="absolute inset-0 bg-black bg-opacity-60"></div>
 
-            <div className="flex items-center justify-center">
-              {images.map((image, index) => (
-                <img
-                  key={index}
-                  src={image}
-                  alt={`Preview ${index}`}
-                  className="w-[88px] md:w-24 lg:w-28 h-16 object-cover cursor-pointer p-2"
-                  onClick={() => showPreview(index)}
-                />
-              ))}
+              <div className="absolute bottom-6 flex items-center justify-center gap-2 md:gap-4 lg:gap-8">
+                {images.map((_, index) => (
+                  <div
+                    key={index}
+                    onClick={() => showPreview(index)}
+                    className={`w-10 md:w-14 lg:w-20 h-[6px] cursor-pointer bg-white ${
+                      currentIndex === index ? "opacity-100" : "opacity-50"
+                    }`}
+                  ></div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
