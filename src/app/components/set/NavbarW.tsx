@@ -3,9 +3,9 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { IconMenu2, IconSearch, IconX } from "@tabler/icons-react";
-import MenuVertical from "./MenuVertical";
 import SearchVertical from "@/app/components/search/SearchVertical";
 import MenuHorizontalW from "./MenuHorizontalW";
+import MenuVerticalW from "./MenuVerticalW";
 
 const NavbarW = () => {
   const [bukaMenu, mengaturBukaMenu] = useState(false);
@@ -58,11 +58,11 @@ const NavbarW = () => {
     };
   }, [bukaMenu, openSearchMenu]);
 
-  const sidebarClass = `fixed flex flex-col items-center justify-center top-0 left-0 w-full h-52 bg-white p-4 transform transition-transform duration-700 ease-in-out -z-10 ${
+  const sidebarClass = `fixed flex flex-col items-center justify-center top-0 left-0 w-full h-52 bg-black p-4 transform transition-transform duration-700 ease-in-out -z-10 ${
     bukaMenu ? "translate-y-0" : "-translate-y-full"
   }`;
 
-  const sidebarID = `fixed flex justify-center top-0 left-0 w-full h-52 bg-white p-4 transform transition-transform duration-700 ease-in-out -z-10 ${
+  const sidebarID = `fixed flex justify-center top-0 left-0 w-full h-52 bg-black p-4 transform transition-transform duration-700 ease-in-out -z-10 ${
     openSearchMenu ? "translate-y-0" : "-translate-y-full"
   }`;
 
@@ -73,15 +73,15 @@ const NavbarW = () => {
       </div>
 
       <div className="block xl:hidden">
-        <div className="flex items-center justify-between px-4 py-2 bg-white">
+        <div className="flex items-center justify-between px-4 py-2">
           <button onClick={openMenuID}>
             <div className="flex items-center justify-center relative">
               <div>
-                <h1 className="font-mono font-bold text-xl">ID</h1>
+                <h1 className="font-mono font-bold text-xl text-white">ID</h1>
               </div>
 
               <div className="absolute -bottom-[2px] -right-[10px]">
-                <IconSearch className="w-5 h-5 stroke-[2.5]" />
+                <IconSearch className="w-5 h-5 stroke-[2.5] text-white" />
               </div>
             </div>
           </button>
@@ -97,9 +97,9 @@ const NavbarW = () => {
             } transition duration-300`}
           >
             {bukaMenu ? (
-              <IconX className="stroke-[2.5]" />
+              <IconX className="stroke-[2.5] text-white" />
             ) : (
-              <IconMenu2 className="stroke-[2.5]" />
+              <IconMenu2 className="stroke-[2.5] text-white" />
             )}
           </button>
         </div>
@@ -117,14 +117,14 @@ const NavbarW = () => {
 
       <div className={sidebarClass}>
         <div className="w-full md:px-4 mt-8">
-          <MenuVertical pilihMenu={closeMenu} />
+          <MenuVerticalW pilihMenu={closeMenu} />
         </div>
       </div>
 
       <div className={sidebarID}>
         <div className="my-10">
           <div className="py-2">
-            <p className="font-mono text-center text-xs">
+            <p className="font-mono text-center text-xs text-white">
               Enter the 9-digit RV code in the label tag column below without
               using the hyphen &quot;-&quot;.
             </p>
