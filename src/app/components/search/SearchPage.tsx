@@ -11,7 +11,7 @@ interface DataID {
   valid: string;
 }
 
-const SearchHorizontal = () => {
+const SearchPage = () => {
   const [searchValue, setSearchValue] = useState<string>("");
   const [warningMessage, setWarningMessage] = useState<string>("");
   const [result, setResult] = useState<DataID | null>(null);
@@ -174,4 +174,4 @@ const SearchHorizontal = () => {
   );
 };
 
-export default SearchHorizontal;
+export default SearchPage;

@@ -11,7 +11,7 @@ interface DataID {
   valid: string;
 }
 
-const SearchVertical = ({
+const SearchVerticalB = ({
   isOpen,
 }: {
   isOpen: boolean;
@@ -192,4 +192,4 @@ const SearchVertical = ({
   );
 };
 
-export default SearchVertical;
+export default SearchVerticalB;

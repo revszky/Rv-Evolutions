@@ -5,7 +5,7 @@ interface MenuNavProps {
   pilihMenu: () => void;
 }
 
-const MenuVertical = ({ pilihMenu }: MenuNavProps) => {
+const MenuVerticalB = ({ pilihMenu }: MenuNavProps) => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -77,7 +77,7 @@ const MenuVertical = ({ pilihMenu }: MenuNavProps) => {
 
         <div
           ref={dropdownRef}
-          className={`absolute mt-2 -right-2 w-[230px] md:w-[360px] bg-white border border-black transform transition-all duration-500 ease-in-out ${
+          className={`absolute mt-2 right-0 w-[230px] md:w-[360px] bg-white border border-black transform transition-all duration-500 ease-in-out ${
             dropdownVisible
               ? "opacity-100 translate-y-0"
               : "opacity-0 -translate-y-4"
@@ -95,4 +95,4 @@ const MenuVertical = ({ pilihMenu }: MenuNavProps) => {
   );
 };
 
-export default MenuVertical;
+export default MenuVerticalB;

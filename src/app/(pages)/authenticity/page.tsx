@@ -1,6 +1,7 @@
 import React from "react";
-import SearchHorizontal from "@/app/components/search/SearchHorizontal";
 import Authenticity from "@/app/components/authenticity/Authenticity";
+import NavbarB from "@/app/components/set/NavbarB";
+import SearchPage from "@/app/components/search/SearchPage";
 
 export const metadata = {
   title: "RV • Authenticity",
@@ -9,6 +10,12 @@ export const metadata = {
 const page = () => {
   return (
     <main>
+      <section>
+        <div>
+          <NavbarB />
+        </div>
+      </section>
+
       <section className="pt-10 md:pt-20">
         <div>
           <Authenticity />
@@ -25,7 +32,7 @@ const page = () => {
           </div>
 
           <div className="py-4">
-            <SearchHorizontal />
+            <SearchPage />
           </div>
 
           <div className="max-w-2xl">

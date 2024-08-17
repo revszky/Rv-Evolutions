@@ -3,9 +3,9 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { IconMenu2, IconSearch, IconX } from "@tabler/icons-react";
-import MenuHorizontal from "./MenuHorizontal";
-import MenuVertical from "./MenuVertical";
-import SearchVertical from "@/app/components/search/SearchVertical";
+import SearchVerticalB from "../search/SearchVerticalB";
+import MenuVerticalB from "./MenuVerticalB";
+import MenuHorizontalB from "./MenuHorizontalB";
 
 const NavbarB = () => {
   const [bukaMenu, mengaturBukaMenu] = useState(false);
@@ -69,7 +69,7 @@ const NavbarB = () => {
   return (
     <header className="sticky top-0 left-0 right-0 z-10">
       <div className="hidden xl:block">
-        <MenuHorizontal />
+        <MenuHorizontalB />
       </div>
 
       <div className="block xl:hidden">
@@ -117,7 +117,7 @@ const NavbarB = () => {
 
       <div className={sidebarClass}>
         <div className="w-full md:px-4 mt-8">
-          <MenuVertical pilihMenu={closeMenu} />
+          <MenuVerticalB pilihMenu={closeMenu} />
         </div>
       </div>
 
@@ -131,7 +131,7 @@ const NavbarB = () => {
           </div>
 
           <div className="py-2">
-            <SearchVertical isOpen={openSearchMenu} onClose={closeMenuID} />
+            <SearchVerticalB isOpen={openSearchMenu} onClose={closeMenuID} />
           </div>
         </div>
       </div>

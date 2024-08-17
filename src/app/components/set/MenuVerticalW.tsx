@@ -77,7 +77,7 @@ const MenuVerticalW = ({ pilihMenu }: MenuNavProps) => {
 
         <div
           ref={dropdownRef}
-          className={`absolute mt-2 -right-2 w-[230px] md:w-[360px] bg-white border border-black transform transition-all duration-500 ease-in-out ${
+          className={`absolute mt-2 right-0 w-[230px] md:w-[360px] bg-white border border-black transform transition-all duration-500 ease-in-out ${
             dropdownVisible
               ? "opacity-100 translate-y-0"
               : "opacity-0 -translate-y-4"

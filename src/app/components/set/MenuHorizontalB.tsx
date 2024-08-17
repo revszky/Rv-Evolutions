@@ -15,7 +15,7 @@ const additionalMenuItems = [
   },
 ];
 
-const MenuHorizontal = () => {
+const MenuHorizontalB = () => {
   return (
     <div className="relative flex items-center justify-between px-28 py-4 bg-white">
       <div className="flex items-center justify-center gap-10">
@@ -44,4 +44,4 @@ const MenuHorizontal = () => {
   );
 };
 
-export default MenuHorizontal;
+export default MenuHorizontalB;

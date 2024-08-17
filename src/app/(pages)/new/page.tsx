@@ -1,3 +1,4 @@
+import NavbarB from "@/app/components/set/NavbarB";
 import React from "react";
 
 export const metadata = {
@@ -7,7 +8,11 @@ export const metadata = {
 const page = () => {
   return (
     <div>
-      <div></div>
+      <section>
+        <div>
+          <NavbarB />
+        </div>
+      </section>
     </div>
   );
 };

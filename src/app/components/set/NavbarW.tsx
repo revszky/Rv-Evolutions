@@ -3,9 +3,9 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { IconMenu2, IconSearch, IconX } from "@tabler/icons-react";
-import SearchVertical from "@/app/components/search/SearchVertical";
 import MenuHorizontalW from "./MenuHorizontalW";
 import MenuVerticalW from "./MenuVerticalW";
+import SearchVerticalW from "../search/SearchVerticalW";
 
 const NavbarW = () => {
   const [bukaMenu, mengaturBukaMenu] = useState(false);
@@ -131,7 +131,7 @@ const NavbarW = () => {
           </div>
 
           <div className="py-2">
-            <SearchVertical isOpen={openSearchMenu} onClose={closeMenuID} />
+            <SearchVerticalW isOpen={openSearchMenu} onClose={closeMenuID} />
           </div>
         </div>
       </div>
