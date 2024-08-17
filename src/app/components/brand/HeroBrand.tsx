@@ -1,5 +1,4 @@
 import React from "react";
-import CarouselBrand from "./CarouselBrand";
 
 const HeroBrand = () => {
   return (
@@ -21,8 +20,6 @@ const HeroBrand = () => {
             </p>
           </div>
         </div>
-
-        <CarouselBrand />
       </div>
     </div>
   );
