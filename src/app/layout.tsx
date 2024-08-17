@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "./components/set/Navbar";
 
 export const metadata: Metadata = {
   title: "RV • Evolutions",
@@ -27,9 +26,8 @@ export default function RootLayout({
         <meta property="og:type" content="website" />
       </head>
 
-      <body className="flex flex-col min-h-screen">
-        <Navbar />
-        <main className="flex-grow">{children}</main>
+      <body>
+        <main>{children}</main>
       </body>
     </html>
   );

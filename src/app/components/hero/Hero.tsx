@@ -5,7 +5,7 @@ const Hero = () => {
     "https://fastly.picsum.photos/id/851/1920/1080.jpg?hmac=8dpXaXykD3QOXMLOFPAMyWGveKGA1pbxbw1PxSZgaX0";
   return (
     <div
-      className="relative flex items-center justify-center w-full h-80 md:h-96 lg:h-[460px] xl:h-[500px] bg-cover bg-center -z-20"
+      className="relative flex items-center justify-center w-full min-h-screen bg-cover bg-center -z-20"
       style={{
         backgroundImage: `url(${background})`,
         backgroundSize: "cover",
