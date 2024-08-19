@@ -1,6 +1,7 @@
 import React from "react";
 import HeroBrand from "@/app/components/brand/HeroBrand";
 import CarouselBrand from "@/app/components/brand/CarouselBrand";
+import Hero from "@/app/components/hero/Hero";
 
 export const metadata = {
   title: "RV • Brand",

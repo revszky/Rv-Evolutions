@@ -13,6 +13,7 @@ const CarouselBrand: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [prevIndex, setPrevIndex] = useState(images.length - 1);
   const [touchStartX, setTouchStartX] = useState(0);
+  const [isScrolledPast, setIsScrolledPast] = useState(false);
 
   useEffect(() => {
     setPrevIndex(currentIndex === 0 ? images.length - 1 : currentIndex - 1);
@@ -59,10 +60,36 @@ const CarouselBrand: React.FC = () => {
     }
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      let threshold = 0;
+
+      if (window.matchMedia("(min-width: 1024px)").matches) {
+        threshold = 420;
+      } else if (window.matchMedia("(min-width: 1280px)").matches) {
+        threshold = 500;
+      } else {
+        threshold = 280;
+      }
+
+      setIsScrolledPast(window.scrollY > threshold);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <div className="flex flex-col">
       <div className="relative">
-        <div className="fixed z-20 w-full">
+        <div
+          className={`fixed z-20 w-full transition-colors duration-300 ${
+            isScrolledPast ? "bg-black bg-opacity-50" : ""
+          }`}
+        >
           <NavbarW />
         </div>
 
