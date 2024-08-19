@@ -87,7 +87,7 @@ const NavbarB = () => {
           </button>
 
           <Link href="/" onClick={closeMenu}>
-            <img src="/logo/rvblack.png" alt="Rv" className="w-12" />
+            <img src="/logo/rvblack.png" alt="Rv" className="w-12 m-[6px]" />
           </Link>
 
           <button

@@ -25,7 +25,7 @@ const MenuHorizontalW = () => {
 
       <Link
         href="/"
-        className="absolute top-[12px] left-1/2 transform -translate-x-1/2"
+        className="absolute top-[14px] left-1/2 transform -translate-x-1/2"
       >
         <img src="/logo/rvwhite.png" alt="Rv" className="w-[70px]" />
       </Link>

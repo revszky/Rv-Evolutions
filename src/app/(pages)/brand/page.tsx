@@ -1,10 +1,11 @@
 import React from "react";
 import HeroBrand from "@/app/components/brand/HeroBrand";
 import CarouselBrand from "@/app/components/brand/CarouselBrand";
-import Hero from "@/app/components/hero/Hero";
+import GalleryBrand from "@/app/components/brand/GalleryBrand";
 
 export const metadata = {
   title: "RV • Brand",
+  description: "Creating a dna trace in the fashion world.",
 };
 
 const page = () => {
@@ -16,9 +17,15 @@ const page = () => {
         </div>
       </section>
 
-      <section className="pt-[350px] lg:pt-[500px] xl:pt-[550px] pb-12">
+      <section className="pt-[345px] lg:pt-[500px] xl:pt-[460px]">
         <div>
           <HeroBrand />
+        </div>
+      </section>
+
+      <section className="py-20">
+        <div>
+          <GalleryBrand />
         </div>
       </section>
     </main>

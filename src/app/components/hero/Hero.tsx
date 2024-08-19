@@ -16,10 +16,10 @@ const Hero = () => {
       <div className="absolute inset-0 bg-black bg-opacity-60 flex flex-col items-center justify-center">
         <div className="max-w-2xl md:max-w-4xl text-center px-10 md:px-20">
           <p className="font-mono text-white text-xs md:text-base">
-            Liven up every moment with a revolutionary fashion twist. The
-            clothing collection is designed to combine an active and dynamic
-            lifestyle. Each design is the embodiment of the spirit of modernity
-            and boldness.
+            Liven up every moment with a revolutionary fashion twist, a
+            collection of clothing designed to combine an active and dynamic
+            lifestyle, and each design embodies the spirit of modernity and
+            boldness.
           </p>
         </div>
       </div>

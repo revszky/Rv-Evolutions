@@ -5,6 +5,7 @@ import SearchPage from "@/app/components/search/SearchPage";
 
 export const metadata = {
   title: "RV • Authenticity",
+  description: "Unique id code as a marker.",
 };
 
 const page = () => {

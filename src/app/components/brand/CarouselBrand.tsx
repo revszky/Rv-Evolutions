@@ -67,7 +67,7 @@ const CarouselBrand: React.FC = () => {
       if (window.matchMedia("(min-width: 1024px)").matches) {
         threshold = 420;
       } else if (window.matchMedia("(min-width: 1280px)").matches) {
-        threshold = 500;
+        threshold = 380;
       } else {
         threshold = 280;
       }
@@ -96,7 +96,7 @@ const CarouselBrand: React.FC = () => {
         <div className="absolute top-0 left-0 right-0">
           <div className="flex flex-col items-center justify-center">
             <div
-              className="relative flex items-center justify-center w-full h-80 lg:h-[460px] xl:h-[500px] bg-cover bg-center overflow-hidden"
+              className="relative flex items-center justify-center w-full h-80 lg:h-[460px] xl:h-[400px] bg-cover bg-center overflow-hidden"
               onTouchStart={handleTouchStart}
               onTouchEnd={handleTouchEnd}
             >
