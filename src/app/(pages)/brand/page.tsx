@@ -1,7 +1,7 @@
 import React from "react";
 import HeroBrand from "@/app/components/brand/HeroBrand";
-import CarouselBrand from "@/app/components/brand/CarouselBrand";
 import GalleryBrand from "@/app/components/brand/GalleryBrand";
+import HomeBrand from "@/app/components/brand/HomeBrand";
 
 export const metadata = {
   title: "RV • Brand",
@@ -13,17 +13,17 @@ const page = () => {
     <main>
       <section>
         <div>
-          <CarouselBrand />
+          <HomeBrand />
         </div>
       </section>
 
-      <section className="pt-[345px] lg:pt-[500px] xl:pt-[460px]">
+      <section className="py-14">
         <div>
           <HeroBrand />
         </div>
       </section>
 
-      <section className="py-20">
+      <section className="py-14">
         <div>
           <GalleryBrand />
         </div>

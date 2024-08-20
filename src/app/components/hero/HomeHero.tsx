@@ -83,6 +83,8 @@ const HomeHero = () => {
 
   return (
     <div
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
       className="relative flex items-center justify-center w-full min-h-screen bg-cover bg-center transition-all duration-1000 ease-in-out"
       style={{
         backgroundImage: `url(${background[currentIndex]})`,
@@ -95,38 +97,36 @@ const HomeHero = () => {
 
       <div className="absolute bottom-0 left-0 right-0 z-10">
         <div className="flex flex-col items-center justify-center">
-          <div
-            className="relative flex items-center justify-center w-full h-72 md:h-[360px] bg-cover bg-center overflow-hidden"
-            onTouchStart={handleTouchStart}
-            onTouchEnd={handleTouchEnd}
-          >
+          <div className="relative flex items-center justify-center w-full h-72 md:h-[360px] bg-cover bg-center overflow-hidden">
             <div
               className={`w-full h-full flex transition-transform duration-1000 ${
                 currentIndex > prevIndex ? "translate-x-0" : "translate-x-full"
               }`}
               style={{ transform: `translateX(-${currentIndex * 100}%)` }}
             >
-              {konten.map((image, index) => (
+              {konten.map((text, index) => (
                 <div
                   key={index}
                   className="w-full h-full flex-shrink-0 flex items-start justify-between px-6 md:px-20"
                 >
                   <div className="p-2 text-left text-white max-w-xl">
-                    <h1 className="font-mono font-bold">{image.title}</h1>
-                    <p>•</p>
+                    <h1 className="font-mono font-bold">{text.title}</h1>
+
+                    <p className="font-mono font-bold">-</p>
+
                     <p className="font-mono text-xs md:text-sm">
-                      {image.description}
+                      {text.description}
                     </p>
                   </div>
 
                   <div className="p-2 text-right text-white">
-                    <p className="font-mono font-bold">{image.order}</p>
+                    <p className="font-mono font-bold">{text.order}</p>
                   </div>
                 </div>
               ))}
             </div>
 
-            <div className="absolute bottom-6 flex items-center justify-center gap-6 lg:gap-8 z-20">
+            <div className="absolute bottom-6 flex items-center justify-center gap-8 lg:gap-12 z-20">
               {konten.map((_, index) => (
                 <div
                   key={index}
