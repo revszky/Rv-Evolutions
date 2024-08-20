@@ -8,7 +8,7 @@ const Authenticity = () => {
           <h1 className="font-mono font-bold">AUTHENTICITY</h1>
         </div>
 
-        <div className="max-w-4xl">
+        <div className="max-w-xl">
           <p className="font-mono text-sm">
             We understand how important the authenticity and exclusivity of each
             of our products is. Therefore, each of our clothing items comes with

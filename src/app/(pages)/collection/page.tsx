@@ -10,13 +10,13 @@ export const metadata = {
 const page = () => {
   return (
     <main>
-      <section>
-        <div>
+      <section className="relative">
+        <div className="fixed w-full">
           <NavbarB />
         </div>
       </section>
 
-      <section>
+      <section className="pt-24 md:pt-28">
         <div>
           <HeroCollection />
         </div>

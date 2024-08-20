@@ -52,7 +52,7 @@ const HomeBrand = () => {
             }}
           >
             <div className="absolute inset-0 bg-black bg-opacity-60 flex items-end justify-center p-2 md:p-10 lg:p-16">
-              <div className="flex items-start justify-center gap-8 md:gap-28 lg:gap-32 opacity-60">
+              <div className="flex items-start justify-center gap-8 md:gap-28 lg:gap-32">
                 <div className="text-left text-white">
                   <h1 className="font-mono font-bold">THE BRAND</h1>
                   <p className="font-mono text-sm">&lsquo;08&lsquo;</p>
