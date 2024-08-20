@@ -12,11 +12,19 @@ const GalleryBrand = () => {
         </div>
 
         <div className="w-36 md:w-40 lg:w-52 h-60 lg:h-80 bg-black order-2 md:order-1">
-          <img src="" alt="RV" className="w-full h-full object-cover" />
+          <img
+            src="https://fastly.picsum.photos/id/867/208/320.jpg?hmac=X3LJx0o-IAIp-Ny2d_cQUTV1mSVyHOkAvqsf-yhTuIw"
+            alt="RV"
+            className="w-full h-full object-cover"
+          />
         </div>
 
         <div className="w-36 md:w-40 lg:w-52 h-60 lg:h-80 bg-black order-2 md:order-3">
-          <img src="" alt="DNA" className="w-full h-full object-cover" />
+          <img
+            src="https://fastly.picsum.photos/id/867/208/320.jpg?hmac=X3LJx0o-IAIp-Ny2d_cQUTV1mSVyHOkAvqsf-yhTuIw"
+            alt="DNA"
+            className="w-full h-full object-cover"
+          />
         </div>
 
         <div className="w-36 flex items-center justify-center order-3 md:order-4">

@@ -7,7 +7,7 @@ const HeroBrand = () => {
         <div className="flex items-start justify-center gap-10 md:gap-6 xl:gap-10">
           <div className="text-left">
             <h1 className="font-mono font-bold">RV EVOLUTIONS</h1>
-            <h2 className="font-mono font-bold">-</h2>
+            <h2 className="font-mono font-bold">•</h2>
           </div>
 
           <div className="max-w-sm md:max-w-md xl:max-w-xl">

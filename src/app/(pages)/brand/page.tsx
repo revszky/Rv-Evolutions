@@ -10,7 +10,7 @@ export const metadata = {
 
 const page = () => {
   return (
-    <main className="">
+    <main>
       <section>
         <div>
           <CarouselBrand />
