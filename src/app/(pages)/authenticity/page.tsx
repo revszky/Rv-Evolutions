@@ -4,20 +4,20 @@ import NavbarB from "@/app/components/set/NavbarB";
 import SearchPage from "@/app/components/search/SearchPage";
 
 export const metadata = {
-  title: "RV • Authenticity",
+  title: "RV • AUTHENTICITY",
   description: "Unique id code as a marker.",
 };
 
 const page = () => {
   return (
     <main>
-      <section>
-        <div>
+      <section className="relative">
+        <div className="fixed w-full">
           <NavbarB />
         </div>
       </section>
 
-      <section className="pt-10 md:pt-20">
+      <section className="pt-24 md:pt-28">
         <div>
           <Authenticity />
         </div>
@@ -44,6 +44,14 @@ const page = () => {
               you are getting genuine RV items that meet the highest quality
               standards.
             </p>
+          </div>
+
+          <div className="py-10">
+            <img
+              src="https://fastly.picsum.photos/id/509/500/250.jpg?hmac=w7iz-HMrmh4eorcs5Z6PhAcFlcQCC95-JyZDRXYBy54"
+              alt="ID"
+              className="w-full h-full object-cover"
+            />
           </div>
         </div>
       </section>

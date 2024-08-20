@@ -3,7 +3,8 @@ import NavbarB from "@/app/components/set/NavbarB";
 import React from "react";
 
 export const metadata = {
-  title: "RV • Collection",
+  title: "RV • COLLECTION",
+  description: "A collection of evolutionary and revolutions.",
 };
 
 const page = () => {

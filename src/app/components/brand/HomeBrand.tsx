@@ -10,11 +10,11 @@ const HomeBrand = () => {
       let threshold = 0;
 
       if (window.matchMedia("(min-width: 1024px)").matches) {
-        threshold = 300;
+        threshold = 240;
       } else if (window.matchMedia("(min-width: 1280px)").matches) {
-        threshold = 300;
+        threshold = 280;
       } else {
-        threshold = 300;
+        threshold = 240;
       }
 
       setIsScrolledPast(window.scrollY > threshold);
@@ -43,7 +43,7 @@ const HomeBrand = () => {
 
         <div>
           <div
-            className="relative flex items-center justify-center w-full h-96 bg-cover bg-center"
+            className="relative flex items-center justify-center w-full h-64 md:h-80 lg:h-96 bg-cover bg-center"
             style={{
               backgroundImage: `url(${background})`,
               backgroundSize: "cover",
@@ -51,17 +51,23 @@ const HomeBrand = () => {
               backgroundRepeat: "no-repeat",
             }}
           >
-            <div className="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center">
-              <div className="text-white flex flex-col md:flex-row md:gap-8 items-center md:items-start justify-center p-4">
-                <div className="text-center pb-2 md:pb-0">
+            <div className="absolute inset-0 bg-black bg-opacity-60 flex items-end justify-center p-2 md:p-10 lg:p-16">
+              <div className="flex items-start justify-center gap-8 md:gap-28 lg:gap-32 opacity-60">
+                <div className="text-left text-white">
                   <h1 className="font-mono font-bold">THE BRAND</h1>
+                  <p className="font-mono text-sm">'08'</p>
                 </div>
 
-                <div className="max-w-md text-center md:text-left pt-2 md:pt-0">
-                  <p className="font-mono text-xs md:text-sm">
-                    Combining innovation and style is an important part of the
-                    lives of those with a love for bold and authentic design.
-                  </p>
+                <div className="p-2 text-white">
+                  <p className="font-mono font-bold">/</p>
+                </div>
+
+                <div className="text-white">
+                  <h2 className="font-mono font-bold text-left">INDEX</h2>
+                  <div className="py-4 text-left">
+                    <p className="font-mono text-sm">RV Evolutions</p>
+                    <p className="font-mono text-sm">THE DNA</p>
+                  </div>
                 </div>
               </div>
             </div>

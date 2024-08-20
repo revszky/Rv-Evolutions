@@ -2,7 +2,7 @@ import NavbarB from "@/app/components/set/NavbarB";
 import React from "react";
 
 export const metadata = {
-  title: "RV • New",
+  title: "RV • NEW",
 };
 
 const page = () => {

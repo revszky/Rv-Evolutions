@@ -4,7 +4,7 @@ import GalleryBrand from "@/app/components/brand/GalleryBrand";
 import HomeBrand from "@/app/components/brand/HomeBrand";
 
 export const metadata = {
-  title: "RV • Brand",
+  title: "RV • BRAND",
   description: "Creating a dna trace in the fashion world.",
 };
 
