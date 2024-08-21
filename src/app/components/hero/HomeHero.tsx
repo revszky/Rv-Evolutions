@@ -120,7 +120,7 @@ const HomeHero = () => {
                   key={index}
                   className="relative top-14 md:top-16 xl:top-32 w-full h-full flex-shrink-0 flex items-start justify-between px-6 md:px-20"
                 >
-                  <div className="p-2 text-left text-white max-w-md xl:max-w-xl">
+                  <div className="p-2 text-left text-white max-w-[240px] md:max-w-md xl:max-w-xl">
                     <h1 className="font-mono font-bold">{text.title}</h1>
 
                     <p className="font-mono font-bold">-</p>
