@@ -97,7 +97,18 @@ const HomeHero = () => {
 
       <div className="absolute bottom-0 left-0 right-0 z-10">
         <div className="flex flex-col items-center justify-center">
-          <div className="relative flex items-center justify-center w-full h-72 md:h-[360px] bg-cover bg-center overflow-hidden">
+          <div className="absolute top-4 md:top-0 lg:-top-6 xl:top-6 flex items-center justify-center gap-8 lg:gap-12 z-20">
+            {konten.map((_, index) => (
+              <div
+                key={index}
+                onClick={() => showPreview(index)}
+                className={`w-2 h-2 rounded-full cursor-pointer bg-white ${
+                  currentIndex === index ? "opacity-100" : "opacity-50"
+                }`}
+              ></div>
+            ))}
+          </div>
+          <div className="relative flex items-center justify-center w-full h-[420px] md:h-96 lg:h-[500px] xl:h-[340px] bg-cover bg-center overflow-hidden">
             <div
               className={`w-full h-full flex transition-transform duration-1000 ${
                 currentIndex > prevIndex ? "translate-x-0" : "translate-x-full"
@@ -107,9 +118,9 @@ const HomeHero = () => {
               {konten.map((text, index) => (
                 <div
                   key={index}
-                  className="w-full h-full flex-shrink-0 flex items-start justify-between px-6 md:px-20"
+                  className="relative top-14 md:top-16 xl:top-32 w-full h-full flex-shrink-0 flex items-start justify-between px-6 md:px-20"
                 >
-                  <div className="p-2 text-left text-white max-w-xl">
+                  <div className="p-2 text-left text-white max-w-md xl:max-w-xl">
                     <h1 className="font-mono font-bold">{text.title}</h1>
 
                     <p className="font-mono font-bold">-</p>
@@ -123,18 +134,6 @@ const HomeHero = () => {
                     <p className="font-mono font-bold">{text.order}</p>
                   </div>
                 </div>
-              ))}
-            </div>
-
-            <div className="absolute bottom-6 flex items-center justify-center gap-8 lg:gap-12 z-20">
-              {konten.map((_, index) => (
-                <div
-                  key={index}
-                  onClick={() => showPreview(index)}
-                  className={`w-10 md:w-14 lg:w-20 h-[6px] cursor-pointer bg-white ${
-                    currentIndex === index ? "opacity-100" : "opacity-50"
-                  }`}
-                ></div>
               ))}
             </div>
           </div>
