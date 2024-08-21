@@ -55,7 +55,7 @@ const HomeBrand = () => {
               <div className="flex items-start justify-center gap-8 md:gap-28 lg:gap-32">
                 <div className="text-left text-white">
                   <h1 className="font-mono font-bold">THE BRAND</h1>
-                  <p className="font-mono text-sm">&lsquo;08&lsquo;</p>
+                  <p className="font-mono text-sm">&lsquo;PAGE&lsquo;</p>
                 </div>
 
                 <div className="p-2 text-white">

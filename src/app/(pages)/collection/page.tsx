@@ -1,3 +1,4 @@
+import GalleryCollection from "@/app/components/collection/GalleryCollection";
 import HeroCollection from "@/app/components/collection/HeroCollection";
 import NavbarB from "@/app/components/set/NavbarB";
 import React from "react";
@@ -19,6 +20,12 @@ const page = () => {
       <section className="pt-24 md:pt-28">
         <div>
           <HeroCollection />
+        </div>
+      </section>
+
+      <section className="pt-24 md:pt-28">
+        <div>
+          <GalleryCollection />
         </div>
       </section>
     </main>

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Footer from "../set/Footer";
 
 const konten = [
   {
@@ -143,14 +144,8 @@ const HomeHero = () => {
       </div>
 
       <div className="absolute bottom-0 w-full">
-        <div className="flex items-start justify-between px-4">
-          <div className="p-4 text-white">
-            <p className="font-mono font-bold">RV Evolutions</p>
-          </div>
-
-          <div className="p-4 text-white">
-            <p className="font-mono font-bold">&lsquo;HOME&lsquo;</p>
-          </div>
+        <div className="px-2 md:px-6 lg:px-8 xl:px-10">
+          <Footer judul="RV Evolutions" place="HOME" classText="text-white" />
         </div>
       </div>
     </div>
