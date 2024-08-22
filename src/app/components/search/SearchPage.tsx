@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useEffect, useState, useRef } from "react";
-import Identifier from "@/app/id/Identifier";
+import Identifier from "../../valid/identifier.json";
 import { IconSearch } from "@tabler/icons-react";
-import ModalCheckHorizontal from "@/app/components/check/ModalCheckHorizontal";
+import ModalCheckHorizontal from "../../components/check/ModalCheckHorizontal";
 
 interface DataID {
   check: string;

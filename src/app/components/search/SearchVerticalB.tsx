@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { IconSearch } from "@tabler/icons-react";
-import Identifier from "@/app/id/Identifier";
-import ModalCheckVertical from "@/app/components/check/ModalCheckVertical";
+import Identifier from "../../valid/identifier.json";
+import ModalCheckVertical from "../../components/check/ModalCheckVertical";
 
 interface DataID {
   check: string;

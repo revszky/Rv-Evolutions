@@ -1,8 +1,8 @@
 import React from "react";
-import Authenticity from "@/app/components/authenticity/Authenticity";
-import NavbarB from "@/app/components/set/NavbarB";
-import SearchPage from "@/app/components/search/SearchPage";
-import Footer from "@/app/components/set/Footer";
+import Authenticity from "../../components/authenticity/Authenticity";
+import NavbarB from "../../components/set/NavbarB";
+import SearchPage from "../../components/search/SearchPage";
+import Footer from "../../components/set/Footer";
 
 export const metadata = {
   title: "RV • AUTHENTICITY",

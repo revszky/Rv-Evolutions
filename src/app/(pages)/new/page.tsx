@@ -1,4 +1,4 @@
-import NavbarB from "@/app/components/set/NavbarB";
+import NavbarB from "../../components/set/NavbarB";
 import React from "react";
 
 export const metadata = {

@@ -1,7 +1,7 @@
-import GalleryCollection from "@/app/components/collection/GalleryCollection";
-import HeroCollection from "@/app/components/collection/HeroCollection";
-import Footer from "@/app/components/set/Footer";
-import NavbarB from "@/app/components/set/NavbarB";
+import GalleryCollection from "../../components/collection/GalleryCollection";
+import HeroCollection from "../../components/collection/HeroCollection";
+import Footer from "../../components/set/Footer";
+import NavbarB from "../../components/set/NavbarB";
 import React from "react";
 
 export const metadata = {

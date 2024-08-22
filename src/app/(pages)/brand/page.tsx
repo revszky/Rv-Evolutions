@@ -1,8 +1,8 @@
 import React from "react";
-import HeroBrand from "@/app/components/brand/HeroBrand";
-import GalleryBrand from "@/app/components/brand/GalleryBrand";
-import HomeBrand from "@/app/components/brand/HomeBrand";
-import Footer from "@/app/components/set/Footer";
+import HeroBrand from "../../components/brand/HeroBrand";
+import GalleryBrand from "../../components/brand/GalleryBrand";
+import HomeBrand from "../../components/brand/HomeBrand";
+import Footer from "../../components/set/Footer";
 
 export const metadata = {
   title: "RV • BRAND",
