@@ -13,7 +13,7 @@ const page = () => {
   return (
     <main className="min-h-screen flex flex-col">
       <section className="relative">
-        <div className="fixed w-full">
+        <div className="fixed w-full z-20">
           <NavbarB />
         </div>
       </section>
