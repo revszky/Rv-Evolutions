@@ -109,7 +109,7 @@ const AllItems = () => {
             transform: `translateX(-${(currentSlide * 100) / itemsPerSlide}%)`,
           }}
         >
-          {CombinedItems.map((product, index) => (
+          {CombinedItems.map((item, index) => (
             <div
               key={index}
               className="flex-shrink-0 w-24 md:w-1/4 p-4"
@@ -117,16 +117,16 @@ const AllItems = () => {
                 minWidth: `${100 / itemsPerSlide}%`,
               }}
             >
-              <Link href={`/product/${product.url}`}>
+              <Link href={`/item/${item.url}`}>
                 <div className="bg-gray-200">
                   <img
-                    src={product.picture}
-                    alt={product.title}
+                    src={item.picture}
+                    alt={item.title}
                     className="w-full h-full object-cover"
                   />
                   <div className="p-4">
-                    <h3 className="text-lg font-semibold">{product.title}</h3>
-                    <p className="mt-2 text-gray-600">{product.description}</p>
+                    <h3 className="text-lg font-semibold">{item.title}</h3>
+                    <p className="mt-2 text-gray-600">{item.description}</p>
                   </div>
                 </div>
               </Link>

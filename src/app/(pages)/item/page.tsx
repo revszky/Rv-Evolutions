@@ -1,5 +1,5 @@
 import React from "react";
-import AllItems from "../../components/product/AllItems";
+import AllItems from "../../components/item/AllItems";
 
 const page = () => {
   return (

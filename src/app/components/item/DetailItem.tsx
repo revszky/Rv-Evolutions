@@ -4,16 +4,22 @@ import CombinedItems from "../../item/CombinedItems";
 
 interface DetailItemProps {
   detaiItem: string;
+  onTitleChange: (title: string) => void; // Tambahkan prop baru
 }
 
-const DetailItem: React.FC<DetailItemProps> = ({ detaiItem }) => {
+const DetailItem: React.FC<DetailItemProps> = ({
+  detaiItem,
+  onTitleChange,
+}) => {
   const itemData = CombinedItems.find((detail) => detail.url === detaiItem);
 
   useEffect(() => {
     if (itemData) {
-      document.title = `RV • ${itemData.title}`;
+      const title = `RV • ${itemData.title}`;
+      document.title = title;
+      onTitleChange(itemData.title); // Kirim title ke Page
     }
-  }, [itemData]);
+  }, [itemData, onTitleChange]);
 
   if (!itemData) {
     return (

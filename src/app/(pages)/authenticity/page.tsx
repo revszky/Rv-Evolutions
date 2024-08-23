@@ -1,8 +1,9 @@
 import React from "react";
 import Authenticity from "../../components/authenticity/Authenticity";
-import NavbarB from "../../components/set/NavbarB";
 import SearchPage from "../../components/search/SearchPage";
 import Footer from "../../components/set/Footer";
+import NavbarLarge from "../../components/set/NavbarLarge";
+import NavbarMobile from "../../components/set/NavbarMobile";
 
 export const metadata = {
   title: "RV • AUTHENTICITY",
@@ -13,8 +14,27 @@ const page = () => {
   return (
     <main className="min-h-screen flex flex-col">
       <section className="relative">
-        <div className="fixed w-full z-20">
-          <NavbarB />
+        <div className="fixed w-full z-20 bg-white">
+          <div className="hidden xl:block">
+            <NavbarLarge
+              classText="text-black font-mono font-bold"
+              classTextID="text-white font-mono font-bold"
+              classExtra="px-4 py-2 bg-black"
+              picture="/logo/rvblack.png"
+            />
+          </div>
+
+          <div className="block xl:hidden">
+            <NavbarMobile
+              picture="/logo/rvblack.png"
+              classText="text-black"
+              classTextID="text-white"
+              classTextDropdown="text-white"
+              classBgBtn="bg-black"
+              classBgSidebar="bg-white"
+              classBgDropdown="bg-black border border-black"
+            />
+          </div>
         </div>
       </section>
 

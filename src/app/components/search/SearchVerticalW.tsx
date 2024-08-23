@@ -166,7 +166,7 @@ const SearchVerticalW = ({
           onChange={handleInputChange}
           onFocus={handleInputFocus}
           placeholder="xxx-xxx-xxx"
-          className="p-2 w-52 border-t border-r border-b font-mono font-bold border-white focus:outline-none bg-inherit text-white"
+          className="p-2 w-52 border-t border-r border-b font-mono font-bold border-black focus:outline-none bg-inherit text-black"
           maxLength={9}
           onKeyDown={(e) => e.key === "Enter" && handleSearchClick()}
           ref={inputRef}
