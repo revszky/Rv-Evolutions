@@ -112,21 +112,28 @@ const AllItems = () => {
           {CombinedItems.map((item, index) => (
             <div
               key={index}
-              className="flex-shrink-0 w-24 md:w-1/4 p-4"
+              className="flex-shrink-0 w-24 md:w-1/4 p-2"
               style={{
                 minWidth: `${100 / itemsPerSlide}%`,
               }}
             >
               <Link href={`/item/${item.url}`}>
-                <div className="bg-gray-200">
+                <div className="p-2">
                   <img
                     src={item.picture}
                     alt={item.title}
                     className="w-full h-full object-cover"
                   />
-                  <div className="p-4">
-                    <h3 className="text-lg font-semibold">{item.title}</h3>
-                    <p className="mt-2 text-gray-600">{item.description}</p>
+                  <div className="py-2">
+                    <div className="pb-4">
+                      <h3 className="font-mono font-bold">{item.title}</h3>
+                      <p className="font-mono text-xs md:text-sm">{item.sub}</p>
+                    </div>
+
+                    <p className="font-mono font-bold text-xs md:text-sm">
+                      <span className="pr-[4px]">IDR</span>
+                      {item.price}
+                    </p>
                   </div>
                 </div>
               </Link>
@@ -136,21 +143,21 @@ const AllItems = () => {
       </div>
 
       <button
-        className={`absolute top-1/2 transform -translate-y-1/2 left-0 ${
+        className={`absolute top-1/2 transform -translate-y-1/2 left-[6px] p-2 rounded-full bg-black bg-opacity-60 ${
           currentSlide === 0 ? "hidden" : ""
         }`}
         onClick={prevSlide}
       >
-        <IconChevronsLeft />
+        <IconChevronsLeft className="text-white" />
       </button>
 
       <button
-        className={`absolute top-1/2 transform -translate-y-1/2 right-0 ${
+        className={`absolute top-1/2 transform -translate-y-1/2 right-[6px] p-2 rounded-full bg-black bg-opacity-60 ${
           currentSlide === maxSlides ? "hidden" : ""
         }`}
         onClick={nextSlide}
       >
-        <IconChevronsRight />
+        <IconChevronsRight className="text-white" />
       </button>
     </div>
   );

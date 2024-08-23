@@ -2,7 +2,9 @@
     {
         "url": "ASASAS",
         "picture": "https://fastly.picsum.photos/id/384/500/500.jpg?hmac=sK9eXDCyUIqO2aS2_wP8n3yvcx6oul6nbRucXaETfX0",
-        "title": "t-shirt",
-        "description": "hello ini t-shirt ya gaes ya"
+        "title": "T-SHIRT",
+        "sub": "Ini t-shirt yang keren",
+        "description": "hello ini t-shirt ya gaes ya",
+        "price": "120,000,00"
     }
 ]

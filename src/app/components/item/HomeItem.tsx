@@ -82,7 +82,7 @@ const HomeItem = () => {
                   <p className="font-mono font-bold">/</p>
                 </div>
 
-                <div className="text-white max-w-[220px]">
+                <div className="text-white max-w-[160px] md:max-w-[220px]">
                   <h2 className="font-mono font-bold text-left">NOTICE</h2>
                   <div className="py-4 text-left">
                     <p className="font-mono text-sm">
