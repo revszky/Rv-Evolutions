@@ -3,6 +3,11 @@ import AllItems from "../../components/item/AllItems";
 import HomeItem from "@/app/components/item/HomeItem";
 import Footer from "@/app/components/set/Footer";
 
+export const metadata = {
+  title: "RV • ALL ITEM",
+  description: "All our items or products are here.",
+};
+
 const page = () => {
   return (
     <main className="min-h-screen flex flex-col">
