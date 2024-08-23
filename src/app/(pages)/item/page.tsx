@@ -1,16 +1,32 @@
 import React from "react";
 import AllItems from "../../components/item/AllItems";
+import HomeItem from "@/app/components/item/HomeItem";
+import Footer from "@/app/components/set/Footer";
 
 const page = () => {
   return (
-    <main>
-      <section>
-        <div></div>
-      </section>
-
+    <main className="min-h-screen flex flex-col">
       <section>
         <div>
-          <AllItems />
+          <HomeItem />
+        </div>
+      </section>
+
+      <section className="flex-grow">
+        <section className="py-14">
+          <div>
+            <AllItems />
+          </div>
+        </section>
+      </section>
+
+      <section className="w-full">
+        <div className="px-2 md:px-6 lg:px-8 xl:px-10">
+          <Footer
+            judul="RV Evolutions"
+            place="ALL ITEM"
+            classText="text-black"
+          />
         </div>
       </section>
     </main>

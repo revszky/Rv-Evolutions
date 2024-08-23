@@ -3,7 +3,7 @@
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import { IconMenu2, IconSearch, IconX } from "@tabler/icons-react";
-import SearchVerticalW from "../search/SearchVerticalW";
+import SearchMobile from "../search/SearchMobile";
 
 interface NavbarMobileProps {
   picture: string;
@@ -31,10 +31,6 @@ const NavbarMobile: React.FC<NavbarMobileProps> = ({
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
-
-  const mengaturMenuKlik = () => {
-    closeMenu();
-  };
 
   const toggleDropdown = () => {
     setDropdownVisible(!dropdownVisible);
@@ -68,8 +64,8 @@ const NavbarMobile: React.FC<NavbarMobileProps> = ({
       halaman: "/collection",
     },
     {
-      judul: "NEW",
-      halaman: "/new",
+      judul: "ALL ITEM",
+      halaman: "/item",
     },
   ];
 
@@ -180,7 +176,7 @@ const NavbarMobile: React.FC<NavbarMobileProps> = ({
                 <Link
                   key={urutan}
                   href={menu.halaman}
-                  onClick={mengaturMenuKlik}
+                  onClick={closeMenu}
                   className={`font-mono font-bold text-sm py-2 ${classText}`}
                 >
                   {menu.judul}
@@ -229,7 +225,7 @@ const NavbarMobile: React.FC<NavbarMobileProps> = ({
           </div>
 
           <div className="py-2">
-            <SearchVerticalW isOpen={openSearchMenu} onClose={closeMenuID} />
+            <SearchMobile isOpen={openSearchMenu} onClose={closeMenuID} />
           </div>
         </div>
       </div>
