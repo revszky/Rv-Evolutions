@@ -5,6 +5,7 @@
         "title": "T-SHIRT",
         "sub": "Ini t-shirt yang keren",
         "description": "hello ini t-shirt ya gaes ya",
+        "colors": "#000000",
         "price": "120,000,00"
     }
 ]

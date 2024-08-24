@@ -125,9 +125,25 @@ const AllItems = () => {
                     className="w-full h-full object-cover"
                   />
                   <div className="py-2">
-                    <div className="pb-4">
+                    <div className="text-left">
                       <h3 className="font-mono font-bold">{item.title}</h3>
                       <p className="font-mono text-xs md:text-sm">{item.sub}</p>
+                    </div>
+
+                    <div className="flex items-center justify-start py-2 gap-[6px]">
+                      <div className="text-left">
+                        <p className="font-mono text-xs md:text-sm">Colors:</p>
+                      </div>
+
+                      <div className="grid grid-cols-3 gap-2">
+                        {item.colors.split(", ").map((color, idx) => (
+                          <div
+                            key={idx}
+                            className="px-[10px] md:px-4 py-[6px]"
+                            style={{ backgroundColor: color }}
+                          ></div>
+                        ))}
+                      </div>
                     </div>
 
                     <p className="font-mono font-bold text-xs md:text-sm">

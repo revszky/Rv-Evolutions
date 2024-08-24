@@ -33,9 +33,9 @@ const Page: React.FC<DetailItemProps> = ({ params }) => {
               picture="/logo/rvblack.png"
               classText="text-black"
               classTextID="text-white"
-              classInput="border-white"
-              classInputLogo="border-white"
-              classInputIconSearch="text-white"
+              classInput="border-black"
+              classInputLogo="border-black"
+              classInputIconSearch="text-black"
               classTextDropdown="text-white"
               classBgBtn="bg-black"
               classBgSidebar="bg-white"
@@ -57,7 +57,7 @@ const Page: React.FC<DetailItemProps> = ({ params }) => {
         <div className="px-2 md:px-6 lg:px-8 xl:px-10">
           <Footer
             judul="RV Evolutions"
-            place={`DETAIL • ${title.toUpperCase()}`}
+            place={`DETAIL • ${title}`}
             classText="text-black"
           />
         </div>

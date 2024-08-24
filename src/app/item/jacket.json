@@ -5,6 +5,7 @@
         "title": "JACKET",
         "sub": "Ini jacket yang keren",
         "description": "hello ini jacket ya gaes ya",
+        "colors": "#800000, #000000, #001F3F",
         "price": "180,000,00"
     }
 ]
