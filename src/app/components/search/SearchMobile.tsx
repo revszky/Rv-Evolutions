@@ -11,7 +11,18 @@ interface DataID {
   valid: string;
 }
 
-const SearchMobile = ({ isOpen }: { isOpen: boolean; onClose: () => void }) => {
+const SearchMobile = ({
+  isOpen,
+  inputBorderClass,
+  inputLogoClass,
+  inputIconSearchClass,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  inputBorderClass: string;
+  inputLogoClass: string;
+  inputIconSearchClass: string;
+}) => {
   const [searchValue, setSearchValue] = useState<string>("");
   const [warningMessage, setWarningMessage] = useState<string>("");
   const [result, setResult] = useState<DataID | null>(null);
@@ -148,7 +159,9 @@ const SearchMobile = ({ isOpen }: { isOpen: boolean; onClose: () => void }) => {
       ref={containerRef}
     >
       <div className="flex items-center justify-center relative ml-8">
-        <div className="p-[6px] bg-black absolute -left-[34px]">
+        <div
+          className={`p-[6.4px] bg-black border-t border-b border-l ${inputLogoClass} absolute -left-[34px]`}
+        >
           <h1 className="font-mono font-bold text-lg text-white text-center">
             RV
           </h1>
@@ -161,14 +174,14 @@ const SearchMobile = ({ isOpen }: { isOpen: boolean; onClose: () => void }) => {
           onChange={handleInputChange}
           onFocus={handleInputFocus}
           placeholder="xxx-xxx-xxx"
-          className="p-2 w-52 font-mono font-bold bg-white focus:outline-none bg-inherit text-black"
+          className={`p-2 w-52 font-mono font-bold border-t border-b border-r focus:outline-none bg-inherit ${inputBorderClass}`}
           maxLength={9}
           onKeyDown={(e) => e.key === "Enter" && handleSearchClick()}
           ref={inputRef}
         />
 
         <button className="p-2 absolute right-0" onClick={handleSearchClick}>
-          <IconSearch className="w-5 h-5 text-black stroke-2" />
+          <IconSearch className={`w-5 h-5 ${inputIconSearchClass} stroke-2`} />
         </button>
       </div>
 

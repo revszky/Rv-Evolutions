@@ -9,6 +9,9 @@ interface NavbarMobileProps {
   picture: string;
   classText: string;
   classTextID: string;
+  classInput: string;
+  classInputLogo: string;
+  classInputIconSearch: string;
   classTextDropdown: string;
   classBgDropdown: string;
   classBgSidebar: string;
@@ -19,6 +22,9 @@ const NavbarMobile: React.FC<NavbarMobileProps> = ({
   picture,
   classText,
   classTextID,
+  classInput,
+  classInputLogo,
+  classInputIconSearch,
   classTextDropdown,
   classBgSidebar,
   classBgDropdown,
@@ -225,7 +231,13 @@ const NavbarMobile: React.FC<NavbarMobileProps> = ({
           </div>
 
           <div className="py-2">
-            <SearchMobile isOpen={openSearchMenu} onClose={closeMenuID} />
+            <SearchMobile
+              inputLogoClass={classInputLogo}
+              inputIconSearchClass={classInputIconSearch}
+              inputBorderClass={classInput}
+              isOpen={openSearchMenu}
+              onClose={closeMenuID}
+            />
           </div>
         </div>
       </div>
