@@ -94,8 +94,8 @@ const HomeBrand = () => {
                   <div className="text-white max-w-[160px] md:max-w-md">
                     <p className="text-left font-mono text-sm">
                       Creating DNA in the world of fashion, combining dynamic
-                      and innovative designs to express each individual's unique
-                      identity.
+                      and innovative designs to express each individual&lsquo;s
+                      unique identity.
                     </p>
                   </div>
                 </div>
