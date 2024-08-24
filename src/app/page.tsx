@@ -6,7 +6,7 @@ import NavbarMobile from "./components/set/NavbarMobile";
 
 export default function Home() {
   return (
-    <main>
+    <main className="min-h-screen bg-black">
       <section className="relative">
         <div className="relative z-40">
           <div className="hidden xl:block">

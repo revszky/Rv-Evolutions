@@ -96,7 +96,7 @@ const HomeHero = () => {
     >
       <div className="absolute inset-0 bg-black bg-opacity-60 flex flex-col items-center justify-center pointer-events-none"></div>
 
-      <div className="absolute custom-top-terkecil top-80 lg:top-[600px] xl:top-72 left-0 right-0 z-10">
+      <div className="absolute custom-top-terkecil top-96 md:top-[500px] lg:top-[700px] xl:top-96 left-0 right-0 z-10">
         <div className="flex flex-col items-center justify-center">
           <div className="relative flex items-center justify-center w-full h-[420px] md:h-96 lg:h-[500px] xl:h-[340px] bg-cover bg-center overflow-hidden">
             <div

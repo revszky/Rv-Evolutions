@@ -3,6 +3,8 @@
 import React, { useEffect, useState } from "react";
 import NavbarMobile from "../set/NavbarMobile";
 import NavbarLarge from "../set/NavbarLarge";
+import Link from "next/link";
+import { IconChevronLeft } from "@tabler/icons-react";
 
 const HomeBrand = () => {
   const [isScrolledPast, setIsScrolledPast] = useState(false);
@@ -63,7 +65,7 @@ const HomeBrand = () => {
 
         <div>
           <div
-            className="relative flex items-center justify-center w-full h-64 md:h-80 lg:h-96 bg-cover bg-center"
+            className="relative flex items-center justify-center w-full h-96 bg-cover bg-center"
             style={{
               backgroundImage: `url(${background})`,
               backgroundSize: "cover",
@@ -71,23 +73,37 @@ const HomeBrand = () => {
               backgroundRepeat: "no-repeat",
             }}
           >
-            <div className="absolute inset-0 bg-black bg-opacity-60 flex items-end justify-center p-2 md:p-10 lg:p-16">
-              <div className="flex items-start justify-center gap-8 md:gap-28 lg:gap-32">
-                <div className="text-left text-white">
-                  <h1 className="font-mono font-bold">THE BRAND</h1>
-                  <p className="font-mono text-sm">&lsquo;PAGE&lsquo;</p>
-                </div>
+            <div className="absolute inset-0 bg-black bg-opacity-60"></div>
 
-                <div className="p-2 text-white">
-                  <p className="font-mono font-bold">/</p>
-                </div>
+            <div className="absolute w-full px-4">
+              <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center md:justify-between">
+                <Link
+                  href="/"
+                  className="flex items-center font-mono font-bold text-white self-start lg:self-auto py-8 lg:py-0"
+                >
+                  <IconChevronLeft className="w-4 h-4" />
+                  BACK
+                </Link>
 
-                <div className="text-white">
-                  <h2 className="font-mono font-bold text-left">INDEX</h2>
-                  <div className="py-4 text-left">
-                    <p className="font-mono text-sm">RV Evolutions</p>
-                    <p className="font-mono text-sm">THE DNA</p>
+                <div className="flex items-start gap-10">
+                  <div className="text-left text-white">
+                    <h1 className="font-mono font-bold">THE BRAND</h1>
+                    <p className="font-mono text-sm">&lsquo;PAGE&lsquo;</p>
                   </div>
+
+                  <div className="text-white max-w-[160px] md:max-w-md">
+                    <p className="text-left font-mono text-sm">
+                      Creating DNA in the world of fashion, combining dynamic
+                      and innovative designs to express each individual's unique
+                      identity.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="text-white self-end lg:self-auto px-0 lg:px-2 pt-8 lg:pt-0">
+                  <p className="font-mono font-bold text-sm">
+                    &lsquo;RV24&lsquo;-25
+                  </p>
                 </div>
               </div>
             </div>
