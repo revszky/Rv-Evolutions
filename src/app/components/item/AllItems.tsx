@@ -126,7 +126,9 @@ const AllItems = () => {
                   />
                   <div className="py-2">
                     <div className="text-left">
-                      <h3 className="font-mono font-bold">{item.title}</h3>
+                      <h3 className="font-mono font-bold text-sm md:text-base">
+                        {item.title}
+                      </h3>
                       <p className="font-mono text-xs md:text-sm">{item.sub}</p>
                     </div>
 
