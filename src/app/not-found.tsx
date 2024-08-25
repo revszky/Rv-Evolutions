@@ -5,8 +5,16 @@ const NotFound = () => {
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="flex flex-col items-center justify-center p-4">
-        <div className="text-center text-6xl">
-          <p className="font-glitch">....</p>
+        <div className="w-[360px] h-[360px] border border-black">
+          <img
+            src="/logo/rvblack.png"
+            alt="Rv"
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        <div className="text-center text-6xl p-2">
+          <p className="font-mono">....</p>
         </div>
 
         <div className="text-center">
@@ -18,15 +26,9 @@ const NotFound = () => {
 
         <Link
           href="/"
-          className="relative flex items-center justify-center m-6"
+          className="m-6 px-4 py-[6px] border border-black hover:bg-black text-black hover:text-white hover:duration-500"
         >
-          <p className="relative text-white font-mono">Go Home</p>
-          <p className="absolute -top-14 -left-4 font-glitch text-9xl -z-10">
-            -
-          </p>
-          <p className="absolute -top-14 -right-4 font-glitch text-9xl -z-10">
-            -
-          </p>
+          <p className="font-mono font-bold text-lg">Go Home</p>
         </Link>
       </div>
     </div>

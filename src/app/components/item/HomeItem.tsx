@@ -38,7 +38,7 @@ const HomeItem = () => {
       <div className="relative">
         <div
           className={`fixed z-20 w-full transition-colors duration-300 ${
-            isScrolledPast ? "bg-black bg-opacity-50" : ""
+            isScrolledPast ? "bg-black bg-opacity-80" : ""
           }`}
         >
           <div className="hidden xl:block">

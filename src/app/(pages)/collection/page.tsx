@@ -14,7 +14,7 @@ const page = () => {
   return (
     <main className="min-h-screen flex flex-col">
       <section className="relative">
-        <div className="fixed w-full bg-white">
+        <div className="fixed w-full bg-white bg-opacity-80">
           <div className="hidden xl:block">
             <NavbarLarge
               classText="text-black font-mono font-bold"
