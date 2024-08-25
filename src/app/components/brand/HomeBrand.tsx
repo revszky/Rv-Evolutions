@@ -13,11 +13,11 @@ const HomeBrand = () => {
       let threshold = 0;
 
       if (window.matchMedia("(min-width: 1024px)").matches) {
-        threshold = 240;
+        threshold = 100;
       } else if (window.matchMedia("(min-width: 1280px)").matches) {
-        threshold = 280;
+        threshold = 100;
       } else {
-        threshold = 240;
+        threshold = 100;
       }
 
       setIsScrolledPast(window.scrollY > threshold);

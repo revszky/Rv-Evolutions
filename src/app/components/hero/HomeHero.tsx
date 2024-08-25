@@ -96,7 +96,7 @@ const HomeHero = () => {
     >
       <div className="absolute inset-0 bg-black bg-opacity-60 flex flex-col items-center justify-center pointer-events-none"></div>
 
-      <div className="absolute custom-top-terkecil top-96 md:top-[500px] lg:top-[700px] xl:top-96 left-0 right-0 z-10">
+      <div className="absolute custom-top-terkecil custom-top-menengah top-[440px] md:top-[500px] lg:top-[700px] xl:top-[320px] 2xl:top-[400px] left-0 right-0 z-10">
         <div className="flex flex-col items-center justify-center">
           <div className="relative flex items-center justify-center w-full h-[420px] md:h-96 lg:h-[500px] xl:h-[340px] bg-cover bg-center overflow-hidden">
             <div
@@ -140,9 +140,13 @@ const HomeHero = () => {
             ))}
           </div>
         </div>
+
+        <div className="text-white absolute top-0 xl:top-8 left-6 2xl:left-8">
+          <p className="font-mono font-bold text-sm">&lsquo;RV24&lsquo;-25</p>
+        </div>
       </div>
 
-      <div className="absolute bottom-0 w-full">
+      <div className="fixed bottom-0 w-full">
         <div className="px-2 md:px-6 lg:px-8 xl:px-10">
           <Footer judul="RV Evolutions" place="HOME" classText="text-white" />
         </div>

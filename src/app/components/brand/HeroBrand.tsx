@@ -3,14 +3,14 @@ import React from "react";
 const HeroBrand = () => {
   return (
     <div className="flex flex-col px-4 lg:px-8 2xl:px-32">
-      <div className="flex flex-col md:flex-row items-center md:items-start justify-center md:justify-between gap-6 md:gap-10">
-        <div className="flex items-start justify-center gap-10 md:gap-6 xl:gap-10">
+      <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center lg:justify-between gap-6 lg:gap-10">
+        <div className="flex items-start justify-center gap-10 lg:gap-6 xl:gap-10">
           <div className="text-left">
             <h1 className="font-mono font-bold">RV EVOLUTIONS</h1>
             <h2 className="font-mono font-bold">•</h2>
           </div>
 
-          <div className="max-w-sm md:max-w-md xl:max-w-xl">
+          <div className="max-w-sm md:max-w-xl lg:max-w-md xl:max-w-xl">
             <p className="font-mono text-xs md:text-sm text-left">
               Our designs reflect a dynamic personality, where every detail is
               considered to provide a unique fashion experience. We believe that
@@ -22,8 +22,8 @@ const HeroBrand = () => {
           </div>
         </div>
 
-        <div className="max-w-sm md:md:max-w-md xl:max-w-xl">
-          <p className="font-mono text-xs md:text-sm text-left">
+        <div className="max-w-sm md:md:max-w-xl lg:max-w-md xl:max-w-xl">
+          <p className="font-mono text-xs md:text-sm text-center lg:text-left">
             Creating a DNA Trace in the World of Fashion, where people with DNA
             who are interested in the world of fashion can express their unique
             identity through authentic and innovative style. RV Evolutions is

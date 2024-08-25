@@ -6,7 +6,13 @@
 
 @media (max-width: 375px) and (max-height: 667px) {
     .custom-top-terkecil {
-      top: 10rem;
+      top: 16rem;
+    }
+  }
+
+  @media (max-width: 360px) and (max-height: 740px) {
+    .custom-top-menengah {
+      top: 20rem;
     }
   }
   

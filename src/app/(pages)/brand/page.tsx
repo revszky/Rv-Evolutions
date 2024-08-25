@@ -19,7 +19,7 @@ const page = () => {
       </section>
 
       <section className="flex-grow">
-        <section className="py-14">
+        <section className="pt-14">
           <div>
             <HeroBrand />
           </div>

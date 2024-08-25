@@ -42,13 +42,13 @@ const page = () => {
       </section>
 
       <section className="flex-grow">
-        <section className="pt-24 md:pt-28">
+        <section className="pt-12 md:pt-28">
           <div>
             <HeroCollection />
           </div>
         </section>
 
-        <section className="pt-24 md:pt-28">
+        <section className="py-10 px-4">
           <div>
             <GalleryCollection />
           </div>

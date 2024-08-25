@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-black">
       <section className="relative">
-        <div className="relative z-40">
+        <div className="fixed w-full z-40">
           <div className="hidden xl:block">
             <NavbarLarge
               classText="text-white font-mono font-bold"

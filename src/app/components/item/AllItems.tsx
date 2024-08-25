@@ -14,12 +14,7 @@ const AllItems = () => {
   useEffect(() => {
     const updateItemsPerSlide = () => {
       const newItemsPerSlide = window.innerWidth >= 768 ? 4 : 2;
-
-      const slideOffset = Math.floor(
-        (currentSlide * itemsPerSlide!) / newItemsPerSlide
-      );
       setItemsPerSlide(newItemsPerSlide);
-      setCurrentSlide(slideOffset);
     };
 
     updateItemsPerSlide();
@@ -28,16 +23,21 @@ const AllItems = () => {
     return () => {
       window.removeEventListener("resize", updateItemsPerSlide);
     };
-  }, [currentSlide, itemsPerSlide]);
+  }, []);
 
   useEffect(() => {
     if (itemsPerSlide !== null) {
-      const maxSlides = Math.ceil(CombinedItems.length / itemsPerSlide) - 1;
+      const maxSlides = CombinedItems.length - itemsPerSlide;
+
       if (currentSlide > maxSlides) {
         setCurrentSlide(maxSlides);
       }
+
+      if (CombinedItems.length <= itemsPerSlide) {
+        setCurrentSlide(0);
+      }
     }
-  }, [itemsPerSlide, currentSlide]);
+  }, [itemsPerSlide, CombinedItems.length]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -58,10 +58,8 @@ const AllItems = () => {
     return null;
   }
 
-  const maxSlides = Math.ceil(CombinedItems.length / itemsPerSlide) - 1;
-
   const nextSlide = () => {
-    if (currentSlide < maxSlides) {
+    if (itemsPerSlide !== null && currentSlide + 1 < CombinedItems.length) {
       setCurrentSlide(currentSlide + 1);
     }
   };
@@ -94,6 +92,8 @@ const AllItems = () => {
     setTouchStartX(null);
     setTouchEndX(null);
   };
+
+  const maxSlides = CombinedItems.length - itemsPerSlide;
 
   return (
     <div
@@ -160,7 +160,9 @@ const AllItems = () => {
 
       <button
         className={`absolute top-1/2 transform -translate-y-1/2 left-[6px] p-2 rounded-full bg-black bg-opacity-60 ${
-          currentSlide === 0 ? "hidden" : ""
+          currentSlide === 0 || CombinedItems.length <= itemsPerSlide
+            ? "hidden"
+            : ""
         }`}
         onClick={prevSlide}
       >
@@ -169,7 +171,7 @@ const AllItems = () => {
 
       <button
         className={`absolute top-1/2 transform -translate-y-1/2 right-[6px] p-2 rounded-full bg-black bg-opacity-60 ${
-          currentSlide === maxSlides ? "hidden" : ""
+          currentSlide >= maxSlides ? "hidden" : ""
         }`}
         onClick={nextSlide}
       >
