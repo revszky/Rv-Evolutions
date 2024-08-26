@@ -13,12 +13,12 @@ interface DetailItemProps {
 }
 
 const Page: React.FC<DetailItemProps> = ({ params }) => {
-  const [title, setTitle] = useState<string>("");
+  const [typeItem, setTypeItem] = useState<string>("");
 
   return (
     <main className="min-h-screen flex flex-col">
       <section className="relative">
-        <div className="fixed w-full z-20 bg-white">
+        <div className="fixed w-full z-20 bg-white bg-opacity-80">
           <div className="hidden xl:block">
             <NavbarLarge
               classText="text-black font-mono font-bold"
@@ -48,7 +48,7 @@ const Page: React.FC<DetailItemProps> = ({ params }) => {
       <section className="flex-grow">
         <section className="pt-24 md:pt-28">
           <div>
-            <DetailItem detaiItem={params.detail} onTitleChange={setTitle} />
+            <DetailItem detaiItem={params.detail} onTitleChange={setTypeItem} />
           </div>
         </section>
       </section>
@@ -57,7 +57,7 @@ const Page: React.FC<DetailItemProps> = ({ params }) => {
         <div className="px-2 md:px-6 lg:px-8 xl:px-10">
           <Footer
             judul="RV Evolutions"
-            place={`DETAIL • ${title}`}
+            place={`DETAIL • ${typeItem}`}
             classText="text-black"
           />
         </div>

@@ -4,7 +4,7 @@ import CombinedItems from "../../item/CombinedItems";
 
 interface DetailItemProps {
   detaiItem: string;
-  onTitleChange: (title: string) => void;
+  onTitleChange: (typeItem: string) => void;
 }
 
 const DetailItem: React.FC<DetailItemProps> = ({
@@ -15,8 +15,8 @@ const DetailItem: React.FC<DetailItemProps> = ({
 
   useEffect(() => {
     if (itemData) {
-      document.title = `RV • ${itemData.title}`;
-      onTitleChange(itemData.title);
+      document.title = `RV • ${itemData.typeItem}`;
+      onTitleChange(itemData.typeItem);
     }
   }, [itemData, onTitleChange]);
 
