@@ -66,8 +66,8 @@ const NavbarMobile: React.FC<NavbarMobileProps> = ({
       halaman: "/brand",
     },
     {
-      judul: "COLLECTION",
-      halaman: "/collection",
+      judul: "OUR COLLECTION",
+      halaman: "/our-collection",
     },
     {
       judul: "ALL ITEM",

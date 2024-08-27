@@ -96,9 +96,9 @@ const HomeHero = () => {
     >
       <div className="absolute inset-0 bg-black bg-opacity-60 flex flex-col items-center justify-center pointer-events-none"></div>
 
-      <div className="absolute custom-top-terkecil custom-top-menengah top-[440px] md:top-[500px] lg:top-[700px] xl:top-[320px] 2xl:top-[400px] left-0 right-0 z-10">
+      <div className="absolute bottom-32 left-0 right-0 z-10">
         <div className="flex flex-col items-center justify-center">
-          <div className="relative flex items-center justify-center w-full h-[420px] md:h-96 lg:h-[500px] xl:h-[340px] bg-cover bg-center overflow-hidden">
+          <div className="relative -top-10 flex items-center justify-center w-full h-[300px] bg-cover bg-center overflow-hidden">
             <div
               className={`w-full h-full flex transition-transform duration-1000 ${
                 currentIndex > prevIndex ? "translate-x-0" : "translate-x-full"
@@ -110,7 +110,7 @@ const HomeHero = () => {
                   key={index}
                   className="relative top-14 md:top-16 xl:top-32 w-full h-full flex-shrink-0 flex items-start justify-between px-6 md:px-20"
                 >
-                  <div className="p-2 text-left text-white max-w-[240px] md:max-w-md xl:max-w-xl">
+                  <div className="p-2 text-left text-white max-w-[240px] md:max-w-md xl:max-w-2xl">
                     <h1 className="font-mono font-bold">{text.title}</h1>
 
                     <p className="font-mono font-bold">-</p>
@@ -128,7 +128,7 @@ const HomeHero = () => {
             </div>
           </div>
 
-          <div className="absolute bottom-32 md:bottom-20 lg:bottom-32 xl:bottom-0 flex items-center justify-center gap-8 lg:gap-12 z-20">
+          <div className="absolute bottom-10 md:bottom-0 flex items-center justify-center gap-8 lg:gap-12 z-20">
             {konten.map((_, index) => (
               <div
                 key={index}
@@ -141,7 +141,7 @@ const HomeHero = () => {
           </div>
         </div>
 
-        <div className="text-white absolute top-0 xl:top-8 left-6 2xl:left-8">
+        <div className="text-white absolute -top-4 xl:top-8 left-6 2xl:left-8">
           <p className="font-mono font-bold text-sm">&lsquo;RV24&lsquo;-25</p>
         </div>
       </div>

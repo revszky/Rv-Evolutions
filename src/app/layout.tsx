@@ -4,6 +4,20 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "RV • Evolutions",
   description: "Liven up every moment with a revolutionary fashion twist.",
+  openGraph: {
+    title: "RV • Evolutions",
+    description: "Liven up every moment with a revolutionary fashion twist.",
+    url: "https://www.rvevolutions.com/",
+    type: "website",
+    images: [
+      {
+        url: "/rv-fav.jpg",
+        width: 800,
+        height: 600,
+        alt: "RV • Evolutions Logo",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -14,16 +28,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/rv-fav.jpg" sizes="any" />
-
-        <meta property="og:title" content="RV • Evolutions" />
-        <meta
-          property="og:description"
-          content="Liven up every moment with a revolutionary fashion twist."
-        />
-        <meta property="og:image" content="/rv-fav.jpg" />
-        <meta property="og:url" content="https://www.rvevolutions.com/" />
-        <meta property="og:type" content="website" />
+        <link rel="icon" href="/rv.ico" sizes="any" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/rv.ico" />
       </head>
 
       <body>

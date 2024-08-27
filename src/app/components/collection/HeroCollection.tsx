@@ -17,7 +17,7 @@ const HeroCollection = () => {
         <div className="flex items-start gap-10">
           <div className="text-left max-w-[200px]">
             <h1 className="font-mono font-bold">
-              STYLE TRANSFORMATION IN EACH COLLECTION
+              STYLE TRANSFORMATION IN EVERY OUR ITEM COLLECTION
             </h1>
             <p className="font-mono text-sm">&lsquo;PAGE&lsquo;</p>
           </div>

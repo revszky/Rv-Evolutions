@@ -1,3 +1,4 @@
+import { IconNotification } from "@tabler/icons-react";
 import Link from "next/link";
 import React from "react";
 
@@ -10,13 +11,7 @@ interface NavbarLargeProps {
 
 const menuItems = [
   { href: "/brand", label: "BRAND" },
-  { href: "/collection", label: "COLLECTION" },
-  { href: "/item", label: "ALL ITEM", extraClass: "text-white" },
-  {
-    href: "/authenticity",
-    label: "CHECK ID",
-    extraClass: "px-4 py-2 bg-white text-black",
-  },
+  { href: "/our-collection", label: "OUR COLLECTION" },
 ];
 
 const NavbarLarge: React.FC<NavbarLargeProps> = ({
@@ -43,9 +38,9 @@ const NavbarLarge: React.FC<NavbarLargeProps> = ({
       </Link>
 
       <div className="flex items-center justify-center gap-10">
-        <Link href="/item" className={classText}>
-          ALL ITEM
-        </Link>
+        <button className={classText}>
+          <IconNotification className="w-6 h-6 stroke-[2.4]" />
+        </button>
 
         <Link href="/authenticity" className={classExtra}>
           <h2 className={classTextID}>CHECK ID</h2>

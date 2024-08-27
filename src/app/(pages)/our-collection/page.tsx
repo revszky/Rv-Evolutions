@@ -1,9 +1,9 @@
 import React from "react";
 import NavbarLarge from "@/app/components/set/NavbarLarge";
-import GalleryCollection from "../../components/collection/GalleryCollection";
 import HeroCollection from "../../components/collection/HeroCollection";
 import Footer from "../../components/set/Footer";
 import NavbarMobile from "../../components/set/NavbarMobile";
+import AllItems from "../../components/item/AllItems";
 
 export const metadata = {
   title: "RV • COLLECTION",
@@ -50,7 +50,7 @@ const page = () => {
 
         <section className="py-10 px-4">
           <div>
-            <GalleryCollection />
+            <AllItems />
           </div>
         </section>
       </section>
@@ -59,7 +59,7 @@ const page = () => {
         <div className="px-2 md:px-6 lg:px-8 xl:px-10">
           <Footer
             judul="RV Evolutions"
-            place="COLLECTION"
+            place="OUR COLLECTION"
             classText="text-black"
           />
         </div>

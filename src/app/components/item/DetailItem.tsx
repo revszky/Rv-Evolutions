@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import CombinedItems from "../../item/CombinedItems";
+import NotFound from "../../not-found";
 
 interface DetailItemProps {
   detaiItem: string;
@@ -24,7 +25,9 @@ const DetailItem: React.FC<DetailItemProps> = ({
     return (
       <main>
         <section>
-          <div>kosong</div>
+          <div>
+            <NotFound />
+          </div>
         </section>
       </main>
     );
