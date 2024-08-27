@@ -47,6 +47,7 @@ const HomeItem = () => {
               classTextID="text-black font-mono font-bold"
               classExtra="px-4 py-2 bg-white"
               picture="/logo/rvwhite.png"
+              classModalNotif="text-black"
             />
           </div>
 
@@ -62,6 +63,7 @@ const HomeItem = () => {
               classBgBtn="bg-white"
               classBgSidebar="bg-black"
               classBgDropdown="bg-white border border-black"
+              classModalNotif="text-black"
             />
           </div>
         </div>
