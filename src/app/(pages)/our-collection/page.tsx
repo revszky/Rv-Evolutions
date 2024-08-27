@@ -14,13 +14,14 @@ const page = () => {
   return (
     <main className="min-h-screen flex flex-col">
       <section className="relative">
-        <div className="fixed w-full bg-white bg-opacity-80">
+        <div className="fixed w-full z-20 bg-white bg-opacity-80">
           <div className="hidden xl:block">
             <NavbarLarge
               classText="text-black font-mono font-bold"
               classTextID="text-white font-mono font-bold"
               classExtra="px-4 py-2 bg-black"
               picture="/logo/rvblack.png"
+              classModalNotif="text-black"
             />
           </div>
 
@@ -36,6 +37,7 @@ const page = () => {
               classBgBtn="bg-black"
               classBgSidebar="bg-white"
               classBgDropdown="bg-black border border-black"
+              classModalNotif="text-black"
             />
           </div>
         </div>

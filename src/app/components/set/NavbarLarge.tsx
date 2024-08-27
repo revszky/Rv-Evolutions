@@ -1,12 +1,13 @@
-import { IconNotification } from "@tabler/icons-react";
 import Link from "next/link";
 import React from "react";
+import Notification from "./Notification";
 
 interface NavbarLargeProps {
   picture: string;
   classExtra: string;
   classText: string;
   classTextID: string;
+  classModalNotif: string;
 }
 
 const menuItems = [
@@ -19,6 +20,7 @@ const NavbarLarge: React.FC<NavbarLargeProps> = ({
   classExtra,
   classText,
   classTextID,
+  classModalNotif,
 }) => {
   return (
     <div className="relative flex items-center justify-between px-28 py-4">
@@ -38,9 +40,7 @@ const NavbarLarge: React.FC<NavbarLargeProps> = ({
       </Link>
 
       <div className="flex items-center justify-center gap-10">
-        <button className={classText}>
-          <IconNotification className="w-6 h-6 stroke-[2.4]" />
-        </button>
+        <Notification classModalNotif={classModalNotif} />
 
         <Link href="/authenticity" className={classExtra}>
           <h2 className={classTextID}>CHECK ID</h2>

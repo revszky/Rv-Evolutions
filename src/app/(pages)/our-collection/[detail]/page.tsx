@@ -25,6 +25,7 @@ const Page: React.FC<DetailItemProps> = ({ params }) => {
               classTextID="text-white font-mono font-bold"
               classExtra="px-4 py-2 bg-black"
               picture="/logo/rvblack.png"
+              classModalNotif="text-black"
             />
           </div>
 
@@ -40,6 +41,7 @@ const Page: React.FC<DetailItemProps> = ({ params }) => {
               classBgBtn="bg-black"
               classBgSidebar="bg-white"
               classBgDropdown="bg-black border border-black"
+              classModalNotif="text-black"
             />
           </div>
         </div>

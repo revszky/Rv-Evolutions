@@ -21,6 +21,7 @@ const page = () => {
               classTextID="text-white font-mono font-bold"
               classExtra="px-4 py-2 bg-black"
               picture="/logo/rvblack.png"
+              classModalNotif="text-black"
             />
           </div>
 

@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
-import { IconMenu2, IconSearch, IconX } from "@tabler/icons-react";
+import { IconEye, IconMenu2, IconSearch, IconX } from "@tabler/icons-react";
 import SearchMobile from "../search/SearchMobile";
+import Notification from "./Notification";
 
 interface NavbarMobileProps {
   picture: string;
@@ -16,6 +17,7 @@ interface NavbarMobileProps {
   classBgDropdown: string;
   classBgSidebar: string;
   classBgBtn: string;
+  classModalNotif: string;
 }
 
 const NavbarMobile: React.FC<NavbarMobileProps> = ({
@@ -29,9 +31,11 @@ const NavbarMobile: React.FC<NavbarMobileProps> = ({
   classBgSidebar,
   classBgDropdown,
   classBgBtn,
+  classModalNotif,
 }) => {
   const [bukaMenu, mengaturBukaMenu] = useState(false);
   const [animasiPutar, mengaturAnimasiPutar] = useState(false);
+  const [animasiPutarID, mengaturAnimasiPutarID] = useState(false);
   const [openSearchMenu, setOpenSearchMenu] = useState(false);
 
   const [dropdownVisible, setDropdownVisible] = useState(false);
@@ -62,6 +66,10 @@ const NavbarMobile: React.FC<NavbarMobileProps> = ({
 
   const urutanMenu = [
     {
+      judul: "HOME",
+      halaman: "/",
+    },
+    {
       judul: "BRAND",
       halaman: "/brand",
     },
@@ -69,32 +77,37 @@ const NavbarMobile: React.FC<NavbarMobileProps> = ({
       judul: "OUR COLLECTION",
       halaman: "/our-collection",
     },
-    {
-      judul: "ALL ITEM",
-      halaman: "/item",
-    },
   ];
+
+  const openModalNotif = () => {
+    closeMenu();
+    closeMenuID();
+  };
 
   const openMenu = () => {
     mengaturBukaMenu(!bukaMenu);
     setOpenSearchMenu(false);
     mengaturAnimasiPutar(!animasiPutar);
+    mengaturAnimasiPutarID(false);
   };
 
   const openMenuID = () => {
     setOpenSearchMenu(!openSearchMenu);
+    mengaturAnimasiPutarID(!animasiPutarID);
     mengaturBukaMenu(false);
     mengaturAnimasiPutar(false);
   };
 
   const closeMenuID = () => {
     setOpenSearchMenu(false);
+    mengaturAnimasiPutarID(false);
   };
 
   const closeMenu = () => {
     setOpenSearchMenu(false);
     mengaturBukaMenu(false);
     mengaturAnimasiPutar(false);
+    mengaturAnimasiPutarID(false);
   };
 
   useEffect(() => {
@@ -131,34 +144,48 @@ const NavbarMobile: React.FC<NavbarMobileProps> = ({
 
   return (
     <header className="sticky top-0 left-0 right-0 z-10">
-      <div>
-        <div className="flex items-center justify-between px-4 py-2">
-          <button onClick={openMenuID}>
-            <div
-              className={`flex items-center justify-center relative ${classText}`}
-            >
-              <h1 className="font-mono font-bold text-xl">ID</h1>
+      <div className="relative flex items-start justify-between p-4">
+        <button
+          onClick={openMenuID}
+          className={`flex items-center justify-center relative ${classText}`}
+        >
+          <h1 className="font-mono font-bold text-xl">ID</h1>
+          <div
+            className={`absolute -bottom-[4px] -right-[18px] transform ${
+              animasiPutarID ? "rotate-[360deg]" : ""
+            } transition duration-500`}
+          >
+            {openSearchMenu ? (
+              <IconEye className="w-5 h-5 stroke-[3]" />
+            ) : (
+              <IconSearch className="w-5 h-5 stroke-[3]" />
+            )}
+          </div>
+        </button>
 
-              <div className="absolute -bottom-[2px] -right-[10px]">
-                <IconSearch className="w-5 h-5 stroke-[2.5]" />
-              </div>
-            </div>
-          </button>
+        <Link
+          href="/"
+          onClick={closeMenu}
+          className="absolute top-[8px] left-1/2 transform -translate-x-1/2"
+        >
+          <img src={picture} alt="Rv" className="w-12 m-[6px]" />
+        </Link>
 
-          <Link href="/" onClick={closeMenu}>
-            <img src={picture} alt="Rv" className="w-12 m-[6px]" />
-          </Link>
+        <div className="flex items-start gap-4">
+          <div onClick={openModalNotif}>
+            <Notification classModalNotif={classModalNotif} />
+          </div>
 
           <button
             onClick={openMenu}
             className={`transform ${
               animasiPutar ? "rotate-180" : ""
-            } transition duration-300 ${classText}`}
+            } transition duration-500 ${classText}`}
           >
             {bukaMenu ? (
-              <IconX className="stroke-[2.5]" />
+              <IconX className="stroke-[2.8]" />
             ) : (
-              <IconMenu2 className="stroke-[2.5]" />
+              <IconMenu2 className="stroke-[2.8]" />
             )}
           </button>
         </div>
