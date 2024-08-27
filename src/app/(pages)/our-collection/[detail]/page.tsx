@@ -48,7 +48,7 @@ const Page: React.FC<DetailItemProps> = ({ params }) => {
       </section>
 
       <section className="flex-grow">
-        <section className="pt-24 md:pt-28">
+        <section className="pt-[90px] pb-10 md:pt-36">
           <div>
             <DetailItem detaiItem={params.detail} onTitleChange={setTypeItem} />
           </div>
