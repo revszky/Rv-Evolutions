@@ -37,6 +37,7 @@ const page = () => {
               classBgBtn="bg-black"
               classBgSidebar="bg-white"
               classBgDropdown="bg-black border border-black"
+              classModalNotif="text-black"
             />
           </div>
         </div>
