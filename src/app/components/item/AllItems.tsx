@@ -99,7 +99,7 @@ const AllItems = () => {
     <div className="w-full">
       <div className="p-4">
         <h1 className="font-mono font-bold">
-          ALL COLLECTION '{+CombinedItems.length}'
+          ALL COLLECTION &apos;{+CombinedItems.length}&apos;
         </h1>
       </div>
 
