@@ -10,6 +10,12 @@ const AllItems = () => {
   const [itemsPerSlide, setItemsPerSlide] = useState<number | null>(null);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
   const [touchEndX, setTouchEndX] = useState<number | null>(null);
+  const [items, setItems] = useState(
+    CombinedItems.map((item) => ({
+      ...item,
+      activeImageIndex: 0,
+    }))
+  );
 
   useEffect(() => {
     const updateItemsPerSlide = () => {
@@ -27,17 +33,17 @@ const AllItems = () => {
 
   useEffect(() => {
     if (itemsPerSlide !== null) {
-      const maxSlides = CombinedItems.length - itemsPerSlide;
+      const maxSlides = items.length - itemsPerSlide;
 
       if (currentSlide > maxSlides) {
         setCurrentSlide(maxSlides);
       }
 
-      if (CombinedItems.length <= itemsPerSlide) {
+      if (items.length <= itemsPerSlide) {
         setCurrentSlide(0);
       }
     }
-  }, [itemsPerSlide, CombinedItems.length]);
+  }, [itemsPerSlide, items.length]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -59,7 +65,7 @@ const AllItems = () => {
   }
 
   const nextSlide = () => {
-    if (itemsPerSlide !== null && currentSlide + 1 < CombinedItems.length) {
+    if (itemsPerSlide !== null && currentSlide + 1 < items.length) {
       setCurrentSlide(currentSlide + 1);
     }
   };
@@ -93,13 +99,20 @@ const AllItems = () => {
     setTouchEndX(null);
   };
 
-  const maxSlides = CombinedItems.length - itemsPerSlide;
+  const handleColorClick = (itemIndex: number, colorIndex: number) => {
+    const updatedItems = items.map((item, idx) =>
+      idx === itemIndex ? { ...item, activeImageIndex: colorIndex } : item
+    );
+    setItems(updatedItems);
+  };
+
+  const maxSlides = items.length - itemsPerSlide;
 
   return (
     <div className="w-full">
       <div className="p-4">
         <h1 className="font-mono font-bold">
-          ALL COLLECTION &apos;{+CombinedItems.length}&apos;
+          ALL COLLECTION &apos;{items.length}&apos;
         </h1>
       </div>
 
@@ -118,7 +131,7 @@ const AllItems = () => {
               }%)`,
             }}
           >
-            {CombinedItems.map((item, index) => (
+            {items.map((item, index) => (
               <div
                 key={index}
                 className="flex-shrink-0 w-24 md:w-1/4 p-2"
@@ -127,48 +140,45 @@ const AllItems = () => {
                 }}
               >
                 <Link href={`/our-collection/${item.url}`}>
-                  <div className="p-2">
+                  <div>
                     <img
-                      src={item.picture.split(", ")[0]}
+                      src={item.picture.split(", ")[item.activeImageIndex]}
                       alt={item.title}
                       className="w-full h-full object-cover"
                     />
-
-                    <div className="py-2">
-                      <div className="text-left">
-                        <h2 className="font-mono font-bold text-sm md:text-base">
-                          {item.title}
-                        </h2>
-                        <p className="font-mono text-xs md:text-sm">
-                          {item.sub}
-                        </p>
-                      </div>
-
-                      <div className="flex items-center justify-start py-2 gap-[6px]">
-                        <div className="text-left">
-                          <p className="font-mono text-xs md:text-sm">
-                            Colors:
-                          </p>
-                        </div>
-
-                        <div className="grid grid-cols-3 gap-2">
-                          {item.colors.split(", ").map((color, idx) => (
-                            <div
-                              key={idx}
-                              className="px-[10px] md:px-4 py-[6px]"
-                              style={{ backgroundColor: color }}
-                            ></div>
-                          ))}
-                        </div>
-                      </div>
-
-                      <p className="font-mono font-bold text-xs md:text-sm">
-                        <span className="pr-[4px]">IDR</span>
-                        {item.price}
-                      </p>
-                    </div>
                   </div>
                 </Link>
+
+                <div className="py-2">
+                  <div className="text-left">
+                    <h2 className="font-mono font-bold text-sm md:text-base">
+                      {item.title}
+                    </h2>
+                    <p className="font-mono text-xs md:text-sm">{item.sub}</p>
+                  </div>
+
+                  <div className="flex items-center justify-start py-2 gap-[6px]">
+                    <div className="text-left">
+                      <p className="font-mono text-xs md:text-sm">Colors:</p>
+                    </div>
+
+                    <div className="grid grid-cols-3 gap-2">
+                      {item.colors.split(", ").map((color, idx) => (
+                        <button
+                          key={idx}
+                          className="px-[10px] md:px-4 py-[6px]"
+                          style={{ backgroundColor: color }}
+                          onClick={() => handleColorClick(index, idx)}
+                        ></button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <p className="font-mono font-bold text-xs md:text-sm">
+                    <span className="pr-[4px]">IDR</span>
+                    {item.price}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
@@ -176,9 +186,7 @@ const AllItems = () => {
 
         <button
           className={`absolute top-1/2 transform -translate-y-1/2 left-[6px] p-2 rounded-full bg-black bg-opacity-60 ${
-            currentSlide === 0 || CombinedItems.length <= itemsPerSlide
-              ? "hidden"
-              : ""
+            currentSlide === 0 || items.length <= itemsPerSlide ? "hidden" : ""
           }`}
           onClick={prevSlide}
         >

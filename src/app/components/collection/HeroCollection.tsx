@@ -15,14 +15,14 @@ const HeroCollection = () => {
         </Link>
 
         <div className="flex items-start gap-10">
-          <div className="text-left max-w-[200px]">
+          <div className="text-left max-w-[200px] xl:max-w-xs">
             <h1 className="font-mono font-bold">
               STYLE TRANSFORMATION IN EVERY OUR ITEM COLLECTION
             </h1>
             <p className="font-mono text-sm">&lsquo;PAGE&lsquo;</p>
           </div>
 
-          <div className="max-w-xl">
+          <div className="max-w-xl md:max-w-md">
             <p className="font-mono text-sm">
               This collection is a symbol of the journey of evolution and
               revolution in the world of fashion. Each design carries a story of
