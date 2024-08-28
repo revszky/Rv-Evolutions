@@ -129,10 +129,11 @@ const AllItems = () => {
                 <Link href={`/our-collection/${item.url}`}>
                   <div className="p-2">
                     <img
-                      src={item.picture}
+                      src={item.picture.split(", ")[0]}
                       alt={item.title}
                       className="w-full h-full object-cover"
                     />
+
                     <div className="py-2">
                       <div className="text-left">
                         <h2 className="font-mono font-bold text-sm md:text-base">
