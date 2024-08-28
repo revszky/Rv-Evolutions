@@ -88,9 +88,9 @@ const AllItems = () => {
     if (touchStartX !== null && touchEndX !== null) {
       const touchDiff = touchStartX - touchEndX;
 
-      if (touchDiff > 50) {
+      if (touchDiff > 50 && currentSlide < maxSlides) {
         nextSlide();
-      } else if (touchDiff < -50) {
+      } else if (touchDiff < -50 && currentSlide > 0) {
         prevSlide();
       }
     }
