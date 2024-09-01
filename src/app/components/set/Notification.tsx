@@ -49,9 +49,9 @@ const Notification: React.FC<ModalNotificationProps> = ({
         } transition duration-500 ${classModalNotif}`}
       >
         {isModalOpen ? (
-          <IconBell className="stroke-[2.8]" />
+          <IconBell className="stroke-[2.2]" />
         ) : (
-          <IconBellRinging className="stroke-[2.8] xl:stroke-[2.5]" />
+          <IconBellRinging className="stroke-[2.2]" />
         )}
       </button>
 

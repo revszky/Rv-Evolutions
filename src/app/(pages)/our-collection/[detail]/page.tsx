@@ -5,6 +5,8 @@ import DetailItem from "../../../components/item/DetailItem";
 import NavbarMobile from "../../../components/set/NavbarMobile";
 import NavbarLarge from "../../../components/set/NavbarLarge";
 import Footer from "../../../components/set/Footer";
+import Link from "next/link";
+import { IconChevronLeft } from "@tabler/icons-react";
 
 interface DetailItemProps {
   params: {
@@ -49,8 +51,22 @@ const Page: React.FC<DetailItemProps> = ({ params }) => {
 
       <section className="flex-grow">
         <section className="pt-[90px] pb-10 md:pt-36">
+          <div className="px-2 md:px-10 pb-4 md:pb-16">
+            <Link
+              href="/our-collection"
+              className="flex items-center font-mono font-bold"
+            >
+              <IconChevronLeft className="w-4 h-4" />
+              BACK TO OUR COLLECTION
+            </Link>
+          </div>
+
           <div>
             <DetailItem detaiItem={params.detail} onTitleChange={setTypeItem} />
+          </div>
+
+          <div className="flex items-end justify-end px-2 md:px-10 pt-4 md:pt-16">
+            <p className="font-mono font-bold text-sm">&lsquo;RV24&lsquo;-25</p>
           </div>
         </section>
       </section>

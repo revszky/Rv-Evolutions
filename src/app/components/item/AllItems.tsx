@@ -33,7 +33,7 @@ const AllItems = () => {
 
   useEffect(() => {
     if (itemsPerSlide !== null) {
-      const maxSlides = items.length - itemsPerSlide;
+      const maxSlides = Math.max(items.length - itemsPerSlide, 0);
 
       if (currentSlide > maxSlides) {
         setCurrentSlide(maxSlides);
@@ -65,8 +65,11 @@ const AllItems = () => {
   }
 
   const nextSlide = () => {
-    if (itemsPerSlide !== null && currentSlide + 1 < items.length) {
-      setCurrentSlide(currentSlide + 1);
+    if (itemsPerSlide !== null) {
+      const maxSlides = Math.max(items.length - itemsPerSlide, 0);
+      if (currentSlide < maxSlides) {
+        setCurrentSlide(currentSlide + 1);
+      }
     }
   };
 
@@ -87,6 +90,7 @@ const AllItems = () => {
   const handleTouchEnd = () => {
     if (touchStartX !== null && touchEndX !== null) {
       const touchDiff = touchStartX - touchEndX;
+      const maxSlides = Math.max(items.length - itemsPerSlide, 0);
 
       if (touchDiff > 50 && currentSlide < maxSlides) {
         nextSlide();
@@ -106,7 +110,7 @@ const AllItems = () => {
     setItems(updatedItems);
   };
 
-  const maxSlides = items.length - itemsPerSlide;
+  const maxSlides = Math.max(items.length - itemsPerSlide, 0);
 
   return (
     <div className="w-full">

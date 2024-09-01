@@ -99,18 +99,8 @@ const DetailItem: React.FC<DetailItemProps> = ({
   };
 
   return (
-    <div className="w-full px-4 md:px-6 lg:px-20">
-      <div className="px-2 pb-4 md:pb-10">
-        <Link
-          href="/our-collection"
-          className="flex items-center font-mono font-bold"
-        >
-          <IconChevronLeft className="w-4 h-4" />
-          BACK TO OUR COLLECTION
-        </Link>
-      </div>
-
-      <div className="flex flex-col md:flex-row items-center md:items-start justify-center md:justify-between p-2">
+    <div className="flex items-center justify-center px-4">
+      <div className="flex flex-col md:flex-row items-center md:items-start justify-center p-2 md:gap-6 xl:gap-32">
         <div
           className="relative"
           onTouchStart={handleTouchStart}
@@ -155,22 +145,22 @@ const DetailItem: React.FC<DetailItemProps> = ({
           </button>
         </div>
 
-        <div className="flex flex-col items-center md:items-start justify-center p-2">
-          <div className="text-center md:text-left p-2">
+        <div className="flex flex-col items-start justify-center p-2">
+          <div className="text-left p-2">
             <h1 className="font-mono font-bold md:text-lg">{itemData.title}</h1>
 
             <p className="font-mono text-xs md:text-sm">{itemData.sub}</p>
           </div>
 
-          <div className="text-center md:text-left p-2">
+          <div className="text-left px-2 py-4">
             <p className="font-mono text-xs md:text-sm">
               {itemData.description}
             </p>
           </div>
 
-          <div className="flex flex-col items-start justify-center p-2">
+          <div className="flex flex-col items-start justify-center px-2 py-4">
             <div className="flex items-start justify-center py-2 gap-[6px]">
-              <div className="text-center">
+              <div className="text-left">
                 <p className="font-mono text-xs md:text-sm">Colors:</p>
               </div>
 
@@ -185,13 +175,13 @@ const DetailItem: React.FC<DetailItemProps> = ({
                   {itemData.colors.split(", ").map((color, idx) => (
                     <div key={idx}>
                       <div
-                        className="px-[10px] md:px-4 py-[6px] cursor-pointer"
+                        className="px-4 py-[6px] cursor-pointer"
                         style={{ backgroundColor: color }}
                         onClick={() => handleColorClick(idx)}
                       ></div>
 
                       {idx === activeImageIndex && (
-                        <div className="py-[2px] w-5 md:w-8 border-b border-black"></div>
+                        <div className="py-[2px] w-8 border-b border-black"></div>
                       )}
                     </div>
                   ))}
@@ -199,12 +189,12 @@ const DetailItem: React.FC<DetailItemProps> = ({
               </div>
             </div>
 
-            <div className="flex items-start justify-center">
+            <div className="flex items-start justify-center py-2 gap-[6px]">
               <div className="text-left">
                 <p className="font-mono text-xs md:text-sm">Size:</p>
               </div>
 
-              <div className="flex gap-2">
+              <div className="flex gap-6">
                 {itemData.size.split(", ").map((size, index) => (
                   <div
                     key={index}
@@ -212,7 +202,7 @@ const DetailItem: React.FC<DetailItemProps> = ({
                   >
                     <div
                       onClick={() => handleSizeClick(size)}
-                      className={`cursor-pointer px-[4px] ${
+                      className={`cursor-pointer ${
                         size === activeSize ? "font-bold text-black" : ""
                       }`}
                     >
@@ -226,19 +216,15 @@ const DetailItem: React.FC<DetailItemProps> = ({
                 ))}
               </div>
             </div>
+          </div>
 
-            <div className="text-center md:text-left py-2">
-              <p className="font-mono font-bold text-xs md:text-sm">
-                <span className="pr-[4px]">IDR</span>
-                {itemData.price}
-              </p>
-            </div>
+          <div className="text-center md:text-left px-2 py-4">
+            <p className="font-mono font-bold text-xs md:text-sm">
+              <span className="pr-[4px]">IDR</span>
+              {itemData.price}
+            </p>
           </div>
         </div>
-      </div>
-
-      <div className="flex items-end justify-end px-2 pt-4 md:pt-10">
-        <p className="font-mono font-bold text-sm">&lsquo;RV24&lsquo;-25</p>
       </div>
     </div>
   );

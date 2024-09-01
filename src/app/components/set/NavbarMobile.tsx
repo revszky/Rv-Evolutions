@@ -156,9 +156,9 @@ const NavbarMobile: React.FC<NavbarMobileProps> = ({
             } transition duration-500`}
           >
             {openSearchMenu ? (
-              <IconEye className="w-5 h-5 stroke-[3]" />
+              <IconEye className="w-5 h-5 stroke-[2.2]" />
             ) : (
-              <IconSearch className="w-5 h-5 stroke-[3]" />
+              <IconSearch className="w-5 h-5 stroke-[2.2]" />
             )}
           </div>
         </button>
@@ -183,9 +183,9 @@ const NavbarMobile: React.FC<NavbarMobileProps> = ({
             } transition duration-500 ${classText}`}
           >
             {bukaMenu ? (
-              <IconX className="stroke-[2.8]" />
+              <IconX className="stroke-[2.2]" />
             ) : (
-              <IconMenu2 className="stroke-[2.8]" />
+              <IconMenu2 className="stroke-[2.2]" />
             )}
           </button>
         </div>
