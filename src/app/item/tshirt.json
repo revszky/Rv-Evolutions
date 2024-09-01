@@ -1,11 +1,13 @@
 [
     {
-        "url": "rvTSovp",
+        "url": "rvTSopT",
         "typeItem": "T-SHIRT",
         "picture": "https://fastly.picsum.photos/id/487/500/500.jpg?hmac=PK29Rhkhbv-ziD37T7LbJoXvfNqlA-ZLjl_KBnd8uvY",
         "title": "'EVERYDAY' OVERSIZE PLAIN T-SHIRTS WITH BADGES",
         "sub": "Ini t-shirt yang keren",
         "description": "hello ini t-shirt ya gaes ya",
+        "size": "M, L, XL, XXL",
+        "colorName": "BLACK",
         "colors": "#000000",
         "price": "120,000,00",
         "release": "23-08-2024"

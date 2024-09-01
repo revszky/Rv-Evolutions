@@ -156,20 +156,26 @@ const DetailItem: React.FC<DetailItemProps> = ({
           </div>
 
           <div className="flex flex-col items-start justify-center p-2">
-            <div className="flex items-center justify-center py-2 gap-[6px]">
+            <div className="flex items-start justify-center py-2 gap-[6px]">
               <div className="text-center">
                 <p className="font-mono text-xs md:text-sm">Colors:</p>
               </div>
 
-              <div className="grid grid-cols-3 gap-2">
-                {itemData.colors.split(", ").map((color, idx) => (
-                  <div
-                    key={idx}
-                    className="px-[10px] md:px-4 py-[6px] cursor-pointer"
-                    style={{ backgroundColor: color }}
-                    onClick={() => handleColorClick(idx)}
-                  ></div>
-                ))}
+              <div className="flex flex-col items-start justify-center">
+                <div>
+                  <p></p>
+                </div>
+
+                <div className="grid grid-cols-3 gap-2 py-[12px]">
+                  {itemData.colors.split(", ").map((color, idx) => (
+                    <div
+                      key={idx}
+                      className="px-[10px] md:px-4 py-[6px] cursor-pointer"
+                      style={{ backgroundColor: color }}
+                      onClick={() => handleColorClick(idx)}
+                    ></div>
+                  ))}
+                </div>
               </div>
             </div>
 

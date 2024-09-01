@@ -1,12 +1,14 @@
 [
     {
-        "url": "rvJCplpTg",
+        "url": "rvJCppJ",
         "typeItem": "JACKET",
         "picture": "https://fastly.picsum.photos/id/37/500/500.jpg?hmac=lzRnNBxtKpvY781uybLQr9mfijZxiqHV8GF_wGkijtY, https://fastly.picsum.photos/id/921/500/500.jpg?hmac=-SjeuviO0v4DmC3seluXVcpz2aBPxIF_HlE5ACoWrV4, https://fastly.picsum.photos/id/773/500/500.jpg?hmac=EdVYH4u1GNPD20Zcro10FBM02C849obxk3CgdjX4E1o",
         "title": "'RAIN SEASON' PLAIN PARACHUTE JACKET WITH BADGES",
         "sub": "Ini jacket yang keren",
         "description": "hello ini jacket ya gaes ya",
-        "colors": "#800000, #000000, #001F3F",
+        "size": "M, L, XL, XXL",
+        "colorName": "BLACK, WHITE",
+        "colors": "#000000, #e2e8f0",
         "price": "180,000,00",
         "release": "24-08-2024"
     }
