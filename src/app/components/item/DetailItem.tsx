@@ -18,10 +18,14 @@ const DetailItem: React.FC<DetailItemProps> = ({
   detaiItem,
   onTitleChange,
 }) => {
+  const itemData = CombinedItems.find((detail) => detail.url === detaiItem);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const [selectedColorName, setSelectedColorName] = useState(
+    itemData?.colorName.split(", ")[0] || ""
+  );
+  const [activeSize, setActiveSize] = useState<string>("");
   const [isTouching, setIsTouching] = useState(false);
   const touchStartX = useRef(0);
-  const itemData = CombinedItems.find((detail) => detail.url === detaiItem);
 
   useEffect(() => {
     if (itemData) {
@@ -42,19 +46,28 @@ const DetailItem: React.FC<DetailItemProps> = ({
     );
   }
 
+  const handleSizeClick = (size: string) => {
+    setActiveSize(size);
+  };
+
   const handleColorClick = (index: number) => {
     setActiveImageIndex(index);
+    setSelectedColorName(itemData.colorName.split(", ")[index]);
   };
 
   const handlePrevClick = () => {
     if (activeImageIndex > 0) {
-      setActiveImageIndex((prevIndex) => prevIndex - 1);
+      const newIndex = activeImageIndex - 1;
+      setActiveImageIndex(newIndex);
+      setSelectedColorName(itemData.colorName.split(", ")[newIndex]);
     }
   };
 
   const handleNextClick = () => {
     if (activeImageIndex < itemData.picture.split(", ").length - 1) {
-      setActiveImageIndex((prevIndex) => prevIndex + 1);
+      const newIndex = activeImageIndex + 1;
+      setActiveImageIndex(newIndex);
+      setSelectedColorName(itemData.colorName.split(", ")[newIndex]);
     }
   };
 
@@ -162,24 +175,59 @@ const DetailItem: React.FC<DetailItemProps> = ({
               </div>
 
               <div className="flex flex-col items-start justify-center">
-                <div>
-                  <p></p>
+                <div className="text-left">
+                  <p className="font-mono font-bold text-xs md:text-sm">
+                    {selectedColorName}
+                  </p>
                 </div>
 
-                <div className="grid grid-cols-3 gap-2 py-[12px]">
+                <div className="grid grid-cols-3 gap-2 pt-[12px] pb-[4px]">
                   {itemData.colors.split(", ").map((color, idx) => (
-                    <div
-                      key={idx}
-                      className="px-[10px] md:px-4 py-[6px] cursor-pointer"
-                      style={{ backgroundColor: color }}
-                      onClick={() => handleColorClick(idx)}
-                    ></div>
+                    <div key={idx}>
+                      <div
+                        className="px-[10px] md:px-4 py-[6px] cursor-pointer"
+                        style={{ backgroundColor: color }}
+                        onClick={() => handleColorClick(idx)}
+                      ></div>
+
+                      {idx === activeImageIndex && (
+                        <div className="py-[2px] w-5 md:w-8 border-b border-black"></div>
+                      )}
+                    </div>
                   ))}
                 </div>
               </div>
             </div>
 
-            <div className="text-center md:text-left">
+            <div className="flex items-start justify-center">
+              <div className="text-left">
+                <p className="font-mono text-xs md:text-sm">Size:</p>
+              </div>
+
+              <div className="flex gap-2">
+                {itemData.size.split(", ").map((size, index) => (
+                  <div
+                    key={index}
+                    className="relative flex flex-col items-center justify-center"
+                  >
+                    <div
+                      onClick={() => handleSizeClick(size)}
+                      className={`cursor-pointer px-[4px] ${
+                        size === activeSize ? "font-bold text-black" : ""
+                      }`}
+                    >
+                      <p className="font-mono text-xs md:text-sm">{size}</p>
+                    </div>
+
+                    {size === activeSize && (
+                      <div className="absolute -bottom-[2px] w-[12px] border-b border-black"></div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="text-center md:text-left py-2">
               <p className="font-mono font-bold text-xs md:text-sm">
                 <span className="pr-[4px]">IDR</span>
                 {itemData.price}
