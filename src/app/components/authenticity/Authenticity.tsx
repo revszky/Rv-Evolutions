@@ -14,13 +14,13 @@ const Authenticity = () => {
           BACK
         </Link>
 
-        <div className="flex items-start gap-10">
+        <div className="flex items-start gap-10 xl:gap-32">
           <div className="text-left">
             <h1 className="font-mono font-bold">AUTHENTICITY</h1>
             <p className="font-mono text-sm">&lsquo;PAGE&lsquo;</p>
           </div>
 
-          <div className="max-w-xl">
+          <div className="max-w-xl xl:max-w-2xl">
             <p className="font-mono text-sm">
               We understand how important the authenticity and exclusivity of
               each of our products is. Therefore, each of our clothing items
