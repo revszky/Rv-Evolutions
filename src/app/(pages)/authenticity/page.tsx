@@ -4,6 +4,7 @@ import SearchPage from "../../components/search/SearchPage";
 import Footer from "../../components/set/Footer";
 import NavbarLarge from "../../components/set/NavbarLarge";
 import NavbarMobile from "../../components/set/NavbarMobile";
+import AuthenticityProtection from "../../components/authenticity/AuthenticityProtection";
 
 export const metadata = {
   title: "RV • AUTHENTICITY",
@@ -44,7 +45,7 @@ const page = () => {
       </section>
 
       <section className="flex-grow">
-        <section className="pt-12 md:pt-28">
+        <section className="pt-12 md:pt-14 lg:pt-28">
           <div>
             <Authenticity />
           </div>
@@ -63,23 +64,19 @@ const page = () => {
               <SearchPage />
             </div>
 
-            <div className="max-w-2xl">
-              <p className="font-mono text-sm text-center">
-                We are committed to maintaining the safety and authenticity of
-                each of our products. This verification system is part of our
-                efforts to protect you from counterfeit products and ensure that
-                you are getting genuine RV items that meet the highest quality
-                standards.
-              </p>
-            </div>
-
-            <div className="py-10">
+            <div className="pt-4">
               <img
-                src="https://fastly.picsum.photos/id/509/500/250.jpg?hmac=w7iz-HMrmh4eorcs5Z6PhAcFlcQCC95-JyZDRXYBy54"
+                src="https://fastly.picsum.photos/id/894/800/400.jpg?hmac=WwXq08kJHbrCjuZcjFyLCXViBRm-7gedR44Hk1HyykA"
                 alt="ID"
                 className="w-full h-full object-cover"
               />
             </div>
+          </div>
+        </section>
+
+        <section className="py-10 px-4">
+          <div>
+            <AuthenticityProtection />
           </div>
         </section>
       </section>
