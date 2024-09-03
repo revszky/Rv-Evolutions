@@ -1,16 +1,16 @@
 import React from "react";
-import NavbarLarge from "@/app/components/set/NavbarLarge";
-import HeroCollection from "../../components/collection/HeroCollection";
-import Footer from "../../components/set/Footer";
-import NavbarMobile from "../../components/set/NavbarMobile";
-import AllItems from "../../components/item/AllItems";
+import NavbarMobile from "../../../components/set/NavbarMobile";
+import NavbarLarge from "../../../components/set/NavbarLarge";
+import DetailBuy from "../../../components/item/DetailBuy";
+import Footer from "../../../components/set/Footer";
 
-export const metadata = {
-  title: "RV • COLLECTION",
-  description: "A collection of evolutionary and revolutions.",
-};
+interface DetailBuyProps {
+  params: {
+    detail: string;
+  };
+}
 
-const page = () => {
+const Page: React.FC<DetailBuyProps> = ({ params }) => {
   return (
     <main className="min-h-screen flex flex-col">
       <section className="relative">
@@ -44,24 +44,18 @@ const page = () => {
       </section>
 
       <section className="flex-grow">
-        <section className="pt-12 md:pt-14 lg:pt-28">
+        <section className="pt-20 pb-10 md:pt-20 lg:pt-28">
           <div>
-            <HeroCollection />
-          </div>
-        </section>
-
-        <section className="py-10 px-4">
-          <div>
-            <AllItems />
+            <DetailBuy detaiBuy={params.detail} />
           </div>
         </section>
       </section>
 
-      <section className="w-full">
+      <section>
         <div>
           <Footer
             judul="RV Evolutions"
-            place="OUR COLLECTION"
+            place="DETAIL • PURCHASE"
             classText="text-black"
           />
         </div>
@@ -70,4 +64,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

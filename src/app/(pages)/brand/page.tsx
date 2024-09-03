@@ -33,7 +33,7 @@ const page = () => {
       </section>
 
       <section className="w-full">
-        <div className="px-2 md:px-6 lg:px-8 xl:px-10">
+        <div>
           <Footer judul="RV Evolutions" place="BRAND" classText="text-black" />
         </div>
       </section>

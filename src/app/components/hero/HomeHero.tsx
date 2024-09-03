@@ -147,7 +147,7 @@ const HomeHero = () => {
       </div>
 
       <div className="fixed bottom-0 w-full">
-        <div className="px-2 md:px-6 lg:px-8 xl:px-10">
+        <div>
           <Footer judul="RV Evolutions" place="HOME" classText="text-white" />
         </div>
       </div>

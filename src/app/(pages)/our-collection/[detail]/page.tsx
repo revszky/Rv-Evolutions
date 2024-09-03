@@ -72,7 +72,7 @@ const Page: React.FC<DetailItemProps> = ({ params }) => {
       </section>
 
       <section>
-        <div className="px-2 md:px-6 lg:px-8 xl:px-10">
+        <div>
           <Footer
             judul="RV Evolutions"
             place={`DETAIL • ${typeItem}`}
