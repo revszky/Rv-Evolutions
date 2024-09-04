@@ -111,11 +111,9 @@ const HomeHero = () => {
                   className="relative top-14 md:top-16 xl:top-32 w-full h-full flex-shrink-0 flex items-start justify-between px-6 md:px-20"
                 >
                   <div className="p-2 text-left text-white max-w-[240px] md:max-w-md xl:max-w-2xl">
-                    <h1 className="font-mono font-bold">{text.title}</h1>
+                    <h1 className="font-mono font-bold pb-2">{text.title}</h1>
 
-                    <p className="font-mono font-bold">-</p>
-
-                    <p className="font-mono text-xs md:text-sm">
+                    <p className="font-mono text-xs md:text-sm pt-2">
                       {text.description}
                     </p>
                   </div>

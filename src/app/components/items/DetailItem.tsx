@@ -2,7 +2,12 @@
 import React, { useEffect, useState, useRef } from "react";
 import CombinedItems from "../../item/CombinedItems";
 import NotFound from "../../not-found";
-import { IconChevronsLeft, IconChevronsRight } from "@tabler/icons-react";
+import Link from "next/link";
+import {
+  IconChevronLeft,
+  IconChevronsLeft,
+  IconChevronsRight,
+} from "@tabler/icons-react";
 
 interface DetailItemProps {
   detaiItem: string;
@@ -91,21 +96,6 @@ const DetailItem: React.FC<DetailItemProps> = ({
 
   const handleTouchEnd = () => {
     setIsTouching(false);
-  };
-
-  const handleBuyClick = () => {
-    if (!activeSize || !selectedColorName) {
-      alert("Please select size and color before buying.");
-      return;
-    }
-
-    const queryParams = new URLSearchParams({
-      size: activeSize,
-      color: selectedColorName,
-      price: itemData.price,
-    }).toString();
-
-    window.location.href = `/buy/${itemData.url}?${queryParams}`;
   };
 
   return (
@@ -233,15 +223,6 @@ const DetailItem: React.FC<DetailItemProps> = ({
               <span className="pr-[4px]">IDR</span>
               {itemData.price}
             </p>
-          </div>
-
-          <div className="text-center md:text-left px-2 py-4">
-            <button
-              className="px-6 py-[4px] bg-black font-mono font-bold text-white"
-              onClick={handleBuyClick}
-            >
-              BUY
-            </button>
           </div>
         </div>
       </div>

@@ -1,16 +1,22 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
+import DetailItem from "../../../components/items/DetailItem";
 import NavbarMobile from "../../../components/set/NavbarMobile";
 import NavbarLarge from "../../../components/set/NavbarLarge";
-import DetailBuy from "../../../components/item/DetailBuy";
 import Footer from "../../../components/set/Footer";
+import Link from "next/link";
+import { IconChevronLeft } from "@tabler/icons-react";
 
-interface DetailBuyProps {
+interface DetailItemProps {
   params: {
     detail: string;
   };
 }
 
-const Page: React.FC<DetailBuyProps> = ({ params }) => {
+const Page: React.FC<DetailItemProps> = ({ params }) => {
+  const [typeItem, setTypeItem] = useState<string>("");
+
   return (
     <main className="min-h-screen flex flex-col">
       <section className="relative">
@@ -45,8 +51,22 @@ const Page: React.FC<DetailBuyProps> = ({ params }) => {
 
       <section className="flex-grow">
         <section className="pt-20 pb-10 md:pt-20 lg:pt-28">
+          <div className="px-2 xl:px-10 pb-4 md:pb-16">
+            <Link
+              href="/items"
+              className="flex items-center font-mono font-bold"
+            >
+              <IconChevronLeft className="w-4 h-4" />
+              BACK
+            </Link>
+          </div>
+
           <div>
-            <DetailBuy detaiBuy={params.detail} />
+            <DetailItem detaiItem={params.detail} onTitleChange={setTypeItem} />
+          </div>
+
+          <div className="flex items-end justify-end px-2 xl:px-10 pt-4 md:pt-20">
+            <p className="font-mono font-bold text-sm">&lsquo;RV24&lsquo;-25</p>
           </div>
         </section>
       </section>
@@ -55,7 +75,7 @@ const Page: React.FC<DetailBuyProps> = ({ params }) => {
         <div>
           <Footer
             judul="RV Evolutions"
-            place="DETAIL • PURCHASE"
+            place={`DETAIL • ${typeItem}`}
             classText="text-black"
           />
         </div>

@@ -1,9 +1,9 @@
 import React from "react";
-import NavbarLarge from "@/app/components/set/NavbarLarge";
+import NavbarLarge from "../../components/set/NavbarLarge";
 import HeroCollection from "../../components/collection/HeroCollection";
 import Footer from "../../components/set/Footer";
 import NavbarMobile from "../../components/set/NavbarMobile";
-import AllItems from "../../components/item/AllItems";
+import AllItems from "../../components/items/AllItems";
 
 export const metadata = {
   title: "RV • COLLECTION",

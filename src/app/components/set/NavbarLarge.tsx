@@ -12,7 +12,7 @@ interface NavbarLargeProps {
 
 const menuItems = [
   { href: "/brand", label: "BRAND" },
-  { href: "/our-collection", label: "OUR COLLECTION" },
+  { href: "/items", label: "ITEMS" },
 ];
 
 const NavbarLarge: React.FC<NavbarLargeProps> = ({
