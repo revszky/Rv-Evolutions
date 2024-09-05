@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   IconChevronCompactDown,
+  IconChevronCompactUp,
   IconChevronsLeft,
   IconChevronsRight,
 } from "@tabler/icons-react";
@@ -17,13 +18,49 @@ const AllItems = () => {
   const [touchEndX, setTouchEndX] = useState<number | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string>("ALL ITEMS");
   const [dropdownOpen, setDropdownOpen] = useState(false);
-
+  const [animasiFilter, setAnimasiFilter] = useState(false);
   const [items, setItems] = useState(
     CombinedItems.map((item) => ({
       ...item,
       activeImageIndex: 0,
     }))
   );
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const openFilterDrop = () => {
+    setDropdownOpen(!dropdownOpen);
+    setAnimasiFilter(!animasiFilter);
+  };
+
+  const closeFilterDrop = () => {
+    setDropdownOpen(false);
+    setAnimasiFilter(false);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        closeFilterDrop();
+      }
+    };
+
+    const handleEsc = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeFilterDrop();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleEsc);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleEsc);
+    };
+  }, []);
 
   const filteredItems =
     selectedCategory === "ALL ITEMS"
@@ -145,20 +182,33 @@ const AllItems = () => {
           &apos;{filteredItems.length}&apos;
         </h1>
 
-        <button
-          className="flex items-center justify-center gap-[10px]"
-          onClick={() => setDropdownOpen(!dropdownOpen)}
-        >
-          <IconChevronCompactDown className="w-[18px]" />
-          <h2 className="font-mono font-bold">{selectedCategory}</h2>
-        </button>
+        <div ref={dropdownRef}>
+          <button
+            className="flex items-center justify-center gap-[10px]"
+            onClick={openFilterDrop}
+          >
+            <div
+              className={`transform ${
+                animasiFilter ? "rotate-90" : ""
+              } transition duration-500`}
+            >
+              {dropdownOpen ? (
+                <IconChevronCompactUp className="w-[18px] -rotate-[90deg]" />
+              ) : (
+                <IconChevronCompactDown className="w-[18px]" />
+              )}
+            </div>
+
+            <h2 className="font-mono font-bold">{selectedCategory}</h2>
+          </button>
+        </div>
       </div>
 
       <FilterItem
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
         dropdownOpen={dropdownOpen}
-        setDropdownOpen={setDropdownOpen}
+        setDropdownOpen={closeFilterDrop}
       />
 
       <div
