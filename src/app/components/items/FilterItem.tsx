@@ -1,12 +1,13 @@
 import React, { useEffect, useRef } from "react";
-import { IconChevronCompactDown } from "@tabler/icons-react";
 
 interface FilterItemProps {
   selectedCategory: string;
-  setSelectedCategory: (category: string) => void;
+  setSelectedCategory: React.Dispatch<React.SetStateAction<string>>;
   dropdownOpen: boolean;
-  setDropdownOpen: (open: boolean) => void;
+  setDropdownOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
+const categories = ["ALL ITEMS", "JACKET", "HOODIE", "T-SHIRT", "PANTS"];
 
 const FilterItem: React.FC<FilterItemProps> = ({
   selectedCategory,
@@ -14,67 +15,29 @@ const FilterItem: React.FC<FilterItemProps> = ({
   dropdownOpen,
   setDropdownOpen,
 }) => {
-  const dropdownRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
-        setDropdownOpen(false);
-      }
-    };
-
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setDropdownOpen(false);
-      }
-    };
-
-    if (dropdownOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-      document.addEventListener("keydown", handleKeyDown);
-    }
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [dropdownOpen, setDropdownOpen]);
-
   return (
     <div className="relative">
-      <button
-        className="flex items-center justify-center gap-[10px]"
-        onClick={() => setDropdownOpen(!dropdownOpen)}
-      >
-        <IconChevronCompactDown className="w-[18px]" />
-        <h2 className="font-mono font-bold">{selectedCategory}</h2>
-      </button>
-
       <div
-        ref={dropdownRef}
-        className={`absolute top-full mt-2 w-40 -right-6 bg-white border border-black z-10 shadow-xl rounded-xl p-4 transform transition-all duration-500 ease-in-out ${
+        className={`absolute z-10 p-2 top-full w-40 md:w-56 -right-0 bg-white transform transition-all duration-700 ease-in-out ${
           dropdownOpen
             ? "opacity-100 translate-y-0"
-            : "opacity-0 -translate-y-4"
+            : "opacity-0 -translate-y-full"
         }`}
       >
-        {["ALL ITEMS", "JACKET", "HOODIE", "T-SHIRT", "PANTS"].map(
-          (category) => (
-            <button
-              key={category}
-              onClick={() => {
-                setSelectedCategory(category);
-                setDropdownOpen(false);
-              }}
-              className="block w-full text-left p-2 hover:bg-gray-200 font-mono font-bold"
-            >
-              {category}
-            </button>
-          )
-        )}
+        {categories.map((category) => (
+          <button
+            key={category}
+            className={`w-full py-2 px-4 text-left font-mono font-bold ${
+              selectedCategory === category ? "bg-black text-white" : ""
+            }`}
+            onClick={() => {
+              setSelectedCategory(category);
+              setDropdownOpen(false);
+            }}
+          >
+            {category}
+          </button>
+        ))}
       </div>
     </div>
   );
