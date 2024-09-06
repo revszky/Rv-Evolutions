@@ -2,7 +2,8 @@ import React from "react";
 
 interface FilterItemProps {
   selectedCategory: string;
-  setSelectedCategory: React.Dispatch<React.SetStateAction<string>>;
+  setSelectedCategory: (category: string) => void;
+  // setSelectedCategory: React.Dispatch<React.SetStateAction<string>>;
   dropdownOpen: boolean;
   setDropdownOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
