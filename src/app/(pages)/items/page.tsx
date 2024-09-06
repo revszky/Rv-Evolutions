@@ -1,9 +1,9 @@
 import React from "react";
 import NavbarLarge from "../../components/set/NavbarLarge";
-import HeroCollection from "../../components/collection/HeroCollection";
-import Footer from "../../components/set/Footer";
 import NavbarMobile from "../../components/set/NavbarMobile";
+import HeroItems from "../../components/items/HeroItems";
 import AllItems from "../../components/items/AllItems";
+import Footer from "../../components/set/Footer";
 
 export const metadata = {
   title: "RV • COLLECTION",
@@ -46,7 +46,7 @@ const page = () => {
       <section className="flex-grow">
         <section className="pt-12 md:pt-14 lg:pt-28">
           <div>
-            <HeroCollection />
+            <HeroItems />
           </div>
         </section>
 

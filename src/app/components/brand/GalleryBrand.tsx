@@ -1,37 +1,83 @@
-import React from "react";
+"use client";
+import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
+import React, { useState } from "react";
 
-const GalleryBrand = () => {
+const images = [
+  "https://fastly.picsum.photos/id/927/500/600.jpg?hmac=1iYKtgo4c_4MjiuR30GQA8t90N8Ul6ej8Z8Zeb7X6VA",
+
+  "https://fastly.picsum.photos/id/642/500/600.jpg?hmac=wr7b4jLam-kuMQTs2XcDkQZrfr0tPi3ZTLrBUMd7iHQ",
+];
+
+const GalleryBrand: React.FC = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const handleNext = () => {
+    if (currentIndex < images.length - 1) {
+      setCurrentIndex((prevIndex) => prevIndex + 1);
+    }
+  };
+
+  const handlePrev = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex((prevIndex) => prevIndex - 1);
+    }
+  };
   return (
-    <div className="flex items-center justify-center px-4">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
-        <div className="w-36 flex items-center justify-center order-1 md:order-2">
-          <div className="p-2 text-center">
-            <h1 className="font-mono font-bold">RV</h1>
-            <p className="font-mono text-xs md:text-sm">- 001</p>
+    <div className="w-full px-4">
+      <div className="block md:hidden">
+        <div className="overflow-hidden">
+          <div
+            className={`flex  transition-transform duration-1000 ease-in-out`}
+            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+          >
+            {images.map((image, index) => (
+              <div key={index} className="flex-shrink-0 w-full h-full p-2">
+                <img
+                  src={image}
+                  alt={`Slide ${index}`}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            ))}
           </div>
         </div>
 
-        <div className="w-36 md:w-40 lg:w-52 h-60 lg:h-80 bg-black order-2 md:order-1">
-          <img
-            src="https://fastly.picsum.photos/id/867/208/320.jpg?hmac=X3LJx0o-IAIp-Ny2d_cQUTV1mSVyHOkAvqsf-yhTuIw"
-            alt="RV"
-            className="w-full h-full object-cover"
-          />
-        </div>
+        <div className="flex items-center justify-center gap-2">
+          <button
+            onClick={handlePrev}
+            disabled={currentIndex === 0}
+            className={`p-2 ${
+              currentIndex === 0 ? "opacity-40 cursor-not-allowed" : ""
+            }`}
+          >
+            <IconChevronLeft className="stroke-[2.6]" />
+          </button>
 
-        <div className="w-36 md:w-40 lg:w-52 h-60 lg:h-80 bg-black order-2 md:order-3">
-          <img
-            src="https://fastly.picsum.photos/id/867/208/320.jpg?hmac=X3LJx0o-IAIp-Ny2d_cQUTV1mSVyHOkAvqsf-yhTuIw"
-            alt="DNA"
-            className="w-full h-full object-cover"
-          />
+          <button
+            onClick={handleNext}
+            disabled={currentIndex === images.length - 1}
+            className={`p-2 ${
+              currentIndex === images.length - 1
+                ? "opacity-40 cursor-not-allowed"
+                : ""
+            }`}
+          >
+            <IconChevronRight className="stroke-[2.6]" />
+          </button>
         </div>
+      </div>
 
-        <div className="w-36 flex items-center justify-center order-3 md:order-4">
-          <div className="p-2 text-center">
-            <h2 className="font-mono font-bold">DNA</h2>
-            <p className="font-mono text-xs md:text-sm">- 002</p>
-          </div>
+      <div className="hidden md:block">
+        <div className="flex items-center justify-center gap-2">
+          {images.map((image, index) => (
+            <div className="p-2" key={index}>
+              <img
+                key={index}
+                src={image}
+                alt={`Brand ${index}`}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          ))}
         </div>
       </div>
     </div>

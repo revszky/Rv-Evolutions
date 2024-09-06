@@ -2,7 +2,7 @@ import { IconChevronLeft } from "@tabler/icons-react";
 import Link from "next/link";
 import React from "react";
 
-const HeroCollection = () => {
+const HeroItems = () => {
   return (
     <div className="w-full px-4">
       <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center md:justify-between">
@@ -41,4 +41,4 @@ const HeroCollection = () => {
   );
 };
 
-export default HeroCollection;
+export default HeroItems;

@@ -1,7 +1,9 @@
 import React from "react";
-import HeroBrand from "../../components/brand/HeroBrand";
-import GalleryBrand from "../../components/brand/GalleryBrand";
+
 import HomeBrand from "../../components/brand/HomeBrand";
+import Brand from "../../components/brand/Brand";
+import GalleryBrand from "../../components/brand/GalleryBrand";
+import BrandDNA from "../../components/brand/BrandDNA";
 import Footer from "../../components/set/Footer";
 
 export const metadata = {
@@ -21,7 +23,7 @@ const page = () => {
       <section className="flex-grow">
         <section className="pt-14">
           <div>
-            <HeroBrand />
+            <Brand />
           </div>
         </section>
 
@@ -30,6 +32,12 @@ const page = () => {
             <GalleryBrand />
           </div>
         </section>
+      </section>
+
+      <section className="pb-14">
+        <div>
+          <BrandDNA />
+        </div>
       </section>
 
       <section className="w-full">
