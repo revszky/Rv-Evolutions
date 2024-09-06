@@ -21,7 +21,6 @@ const SearchPage = () => {
   const [shouldOpenModal, setShouldOpenModal] = useState<boolean>(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isNotFound, setIsNotFound] = useState<boolean>(false);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -66,7 +65,6 @@ const SearchPage = () => {
       setSearchValue(value);
       setWarningMessage("");
       setResult(null);
-      setIsNotFound(false);
     }
   };
 

@@ -49,18 +49,6 @@ const ModalCheckHorizontal: React.FC<ModalCheckHorizontalProps> = ({
     } else if (previousUrl) {
       window.history.pushState(null, "", previousUrl);
     }
-
-    const klikEsc = (klik: { keyCode: number }) => {
-      if (klik.keyCode === 27 && isOpen) {
-        onClose();
-      }
-    };
-
-    document.addEventListener("keydown", klikEsc);
-
-    return () => {
-      document.removeEventListener("keydown", klikEsc);
-    };
   }, [isOpen]);
 
   return (

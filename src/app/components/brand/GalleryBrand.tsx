@@ -105,7 +105,7 @@ const GalleryBrand: React.FC = () => {
       </div>
 
       <div className="hidden md:block">
-        <div className="flex items-center justify-center gap-2">
+        <div className="flex items-center justify-center md:gap-2 xl:gap-10">
           {images.map((image, index) => (
             <div className="p-2" key={index}>
               <img

@@ -9,7 +9,7 @@ import {
   IconLoader,
 } from "@tabler/icons-react";
 import Link from "next/link";
-import CombinedItems from "../../item/CombinedItems";
+import CombinedItems from "../../product/CombinedItems";
 import FilterItem from "./FilterItem";
 
 const AllItems = () => {

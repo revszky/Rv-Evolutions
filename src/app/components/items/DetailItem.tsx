@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState, useRef } from "react";
-import CombinedItems from "../../item/CombinedItems";
+import CombinedItems from "../../product/CombinedItems";
 import NotFound from "../../not-found";
 import Link from "next/link";
 import {

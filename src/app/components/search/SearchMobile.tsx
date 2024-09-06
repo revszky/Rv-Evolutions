@@ -29,7 +29,6 @@ const SearchMobile = ({
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [isHidden, setIsHidden] = useState<boolean>(false);
   const [originalValue, setOriginalValue] = useState<string>("");
-  const [isNotFound, setIsNotFound] = useState<boolean>(false);
   const [shouldOpenModal, setShouldOpenModal] = useState<boolean>(false);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -88,7 +87,6 @@ const SearchMobile = ({
       setSearchValue(value);
       setWarningMessage("");
       setResult(null);
-      setIsNotFound(false);
     }
   };
 
@@ -150,7 +148,6 @@ const SearchMobile = ({
     setIsHidden(false);
     setOriginalValue("");
     setIsModalOpen(false);
-    setIsNotFound(false);
   };
 
   return (

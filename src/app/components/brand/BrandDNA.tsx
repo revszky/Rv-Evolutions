@@ -3,7 +3,7 @@ import React from "react";
 const BrandDNA = () => {
   return (
     <div className="flex items-center justify-center px-4">
-      <div className="max-w-sm md:max-w-xl xl:max-w-2xl">
+      <div className="max-w-sm md:max-w-xl lg:max-w-2xl">
         <p className="font-mono text-xs md:text-sm text-center">
           Creating a DNA Trace in the World of Fashion, where people with DNA
           who are interested in the world of fashion can express their unique
