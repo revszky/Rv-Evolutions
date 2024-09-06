@@ -6,7 +6,7 @@ import NavbarLarge from "../set/NavbarLarge";
 import Link from "next/link";
 import { IconChevronLeft } from "@tabler/icons-react";
 
-const HomeBrand = () => {
+const HeroBrand = () => {
   const [isScrolledPast, setIsScrolledPast] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
@@ -119,4 +119,4 @@ const HomeBrand = () => {
   );
 };
 
-export default HomeBrand;
+export default HeroBrand;

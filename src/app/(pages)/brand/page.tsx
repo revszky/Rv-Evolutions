@@ -1,6 +1,6 @@
 import React from "react";
 
-import HomeBrand from "../../components/brand/HomeBrand";
+import HeroBrand from "../../components/brand/HeroBrand";
 import Brand from "../../components/brand/Brand";
 import GalleryBrand from "../../components/brand/GalleryBrand";
 import BrandDNA from "../../components/brand/BrandDNA";
@@ -16,7 +16,7 @@ const page = () => {
     <main className="min-h-screen flex flex-col">
       <section>
         <div>
-          <HomeBrand />
+          <HeroBrand />
         </div>
       </section>
 
