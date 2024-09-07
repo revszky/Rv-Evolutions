@@ -6,7 +6,7 @@ import AllItems from "../../components/items/AllItems";
 import Footer from "../../components/set/Footer";
 
 export const metadata = {
-  title: "RV • COLLECTION",
+  title: "RV • ITEMS",
   description: "A collection of evolutionary and revolutions.",
 };
 
@@ -59,11 +59,7 @@ const page = () => {
 
       <section className="w-full">
         <div>
-          <Footer
-            judul="RV Evolutions"
-            place="OUR COLLECTION"
-            classText="text-black"
-          />
+          <Footer judul="RV Evolutions" place="ITEMS" classText="text-black" />
         </div>
       </section>
     </main>

@@ -301,10 +301,12 @@ const AllItems = () => {
                       </div>
                     </div>
 
-                    <p className="font-mono font-bold text-xs md:text-sm">
-                      <span className="pr-[4px]">IDR</span>
-                      {item.price}
-                    </p>
+                    <Link
+                      href={`/items/${item.url}`}
+                      className="font-mono font-bold text-xs"
+                    >
+                      SEE DETAILS
+                    </Link>
                   </div>
                 </div>
               ))}
