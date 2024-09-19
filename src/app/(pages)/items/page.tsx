@@ -1,6 +1,5 @@
 import React from "react";
-import NavbarLarge from "../../components/set/NavbarLarge";
-import NavbarMobile from "../../components/set/NavbarMobile";
+import Navbar from "../../components/set/Navbar";
 import HeroItems from "../../components/items/HeroItems";
 import AllItems from "../../components/items/AllItems";
 import Footer from "../../components/set/Footer";
@@ -14,30 +13,12 @@ const page = () => {
   return (
     <main className="min-h-screen flex flex-col">
       <section className="relative">
-        <div className="fixed w-full z-30 bg-white bg-opacity-80">
-          <div className="hidden xl:block">
-            <NavbarLarge
-              classText="text-black font-mono font-bold"
-              classTextID="text-white font-mono font-bold"
-              classExtra="px-4 py-2 bg-black"
-              picture="/logo/rvblack.png"
-              classModalNotif="text-black"
-            />
-          </div>
-
-          <div className="block xl:hidden">
-            <NavbarMobile
-              picture="/logo/rvblack.png"
-              classText="text-black"
-              classTextID="text-white"
-              classInput="border-black"
-              classInputLogo="border-black"
-              classInputIconSearch="text-black"
-              classTextDropdown="text-white"
-              classBgBtn="bg-black"
-              classBgSidebar="bg-white"
-              classBgDropdown="bg-black border border-black"
-              classModalNotif="text-black"
+        <div className="fixed w-full z-40 bg-white bg-opacity-80">
+          <div className="fixed w-full z-40">
+            <Navbar
+              picture="/logo/rvwhite.png"
+              colorsText="text-white"
+              colorsIcon="text-white"
             />
           </div>
         </div>
