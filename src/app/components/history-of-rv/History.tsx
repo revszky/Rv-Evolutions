@@ -1,6 +1,6 @@
 import React from "react";
 
-const Brand = () => {
+const History = () => {
   return (
     <div className="w-full px-4">
       <div className="flex items-start justify-start gap-10 lg:gap-6 xl:gap-10">
@@ -23,4 +23,4 @@ const Brand = () => {
   );
 };
 
-export default Brand;
+export default History;

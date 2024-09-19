@@ -1,39 +1,18 @@
 "use client";
 
+import Navbar from "./components/set/Navbar";
 import HomeHero from "./components/hero/HomeHero";
-import NavbarLarge from "./components/set/NavbarLarge";
-import NavbarMobile from "./components/set/NavbarMobile";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-black">
       <section className="relative">
         <div className="fixed w-full z-40">
-          <div className="hidden xl:block">
-            <NavbarLarge
-              classText="text-white font-mono font-bold"
-              classTextID="text-black font-mono font-bold"
-              classExtra="px-4 py-2 bg-white"
-              picture="/logo/rvwhite.png"
-              classModalNotif="text-white"
-            />
-          </div>
-
-          <div className="block xl:hidden">
-            <NavbarMobile
-              picture="/logo/rvwhite.png"
-              classText="text-white"
-              classTextID="text-black"
-              classInput="border-white text-white"
-              classInputLogo="border-white"
-              classInputIconSearch="text-white"
-              classTextDropdown="text-black"
-              classBgBtn="bg-white"
-              classBgSidebar="bg-black"
-              classBgDropdown="bg-white border border-black"
-              classModalNotif="text-white"
-            />
-          </div>
+          <Navbar
+            picture="/logo/rvwhite.png"
+            colorsText="text-white"
+            colorsIcon="text-white"
+          />
         </div>
 
         <div className="absolute top-0 left-0 right-0">

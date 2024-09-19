@@ -1,6 +1,6 @@
 import React from "react";
 
-const BrandDNA = () => {
+const HistoryDNA = () => {
   return (
     <div className="flex items-center justify-center px-4">
       <div className="max-w-sm md:max-w-xl lg:max-w-2xl">
@@ -17,4 +17,4 @@ const BrandDNA = () => {
   );
 };
 
-export default BrandDNA;
+export default HistoryDNA;

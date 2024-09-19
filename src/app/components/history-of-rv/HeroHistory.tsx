@@ -1,12 +1,11 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import NavbarMobile from "../set/NavbarMobile";
-import NavbarLarge from "../set/NavbarLarge";
+import Navbar from "../set/Navbar";
 import Link from "next/link";
 import { IconChevronLeft } from "@tabler/icons-react";
 
-const HeroBrand = () => {
+const HeroHistory = () => {
   const [isScrolledPast, setIsScrolledPast] = useState(false);
   useEffect(() => {
     const handleScroll = () => {
@@ -41,31 +40,11 @@ const HeroBrand = () => {
             isScrolledPast ? "bg-black bg-opacity-80" : ""
           }`}
         >
-          <div className="hidden xl:block">
-            <NavbarLarge
-              classText="text-white font-mono font-bold"
-              classTextID="text-black font-mono font-bold"
-              classExtra="px-4 py-2 bg-white"
-              picture="/logo/rvwhite.png"
-              classModalNotif="text-white"
-            />
-          </div>
-
-          <div className="block xl:hidden">
-            <NavbarMobile
-              picture="/logo/rvwhite.png"
-              classText="text-white"
-              classTextID="text-black"
-              classInput="border-white text-white"
-              classInputLogo="border-white"
-              classInputIconSearch="text-white"
-              classTextDropdown="text-black"
-              classBgBtn="bg-white"
-              classBgSidebar="bg-black"
-              classBgDropdown="bg-white border border-black"
-              classModalNotif="text-white"
-            />
-          </div>
+          <Navbar
+            picture="/logo/rvwhite.png"
+            colorsText="text-white"
+            colorsIcon="text-white"
+          />
         </div>
 
         <div>
@@ -119,4 +98,4 @@ const HeroBrand = () => {
   );
 };
 
-export default HeroBrand;
+export default HeroHistory;

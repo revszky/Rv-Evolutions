@@ -8,7 +8,7 @@ const images = [
   "https://fastly.picsum.photos/id/642/500/600.jpg?hmac=wr7b4jLam-kuMQTs2XcDkQZrfr0tPi3ZTLrBUMd7iHQ",
 ];
 
-const GalleryBrand: React.FC = () => {
+const GalleryHistory: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
@@ -122,4 +122,4 @@ const GalleryBrand: React.FC = () => {
   );
 };
 
-export default GalleryBrand;
+export default GalleryHistory;
