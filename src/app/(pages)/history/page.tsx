@@ -8,7 +8,7 @@ import HistoryDNA from "../../components/history/HistoryDNA";
 import Footer from "../../components/set/Footer";
 import Navbar from "@/app/components/set/Navbar";
 
-const page = () => {
+const Page = () => {
   const [isScrolledPast, setIsScrolledPast] = useState(false);
 
   useEffect(() => {
@@ -91,4 +91,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
