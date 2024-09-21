@@ -38,15 +38,11 @@ const Navbar: React.FC<NavbarProps> = ({ picture, colorsText, colorsIcon }) => {
   const menuBrand = [
     {
       judul: "HISTORY OF RV",
-      halaman: "/history-of-rv",
+      halaman: "/history",
     },
     {
-      judul: "GALLERY ARCHIVES",
-      halaman: "/gallery-archives",
-    },
-    {
-      judul: "STORIES",
-      halaman: "/stories",
+      judul: "THE ARCHIVES",
+      halaman: "/archives",
     },
     {
       judul: "ITEM AUTHENTICITY",
@@ -185,7 +181,7 @@ const Navbar: React.FC<NavbarProps> = ({ picture, colorsText, colorsIcon }) => {
           <button
             onClick={openMenuClick}
             className={`transform ${
-              animationMenu ? "rotate-180" : { colorsText }
+              animationMenu ? "rotate-180" : colorsText
             } transition duration-700`}
           >
             {openMenu ? (

@@ -9,7 +9,7 @@ const History = () => {
           <h2 className="font-mono font-bold">•</h2>
         </div>
 
-        <div className="max-w-sm md:max-w-xl lg:max-w-md xl:max-w-xl">
+        <div className="max-w-sm md:max-w-md lg:max-w-md xl:max-w-xl">
           <p className="font-mono text-xs md:text-sm text-left">
             Our designs reflect a dynamic personality, where every detail is
             considered to provide a unique fashion experience. We believe that

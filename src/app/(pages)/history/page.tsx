@@ -1,8 +1,8 @@
 import React from "react";
-import HeroHistory from "../../components/history-of-rv/HeroHistory";
-import History from "../../components/history-of-rv/History";
-import GalleryHistory from "../../components/history-of-rv/GalleryHistory";
-import HistoryDNA from "../../components/history-of-rv/HistoryDNA";
+import HeroHistory from "../../components/history/HeroHistory";
+import History from "../../components/history/History";
+import GalleryHistory from "../../components/history/GalleryHistory";
+import HistoryDNA from "../../components/history/HistoryDNA";
 import Footer from "../../components/set/Footer";
 
 const page = () => {
@@ -36,7 +36,11 @@ const page = () => {
 
       <section className="w-full">
         <div>
-          <Footer judul="RV Evolutions" place="BRAND" classText="text-black" />
+          <Footer
+            judul="RV Evolutions"
+            place="HISTORY"
+            classText="text-black"
+          />
         </div>
       </section>
     </main>
