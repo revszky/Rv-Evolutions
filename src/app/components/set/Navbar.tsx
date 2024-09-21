@@ -18,6 +18,41 @@ const Navbar: React.FC<NavbarProps> = ({ picture, colorsText, colorsIcon }) => {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
+  const menuBrand = [
+    {
+      title: "HISTORY OF RV",
+      page: "/history",
+    },
+    {
+      title: "THE ARCHIVES",
+      page: "/archives",
+    },
+    {
+      title: "ITEM AUTHENTICITY",
+      page: "/authenticity",
+    },
+  ];
+
+  const menuItems = [
+    {
+      title: "ALL OTHER ITEMS",
+      page: "/",
+    },
+    {
+      title: "PLAIN & T-SHIRTS",
+      page: "/brand",
+    },
+    {
+      title: "HOODIE & JACKET",
+      page: "/items",
+    },
+
+    {
+      title: "SHORTS & TROUSERS",
+      page: "/brand",
+    },
+  ];
+
   const handleClickOutside = (event: MouseEvent) => {
     if (
       dropdownRef.current &&
@@ -34,41 +69,6 @@ const Navbar: React.FC<NavbarProps> = ({ picture, colorsText, colorsIcon }) => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
-
-  const menuBrand = [
-    {
-      judul: "HISTORY OF RV",
-      halaman: "/history",
-    },
-    {
-      judul: "THE ARCHIVES",
-      halaman: "/archives",
-    },
-    {
-      judul: "ITEM AUTHENTICITY",
-      halaman: "/authenticity",
-    },
-  ];
-
-  const menuItems = [
-    {
-      judul: "ALL OTHER ITEMS",
-      halaman: "/",
-    },
-    {
-      judul: "PLAIN & T-SHIRTS",
-      halaman: "/brand",
-    },
-    {
-      judul: "HOODIE & JACKET",
-      halaman: "/items",
-    },
-
-    {
-      judul: "SHORTS & TROUSERS",
-      halaman: "/brand",
-    },
-  ];
 
   const openModalNotif = () => {
     closeMenuClick();
@@ -111,7 +111,7 @@ const Navbar: React.FC<NavbarProps> = ({ picture, colorsText, colorsIcon }) => {
   };
 
   useEffect(() => {
-    const mengubahUkuran = () => {
+    const resizeCloseDropdown = () => {
       if (
         (window.innerWidth <= 768 || window.innerWidth > 768) &&
         (openMenu || openBrand || openItems)
@@ -122,20 +122,20 @@ const Navbar: React.FC<NavbarProps> = ({ picture, colorsText, colorsIcon }) => {
       }
     };
 
-    const klikEsc = (klik: { keyCode: number }) => {
-      if (klik.keyCode === 27 && (openMenu || openBrand || openItems)) {
+    const clickEsc = (click: { keyCode: number }) => {
+      if (click.keyCode === 27 && (openMenu || openBrand || openItems)) {
         closeMenuClick();
         closeBrandMenu();
         closeItemsMenu();
       }
     };
 
-    window.addEventListener("resize", mengubahUkuran);
-    document.addEventListener("keydown", klikEsc);
+    window.addEventListener("resize", resizeCloseDropdown);
+    document.addEventListener("keydown", clickEsc);
 
     return () => {
-      window.removeEventListener("resize", mengubahUkuran);
-      document.removeEventListener("keydown", klikEsc);
+      window.removeEventListener("resize", resizeCloseDropdown);
+      document.removeEventListener("keydown", clickEsc);
     };
   }, [openMenu, openBrand, openItems]);
 
@@ -250,11 +250,11 @@ const Navbar: React.FC<NavbarProps> = ({ picture, colorsText, colorsIcon }) => {
                   {menuBrand.map((menu, urutan) => (
                     <Link
                       key={urutan}
-                      href={menu.halaman}
+                      href={menu.page}
                       onClick={closeBrandMenu}
                       className="font-mono text-xs py-[6px]"
                     >
-                      {menu.judul}
+                      {menu.title}
                     </Link>
                   ))}
                 </div>
@@ -272,7 +272,7 @@ const Navbar: React.FC<NavbarProps> = ({ picture, colorsText, colorsIcon }) => {
                       onClick={closeBrandMenu}
                       className="font-mono text-xs py-[6px] text-gray-400"
                     >
-                      {menu.judul}
+                      {menu.title}
                     </p>
                   ))}
                 </div>
@@ -293,11 +293,11 @@ const Navbar: React.FC<NavbarProps> = ({ picture, colorsText, colorsIcon }) => {
               {menuBrand.map((menu, urutan) => (
                 <Link
                   key={urutan}
-                  href={menu.halaman}
+                  href={menu.page}
                   onClick={closeBrandMenu}
                   className="py-2 hover:font-bold"
                 >
-                  <p className="font-mono text-sm">{menu.judul}</p>
+                  <p className="font-mono text-sm">{menu.title}</p>
                 </Link>
               ))}
             </div>
@@ -319,7 +319,7 @@ const Navbar: React.FC<NavbarProps> = ({ picture, colorsText, colorsIcon }) => {
                   onClick={closeBrandMenu}
                   className="font-mono text-sm py-2 text-gray-400"
                 >
-                  {menu.judul}
+                  {menu.title}
                 </p>
               ))}
             </div>
