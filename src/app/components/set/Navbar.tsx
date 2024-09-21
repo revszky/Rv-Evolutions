@@ -112,7 +112,10 @@ const Navbar: React.FC<NavbarProps> = ({ picture, colorsText, colorsIcon }) => {
 
   useEffect(() => {
     const mengubahUkuran = () => {
-      if (window.innerWidth > 768 && (openMenu || openBrand || openItems)) {
+      if (
+        (window.innerWidth <= 768 || window.innerWidth > 768) &&
+        (openMenu || openBrand || openItems)
+      ) {
         closeMenuClick();
         closeBrandMenu();
         closeItemsMenu();
@@ -177,7 +180,7 @@ const Navbar: React.FC<NavbarProps> = ({ picture, colorsText, colorsIcon }) => {
           </div>
         </Link>
 
-        <div className="block md:hidden">
+        <div className="block xl:hidden">
           <button
             onClick={openMenuClick}
             className={`transform ${
@@ -192,7 +195,7 @@ const Navbar: React.FC<NavbarProps> = ({ picture, colorsText, colorsIcon }) => {
           </button>
         </div>
 
-        <div className="hidden md:block">
+        <div className="hidden xl:block">
           <div className="flex items-start space-x-32">
             <button
               onClick={openBrandMenu}
